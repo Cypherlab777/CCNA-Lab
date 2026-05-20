@@ -61,7 +61,7 @@ switchport mode access
 switchport access vlan 99
 shutdown
 do show vlan brief
----
+```
 
 ## Vérification 
 
@@ -71,7 +71,7 @@ show ip interface brief
 show interfaces status
 PC1 ping PC2
 PC3 ping PC4
----
+```
 
 ## Troubleshooting
 
