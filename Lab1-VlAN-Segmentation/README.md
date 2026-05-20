@@ -28,7 +28,7 @@ Secure unused switch port for security
 ## Configuration 
 
 
----bash
+```bash
 enable 
 conf t
 
@@ -65,7 +65,7 @@ do show vlan brief
 
 ## Vérification 
 
----bash
+```bash
 show vlan brief
 show ip interface brief
 show interfaces status
