@@ -27,6 +27,8 @@ Secure unused switch port for security
 
 ## Configuration 
 
+
+---bash
 enable 
 conf t
 
@@ -63,12 +65,12 @@ do show vlan brief
 
 ## Vérification 
 
+---bash
 show vlan brief
 show ip interface brief
 show interfaces status
 PC1 ping PC2
 PC3 ping PC4
-
 ---
 
 ## Troubleshooting
