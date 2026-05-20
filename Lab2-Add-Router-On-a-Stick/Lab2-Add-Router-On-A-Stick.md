@@ -79,7 +79,6 @@ Problem 2 : PC1 cannot ping PC4
 Cause : Missing default Gateway on PCs
 Solution : Configure default Gateway on PCs
 
-## Skills gained 
 ## Skills gained
 
 -Création of router sub-interfaces for inter-VLAN routing
