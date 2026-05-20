@@ -171,6 +171,7 @@ Solution : Configure an ip address on DHCP serveur
 
 Problem2 : server can ping vlan 30 et 40 gateway but DHCP still fail on PCs
 cause : no ip helper-address configured on the router
+Explanation : The `ip helper-address` is necessary because the DORA process's `discover` request is a broadcast and therefore does not traverse routers.
 solution : configure ip helper-address on router sub-interfaces
 
 problem3 : PC5 cannot ping pc1 / destination host unreachable
@@ -183,10 +184,13 @@ solution : Configure static route on both router for each network
 ## Skills gained
 
 - Creation and configuration of a DHCP serveur
-- Configuration of Ip helper-address
+- Configuration of Ip helper-address (
 - Configuration of Static route
 - Configuration of a Point to point router link
 - troubleshooting DHCP and Routing issues
 ---
 
+## Notes
+
+- In the Screenshot, the first ping from PC1 (25% loss) fails due to the ARP resolution.
 
