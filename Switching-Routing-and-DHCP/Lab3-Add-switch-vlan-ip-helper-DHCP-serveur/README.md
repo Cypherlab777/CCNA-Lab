@@ -22,18 +22,18 @@ Assign ip and Gateway to each pc via DHCP
 ---
 
 ## Network configuration 
-
+```
 Router0 : 
 interface g0/1 = 10.0.0.1/30
 
-router1 : 
+router1 :
 interface g0/0 = 10.0.0.2/30 
 interface g0/0.30 = 192.168.30.1
 interface g0/0.40 = 192.168.40.1
 interface g0/0.50 = 192.168.50.1
 
 DHCP server = 192.168.50.100 255.255.255.0
----
+```
 
 ## Configuration
 ```bash
