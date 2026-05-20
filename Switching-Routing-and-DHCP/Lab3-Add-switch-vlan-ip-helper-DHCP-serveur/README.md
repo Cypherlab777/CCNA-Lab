@@ -185,7 +185,7 @@ solution : Configure static route on both router for each network
 ## Skills gained
 
 - Creation and configuration of a DHCP serveur
-- Configuration of Ip helper-address (
+- Configuration of Ip helper-address 
 - Configuration of Static route
 - Configuration of a Point to point router link
 - troubleshooting DHCP and Routing issues
