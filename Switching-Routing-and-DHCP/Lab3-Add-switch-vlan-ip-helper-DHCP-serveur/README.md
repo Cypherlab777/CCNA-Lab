@@ -165,6 +165,7 @@ ping
 
 ## Troubleshooting 
 
+```
 problem 1 : DHCP on PC5 fail
 cause : no ip addresse configured on the DHCP server
 Solution : Configure an ip address on DHCP serveur
@@ -179,7 +180,7 @@ cause : R1 does not know 192.168.10.0 - 192.168.20.0
 	R0 does not know 192.168.30.0 - 192.168.40.0 - 192.168.50.0
 	Missing static route
 solution : Configure static route on both router for each network
----
+```
 
 ## Skills gained
 
