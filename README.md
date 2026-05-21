@@ -5,8 +5,9 @@ Personal networking labs and Cisco practice created during my CCNA studies.
 ## Technologies & Topics
 - VLAN
 - Inter-VLAN Routing
+- DTP
 - Static Routing
-- DHCP Relay
+- DHCP Relay & L3
 - Troubleshooting
 - Cisco IOS
 - Switching & Routing
@@ -25,7 +26,8 @@ The objective is to strengthen my hands-on skills in:
 Practical lab including:
 - VLAN configuration
 - Inter-VLAN routing
-- DHCP relay
+- DHCP relay & L3
+- DTP
 - Connectivity troubleshooting
 
 ## Certifications
