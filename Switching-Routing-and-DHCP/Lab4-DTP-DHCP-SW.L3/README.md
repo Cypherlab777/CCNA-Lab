@@ -33,8 +33,8 @@ fa0/1 = switchport mode dynamic desirable
 SW.L3
 fa0/1 = dynamic auto 
 fa0/2 = dynamic auto
-Fa0/4 = switchport mode dynamic desirable
-Fa0/3 = switchport mode dynamic desirable
+fa0/4 = switchport mode dynamic desirable
+fa0/3 = switchport mode dynamic desirable
 ---
 
 ## Configurations 
