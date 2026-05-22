@@ -183,11 +183,14 @@ After some research I realized that I had to provide a "configuration file" to t
 
 ## Skills gained
 
+
 - I learned that the IP Phone learns the Voice VLAN via CDP & once the Voice VLAN is learned, the phone then tags its voice traffic in 802.1Q.
 
 - I learned that the switch sends untagged CDP frames to the phone. After learning the Voice VLAN via CDP, the phone then sends its voice traffic tagged in 802.1Q.
 
-- I learned that CDP frames can be transported via the native VLAN (untagged) or via 802.1Q (tagged). This depends on the type of link used (access or trunk).
+- I learned that CDP frames can sometimes appear tagged or untagged in packet captures depending on the type of link used (access or trunk), the native VLAN, and the network implementation.
+
+- I learned that the CDP advertisement does not directly transport the Voice VLAN but transports the information telling the IP Phone which VLAN to use for its voice traffic.
 
 - I learned that to configure a DHCP voice vlan it was necessary to specify the TFTP server.
 
