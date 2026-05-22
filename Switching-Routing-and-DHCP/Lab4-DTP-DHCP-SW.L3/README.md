@@ -14,23 +14,23 @@ Build a small network using multiple VLANs, DTP trunk negotiation, inter-VLAN ro
 
 ## Network configuration 
 
-###SW.SALES : 
+- SW.SALES : 
 fa0/2 = switchport mode access
 fa0/1 = dynamic auto
 
-###SW.IT : 
+- SW.IT : 
 fa0/2 = switchport mode access
 fa0/1 = dynamic auto
 
-###SW.RH : 
+- SW.RH : 
 fa0/2 = switchport mode access 
 fa0/1 = switchport mode trunk
 
-###SW.USERS : 
+- SW.USERS : 
 fa0/2 = switchport mode access
 fa0/1 = switchport mode dynamic desirable
 
-###SW.L3
+- SW.L3
 fa0/1 = dynamic auto 
 fa0/2 = dynamic auto
 fa0/4 = switchport mode dynamic desirable
