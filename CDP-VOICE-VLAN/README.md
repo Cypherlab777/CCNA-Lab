@@ -177,9 +177,7 @@ On SW2 I can see the same thing.
 - I also noticed that in the latest CDP frames the TPID field 0x8100 corresponds to the 802.1Q tag. I observed that these CDP frames on the trunk were tagged VLAN 1 while the CDP frames sent to the phone were untagged.
 
 - When I configured DHCP voice vlan on SW.L3 I noticed that it was not working.  
-After some research I realized that I had to provide a "configuration file" to the IP Phone which is normally located on a TFTP/CUCM server.
-
-But under Packet Tracer there is no real TFTP server so I had to use the Voice VLAN gateway 192.168.30.1 with option 150.
+After some research I realized that I had to provide a "configuration file" to the IP Phone which is normally located on a TFTP/CUCM server. But under Packet Tracer there is no real TFTP server so I had to use the Voice VLAN gateway 192.168.30.1 with option 150.
 
 ---
 
