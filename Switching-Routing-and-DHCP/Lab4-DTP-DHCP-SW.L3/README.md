@@ -140,8 +140,10 @@ show interface fa0/4 sw
 interface fa0/4
 switchport mode dynamic desirable
 do show interface fa0/4 sw
-```
+
 The same configuration pattern was applied for VLANs 20, 30 and 40.
+```
+
 ---
 
 ## Vérification 
