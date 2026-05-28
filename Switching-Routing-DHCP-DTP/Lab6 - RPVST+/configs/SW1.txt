@@ -1,7 +1,7 @@
 SW1#show running-config 
 Building configuration...
 
-Current configuration : 1185 bytes
+Current configuration : 1225 bytes
 !
 version 15.0
 no service timestamps log datetime msec
@@ -12,7 +12,8 @@ hostname SW1
 !
 spanning-tree mode rapid-pvst
 spanning-tree extend system-id
-spanning-tree vlan 10 priority 0
+spanning-tree vlan 10 priority 4096
+spanning-tree vlan 20 priority 28672
 !
 interface FastEthernet0/1
  switchport mode trunk
