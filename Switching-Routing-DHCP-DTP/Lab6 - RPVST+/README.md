@@ -50,12 +50,12 @@ Creation of a network of 6 switches in order to observe the behavior of RPVST+
 
 | Device | Configuration |
 |---|---|
-| SW1 | [SW1.txt](Configs/SW1.txt) |
-| SW2 | [SW2.txt](Configs/SW2.txt) |
-| SW3 | [SW3.txt](Configs/SW3.txt) |
-| SW4 | [SW4.txt](Configs/SW4.txt) |
-| SW5 | [SW5.txt](Configs/SW5.txt) |
-| SW6 | [SW6.txt](Configs/SW6.txt) |
+| SW1 | [SW1.txt](configs/SW1.txt) |
+| SW2 | [SW2.txt](configs/SW2.txt) |
+| SW3 | [SW3.txt](configs/SW3.txt) |
+| SW4 | [SW4.txt](configs/SW4.txt) |
+| SW5 | [SW5.txt](configs/SW5.txt) |
+| SW6 | [SW6.txt](configs/SW6.txt) |
 
 ## Verification
 
