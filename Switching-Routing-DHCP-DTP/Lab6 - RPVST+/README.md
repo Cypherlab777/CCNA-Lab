@@ -28,7 +28,7 @@ Creation of a network of 6 switches in order to observe the behavior of RPVST+
 |---|---|---|---|---|
 | SW2 | Gi0/1 | Root | Forwarding | 4 |
 | SW2 | Gi0/2 | Designated | Forwarding | 4 |
-| SW2 | Fa0/1 | Designated | Forwarding | 19 |
+| SW2 | Fa0/1 | Alternate | Blocking | 19 |
 | SW6 | Fa0/1 | Alternate | Blocking | 19 |
 | SW6 | Fa0/2 | Alternate | Blocking | 19 |
 | SW6 | Fa0/3 | Root | Forwarding | 19 |
@@ -39,8 +39,8 @@ Creation of a network of 6 switches in order to observe the behavior of RPVST+
 
 | Switch | Port | Role | State | Cost |
 |---|---|---|---|---|
-| SW1 | Gi0/1 | Designated | Forwarding | 4 |
-| SW1 | Fa0/1 | Root | Forwarding | 19 |
+| SW1 | Gi0/1 | Root | Forwarding | 4 |
+| SW1 | Fa0/1 | Designated | Forwarding | 19 |
 | SW4 | Gi0/1 | Alternate | Blocking | 4 |
 | SW4 | Gi0/2 | Root | Forwarding | 4 |
 | SW6 | Fa0/1 | Alternate | Blocking | 19 |
