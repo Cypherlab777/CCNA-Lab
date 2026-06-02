@@ -5,11 +5,13 @@
 ### Objective
 
 Créer une architecture complete incluant les réseaux broadcast mullti-access et Point-to-Point
+
 ---
 
 ### Full Topology
 
 ![Full Topology](screenshots/Topology/Full-Topology.png)
+
 ---
 
 ### Network Configuration 
@@ -37,6 +39,7 @@ Tableau 1 : plan d'adressage
 | R8 | G0/0 | 192.168.50.1 | /24 | *
 
 Interface en mode passive :
+
  - R1-G0/1
  - R2-G0/1
  - R8-G0/0
@@ -76,29 +79,34 @@ Table de routage de R8
 
 ![Vérification de la table de routage de R8](screenshots/Vérification/R8-Ip-Route.png)
 
- -Nous observons bien toutes les routes OSPF vers tous les réseaux 
+ - Nous observons bien toutes les routes OSPF vers tous les réseaux 
+
 ---
 
 Database de R8
 
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
 
- -Nous observons bien tous les LSAs de tous les routeurs, 8 en tout. Ainsi que les network LSAs
+ - Nous observons bien tous les LSAs de tous les routeurs, 8 en tout. Ainsi que les network LSAs
+
 ---
 
 Ping depuis PCA vers DC et PCB successful
 
 ![Vérification PCA ping DC et PCB](screenshots/Vérification/PCA-Ping-DC-PCB.png)
 
- -Nous observons que tous les pings passent sans le moindre problème 
+ - Nous observons que tous les pings passent sans le moindre problème 
+
 ---
 
 Tracert depuis PCB vers DC et PCA successful
 
 ![Vérification PCB tracert DC et PCA](screenshots/Vérification/PCB-Tracert-DC-PCA.png)
 
- -Nous observons le chemin que prennent les paquets vers les différentes desitnations
+ - Nous observons le chemin que prennent les paquets vers les différentes desitnations
+
 ---
+
 ### Troubleshooting
 
 ### Observations
@@ -110,6 +118,7 @@ Tracert depuis PCB vers DC et PCA successful
 ### Broadcast Segment Topology
 
 ![Broadcast Topology](screenshots/Topology/Broadcast-Topology.png)
+
 ---
 
 ### DR / BDR Election
