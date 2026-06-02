@@ -58,7 +58,6 @@ Tableau 2 : OSPF configuration
 
 Vous trouverez ici le show run de chacun des routeurs :
 
-
 | Router | Configuration |
 |---|---|
 | R1 | [R1.txt](configs/R1.txt) |
@@ -73,10 +72,32 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ### Verification
 
+Table de routage de R8
+
 ![Vérification de la table de routage de R8](screenshots/Vérification/R8-Ip-Route.png)
+
+ -Nous observons bien toutes les routes OSPF vers tous les réseaux 
+---
+
+Database de R8
+
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
+
+ -Nous observons bien tous les LSAs de tous les routeurs, 8 en tout 
+---
+
+Ping depuis PCA vers DC et PCB successful
+
 ![Vérification PCA ping DC et PCB](screenshots/Vérification/PCA-Ping-DC-PCB.png)
+
+ -Nous observons que tous les pings passent sans le moindre problème 
+---
+
+Tracert depuis PCB vers DC et PCA successful
+
 ![Vérification PCB tracert DC et PCA](screenshots/Vérification/PCB-Tracert-DC-PCA.png)
+
+ -Nous observons le chemin que prennent les paquets vers les différentes desitnations
 ---
 ### Troubleshooting
 
