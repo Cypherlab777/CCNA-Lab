@@ -83,7 +83,7 @@ Database de R8
 
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
 
- -Nous observons bien tous les LSAs de tous les routeurs, 8 en tout 
+ -Nous observons bien tous les LSAs de tous les routeurs, 8 en tout. Ainsi que les network LSAs
 ---
 
 Ping depuis PCA vers DC et PCB successful
