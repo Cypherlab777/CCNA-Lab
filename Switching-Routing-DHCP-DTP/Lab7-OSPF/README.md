@@ -238,9 +238,10 @@ est destinée au DR/BDR uniquement
 
 ![Route initial](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-Initial.png)
 
- - Les paquets ICMP prenne une des routes différentes à partir du R5, ce comportement ne me semble pas normal
+ - Les paquets ICMP empruntent alternativement les deux routes disponibles à partir de R5 grâce au mécanisme ECMP.
 
 ---
+
 
 #### la table de routage de R5 qui montre les deux routes du même coût.
 
@@ -257,6 +258,20 @@ est destinée au DR/BDR uniquement
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
 
  - Lors du shut de R7 le dead-interval arrive a 0 sur les routeurs ce qui a pour effet de retirer R7 de leurs Database
+
+---
+
+### Convergence OSPF
+
+Après le shut de R7 :
+
+1. Le Dead-interval Timer expire.
+2. R7 est supprimé de la table des voisins.
+3. Les LSAs sont mis à jour.
+4. L'algorithme SPF est recalculé.
+5. Le trafic est automatiquement redirigé.
+
+Cette convergence donne de la redondance et permet au réseau de continuer à fonctionner après une lien mort sans intervention manuelle.
 
 ---
 
