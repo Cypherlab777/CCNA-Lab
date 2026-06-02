@@ -234,7 +234,7 @@ est destinée au DR/BDR uniquement
 
 ### Link Failure Simulation
 
- - Je tracert le DC depuis PCA afin de constater le chemin initial des paquets ICMP :
+#### Le tracert le DC depuis PCA afin de constater le chemin initial des paquets ICMP :
 
 ![Route initial](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-Initial.png)
 
@@ -242,7 +242,7 @@ est destinée au DR/BDR uniquement
 
 ---
 
- - la table de routage de R5 qui montre les deux routes du même coût.
+#### la table de routage de R5 qui montre les deux routes du même coût.
 
 ![R5 table de routage](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-Initial.png)
 
@@ -252,7 +252,7 @@ est destinée au DR/BDR uniquement
 
 ---
 
- - Je shut volontairement les interface de R7 afin d'observer le chemin que va prendre les pings :
+#### Shutdown volontaire des interface de R7 afin d'observer le chemin que va prendre les pings :
 
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
 
@@ -260,7 +260,7 @@ est destinée au DR/BDR uniquement
 
 ---
 
- - Voici la table de routage de R5 après le shutdown de R7
+#### Voici la table de routage de R5 après le shutdown de R7
 
 ![R5 table de routage après shutdown R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
 
@@ -268,7 +268,7 @@ est destinée au DR/BDR uniquement
 
 ---
 
- - Je tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
+#### Je tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
 
 ![Route après shut de R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
 
