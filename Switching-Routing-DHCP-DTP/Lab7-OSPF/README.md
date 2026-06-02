@@ -36,7 +36,10 @@ Tableau 1 : plan d'adressage
 | R8 | SE0/0/0 | 60.0.0.2 | /30 |
 | R8 | G0/0 | 192.168.50.1 | /24 | *
 
-* Interface en mode passive
+* Interface en mode passive :
+R1-G0/1
+R2-G0/1
+R8-G0/0
 
 Tableau 2 : OSPF configuration
 
