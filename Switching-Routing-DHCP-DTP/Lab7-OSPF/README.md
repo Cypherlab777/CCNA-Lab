@@ -58,14 +58,17 @@ Tableau 2 : OSPF configuration
 
 Vous trouverez ici le show run de chacun des routeurs :
 
-[Configuration R1](configs/R1.txt)
-[Configuration R2](configs/R2.txt)
-[Configuration R3](configs/R3.txt)
-[Configuration R4](configs/R4.txt)
-[Configuration R5](configs/R5.txt)
-[Configuration R6](configs/R6.txt)
-[Configuration R7](configs/R7.txt)
-[Configuration R8](configs/R8.txt)
+
+| Router | Configuration |
+|---|---|
+| R1 | [R1.txt](configs/R1.txt) |
+| R2 | [R2.txt](configs/R2.txt) |
+| R3 | [R3.txt](configs/R3.txt) |
+| R4 | [R4.txt](configs/R4.txt) |
+| R5 | [R5.txt](configs/R5.txt) |
+| R6 | [R6.txt](configs/R6.txt) |
+| R7 | [R7.txt](configs/R7.txt) |
+| R8 | [R8.txt](configs/R8.txt) |
 ---
 
 ### Verification
