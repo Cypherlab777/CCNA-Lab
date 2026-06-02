@@ -75,7 +75,7 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ### Verification
 
-Table de routage de R8
+#### Table de routage de R8
 
 ![Vérification de la table de routage de R8](screenshots/Vérification/R8-Ip-Route.png)
 
@@ -83,7 +83,7 @@ Table de routage de R8
 
 ---
 
-Database de R8
+#### Database de R8
 
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
 
@@ -91,7 +91,7 @@ Database de R8
 
 ---
 
-Ping depuis PCA vers DC et PCB successful
+#### Ping depuis PCA vers DC et PCB successful
 
 ![Vérification PCA ping DC et PCB](screenshots/Vérification/PCA-Ping-DC-PCB.png)
 
@@ -99,7 +99,7 @@ Ping depuis PCA vers DC et PCB successful
 
 ---
 
-Tracert depuis PCB vers DC et PCA successful
+#### Tracert depuis PCB vers DC et PCA successful
 
 ![Vérification PCB tracert DC et PCA](screenshots/Vérification/PCB-Tracert-DC-PCA.png)
 
