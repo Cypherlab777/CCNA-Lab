@@ -135,46 +135,60 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ![Un problème est survenu sur le DR](screenshots/DR-BDR/R2view-DR-Down-Dead-interval-0.png)
 
-L’interface G0/0 de R3 est mise hors ligne afin de simuler une panne du DR., ce qui entraine à la fin du dead-interval un basculement de DR sur le BDR
+ - L’interface G0/0 de R3 est mise hors ligne afin de simuler une panne du DR., ce qui entraine à la
+fin du dead-interval un basculement de DR sur le BDR
+
+---
 
 
 ![R2 est Devenu DR car il était BDR](screenshots/DR-BDR/R1view-New-DR-R2.png)
 
-R2 est devenu DR suite au problème survenu sur le DR, R2 est élu DR car il était BDR avec une priorité de 90
+ - R2 est devenu DR suite au problème survenu sur le DR, R2 est élu DR car il était BDR avec une priorité de 90
 
+---
 
 ![R3 est redevenu up mais n'est pas élu DR car OSPF est non-preemtive](screenshots/DR-BDR/R1view-R3-back-no-preemtive.png)
 
-R3 revient en ligne, malgré sa priorité la plus élevé, il ne redevient pas DR car OSPF est ce que l'on appelle non-preemtive
+ - R3 revient en ligne, malgré sa priorité la plus élevé, il ne redevient pas DR car OSPF est ce que
+l'on appelle non-preemtive
 
+---
 
 ### OSPF Packet Analysis
 
-Voici les différents packet OSPF capturés dans les sniffers
+#### Voici les différents packet OSPF capturés dans les sniffers
 
  - Le Hello packet
 
 ![Hello packet](screenshots/LSA-Packets/R1-Type1-Hello-Packet-Multicast-224.0.0.5.png)
 
 Packet de type1 envoyé par R1 à l'adresse multicast 224.0.0.5 par le router pour établir un voisinage et signaler qu'il est toujours en "vie"
+
 ---
+
  - Le Database descrition packet
 
 ![DBD packet](screenshots/LSA-Packets/R1-Type2-DBD-Packet-Unicast-10.0.0.2.png)
 
 Packet de type2 envoyé par R1 à l'adresse 10.0.0.2 (unicast) afin de partager sa data base avec R2
+
 ---
+
  - Le Link state request packet
 
 ![LSR packet](screenshots/LSA-Packets/R4-Type3-LSR-Packet-Unicast-10.0.0.3.png)
 
 Packet de type3 envoyé par R4 à l'adresse 10.0.0.3 afin de réclamer des informations manquante sur R3
+
 ---
+
  - Le Link state Update packet
 
 ![LSU packet](screenshots/LSA-Packets/R1-Type4-LSU-Packet-Multicast-224.0.0.5.png)
 
-Packet de type4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa Database aux autres
+ - Packet de type4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa
+database aux autres
+
 ---
 
  - Le Link state acknowledgement packet
@@ -182,17 +196,19 @@ Packet de type4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager
 ![LSAck packet](screenshots/LSA-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.5.png)
 
 Packet de type5 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin d'accuser réception des informations réclamées aux autres
+
 ---
 
  - Le Link state acknowledgement packet (224.0.0.6)
 
 ![LSAck packet](screenshots/LSA-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.6.png)
 
-Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui est destinée au DR/BDR uniquement
+ - Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui 
+est destinée au DR/BDR uniquement
+
 ---
 
 ### Observations
-
 
 - Une fois que le DR est offline et qu'il revient online, il n'est plus DR car OSPF est no-preemtive.
 
@@ -203,6 +219,7 @@ Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Mult
 - Multicast 224.0.0.5 = Tout le monde
 
 - Multicast 224.0.0.6 = DR/BDR
+
 ---
 
 ------------------------------------------------
@@ -212,6 +229,7 @@ Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Mult
 ### WAN Topology
 
 ![Wan-Topology](screenshots/Topology/Wan-Topology.png)
+
 ---
 
 ### Link Failure Simulation
@@ -221,15 +239,17 @@ Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Mult
 ![Route initial](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-Initial.png)
 
  - Les paquets ICMP prenne une des routes différentes à partir du R5, ce comportement ne me semble pas normal
+
 ---
 
-Voici la table de routage de R5 qui montre les deux routes du même coût 
+ - la table de routage de R5 qui montre les deux routes du même coût.
 
 ![R5 table de routage](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-Initial.png)
 
  - La table de routage nous montre que deux routes sont disponible vers le réseau 192.168.50.0/24 (toutes les deux a 129 de coût) avec le même coût ce qui d'éclanche le mécanisme ECMP. Donc le comportement des paquets ICMP lors du tracert de PCA au DC sont un comportement normal finalement
 
  - l'AD quand à elle reste la même car c'est l'AD par défaut d'OSPF 
+
 ---
 
  - Je shut volontairement les interface de R7 afin d'observer le chemin que va prendre les pings :
@@ -237,6 +257,7 @@ Voici la table de routage de R5 qui montre les deux routes du même coût
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
 
  - Lors du shut de R7 le dead-interval arrive a 0 sur les routeurs ce qui a pour effet de retirer R7 de leurs Database
+
 ---
 
  - Voici la table de routage de R5 après le shutdown de R7
@@ -244,15 +265,14 @@ Voici la table de routage de R5 qui montre les deux routes du même coût
 ![R5 table de routage après shutdown R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
 
  - La table de routage ne montre plus qu'une seule route disponible vers le Réseau 192.168.50.0/24
+
 ---
 
  - Je tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
 
 ![Route après shut de R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
 
-Les paquets ICMP prennent maintenant la seule route disponible jusqu'au réseau 192.168.50.0/24
-
-
+ - Les paquets ICMP prennent maintenant la seule route disponible jusqu'au réseau 192.168.50.0/24
 
 ### Verification
 
