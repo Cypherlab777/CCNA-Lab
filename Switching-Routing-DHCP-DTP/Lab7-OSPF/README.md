@@ -116,9 +116,9 @@ Tracert depuis PCB vers DC et PCA successful
 
 ![Identification du DR et du BDR](screenshots/DR-BDR/R1view-DR-R3-BDR-R2-Initial.png)
 
- -Router 3 est élu DR car il a la priorité la plus haute sur le segment.
- -Router 2 est élu BDR car il a la deuxième priorité la plus élevée.
- -En cas d'égalité sur la priorité, le tie-breaker aurais tranché sur base du router-id la plus élevé 
+ - Router 3 est élu DR car il a la priorité la plus haute sur le segment.
+ - Router 2 est élu BDR car il a la deuxième priorité la plus élevée.
+ - En cas d'égalité sur la priorité, le tie-breaker aurais tranché sur base du router-id la plus élevé 
 
 ---
 
