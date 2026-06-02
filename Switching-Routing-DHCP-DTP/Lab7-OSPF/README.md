@@ -186,7 +186,7 @@ Packet de type3 envoyé par R4 à l'adresse 10.0.0.3 afin de réclamer des infor
 
 ![LSU packet](screenshots/LSA-Packets/R1-Type4-LSU-Packet-Multicast-224.0.0.5.png)
 
- - Packet de type4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa
+Packet de type4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa
 database aux autres
 
 ---
@@ -203,7 +203,7 @@ Packet de type5 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin d'accuser r
 
 ![LSAck packet](screenshots/LSA-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.6.png)
 
- - Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui 
+Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui 
 est destinée au DR/BDR uniquement
 
 ---
