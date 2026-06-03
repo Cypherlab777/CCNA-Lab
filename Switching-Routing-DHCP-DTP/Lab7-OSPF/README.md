@@ -79,7 +79,7 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ![Vérification de la table de routage de R8](screenshots/Vérification/R8-Ip-Route.png)
 
- - Nous observons bien toutes les routes OSPF vers tous les réseaux 
+ - Nous observons dans ce Screenshot, toutes les routes OSPF vers tous les réseaux 
 
 ---
 
@@ -87,7 +87,7 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ![Vérification de ta table des voisins R3](screenshots/Vérification/R3-show-ip-ospf-neighbor.png)
 
- - Nous observons dans le ce Screenshot, les voisins du R3. 
+ - Nous observons dans ce Screenshot, les voisins du R3. 
  - Ces voisins sont les Routeurs 1,2 et 4.
  - Nous observons également que le router 2 est le BDR et que les routeurs 4 et 1 sont en état full avec le Routeur 1 (DR)
 
@@ -97,7 +97,8 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
 
- - Nous observons bien tous les LSAs de tous les routeurs, 8 en tout. Ainsi que les network LSAs
+ - Nous observons dans ce Screenshot, tous les LSAs de tous les routeurs, 8 en tout. 
+ - Nous observons également les network LSAs
 
 ---
 
@@ -105,7 +106,7 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ![Vérification PCA ping DC et PCB](screenshots/Vérification/PCA-Ping-DC-PCB.png)
 
- - Nous observons que tous les pings passent sans le moindre problème 
+ - Nous observons dans ce screenshot que tous les pings passent sans le moindre problème 
 
 ---
 
@@ -113,7 +114,8 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ![Vérification PCB tracert DC et PCA](screenshots/Vérification/PCB-Tracert-DC-PCA.png)
 
- - Nous observons le chemin que prennent les paquets vers les différentes desitnations
+ - Nous observons dans ce Screenshot, le chemin que prennent les paquets vers les différentes 
+destinations
 
 ---
 
