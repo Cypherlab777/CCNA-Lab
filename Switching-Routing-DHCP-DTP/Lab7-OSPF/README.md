@@ -287,6 +287,8 @@ Another Type 5 LSAck packet, but this time sent by R1 to the multicast address 2
 
 - Traffic can be distributed across the available paths, which provides both redundancy and load balancing.
 
+---
+
 #### Manual Shutdown of R7 Interfaces in Order to Observe the Path Taken by the Pings
 
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
