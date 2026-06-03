@@ -89,7 +89,7 @@ Vous trouverez ici le show run de chacun des routeurs :
 
  - Nous observons dans ce Screenshot, les voisins du R3. 
  - Ces voisins sont les Routeurs 1,2 et 4.
- - Nous observons également que le router 2 est le BDR et que les routeurs 4 et 1 sont en état full avec le Routeur 1 (DR)
+ - Nous observons également que le router 2 est le BDR et que les routeurs 4 et 1 sont en état full avec le Routeur 3 (DR)
 
 ---
 
@@ -99,6 +99,18 @@ Vous trouverez ici le show run de chacun des routeurs :
 
  - Nous observons dans ce Screenshot, tous les LSAs de tous les routeurs, 8 en tout. 
  - Nous observons également les network LSAs
+
+---
+
+#### Interfaces de R4
+
+![Vérification des interfaces de R4](screenshots/Vérification/R4-Show-Ip-Ospf-Interface.png)
+
+ - Nous observons dans ce Screenshot, toutes les infos relative à ospf sur les interfaces du R4
+ - Nous observons que le protocol est up, qu'il est dans la area 0, que le process ID est le 1
+ - Nous observons également que le router ID d du router mais aussi le DR (R3) et le BDR (R2)
+ - Nous observons timer : Hello toutes les 10 secondes et le dead-interval de 40 (4 x le Hello)
+ - Nous observons aussi le type de network : Broadcast et Point-To-Point, et le coût également
 
 ---
 
@@ -121,7 +133,18 @@ destinations
 
 ### Troubleshooting
 
-### Observations
+#### Problème 1 : aucune route ne mènent au Bâtiment B 192.168.20.0.
+ - Cause : Aucun réseau déclaré a ospf sur le R2
+ - Solution : Utilisation de tracert, ce qui m'a permis de trouver sur quels Routeurs était le
+problème. J'ai donc trouvé et activer ospf sur l'interface g0/0 10.0.0.2/24
+
+---
+
+
+#### Problème 2 : Lors du changement de priorité des R2 et R3 pour un changement de DR BDR, aucun changement ne c'est effectué
+ - Cause : Ospf est non-preemtive, ce qui empêche le changement automatique du DR et BDR
+ - Solution : la commande clear ip ospf process ou alors faire un shut/no shut des interfaces 
+sur le SW2 afin que ospf se ré initialise 
 
 ------------------------------------------------
 
@@ -172,50 +195,49 @@ l'on appelle non-preemtive
 
  - Le Hello packet
 
-![Hello packet](screenshots/LSA-Packets/R1-Type1-Hello-Packet-Multicast-224.0.0.5.png)
+![Hello packet](screenshots/OSPF-Packets/R1-Type1-Hello-Packet-Multicast-224.0.0.5.png)
 
-Packet de type1 envoyé par R1 à l'adresse multicast 224.0.0.5 par le router pour établir un voisinage et signaler qu'il est toujours en "vie"
+Le Hello est un paquet de type 1 envoyé par R1 à l'adresse multicast 224.0.0.5 par le router pour établir un voisinage et signaler qu'il est toujours en "vie"
 
 ---
 
  - Le Database descrition packet
 
-![DBD packet](screenshots/LSA-Packets/R1-Type2-DBD-Packet-Unicast-10.0.0.2.png)
+![DBD paquet](screenshots/OSPF-Packets/R1-Type2-DBD-Packet-Unicast-10.0.0.2.png)
 
-Packet de type2 envoyé par R1 à l'adresse 10.0.0.2 (unicast) afin de partager sa data base avec R2
+Le DBD est un paquet de type 2 envoyé par R1 à l'adresse 10.0.0.2 (unicast) afin de partager sa data base avec R2
 
 ---
 
  - Le Link state request packet
 
-![LSR packet](screenshots/LSA-Packets/R4-Type3-LSR-Packet-Unicast-10.0.0.3.png)
+![LSR paquet](screenshots/OSPF-Packets/R4-Type3-LSR-Packet-Unicast-10.0.0.3.png)
 
-Packet de type3 envoyé par R4 à l'adresse 10.0.0.3 afin de réclamer des informations manquante sur R3
+Le LSR est un paquet de type 3 envoyé par R4 à l'adresse 10.0.0.3 afin de réclamer des informations manquante sur R3
 
 ---
 
  - Le Link state Update packet
 
-![LSU packet](screenshots/LSA-Packets/R1-Type4-LSU-Packet-Multicast-224.0.0.5.png)
+![LSU paquet](screenshots/OSPF-Packets/R1-Type4-LSU-Packet-Multicast-224.0.0.5.png)
 
-Packet de type4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa
-database aux autres
+Le LSU est un paquet de type 4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa database aux autres
 
 ---
 
  - Le Link state acknowledgement packet
 
-![LSAck packet](screenshots/LSA-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.5.png)
+![LSAck paquet](screenshots/OSPF-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.5.png)
 
-Packet de type5 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin d'accuser réception des informations réclamées aux autres
+Le LSAck est un paquet de type 5 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin d'accuser réception des informations réclamées aux autres
 
 ---
 
  - Le Link state acknowledgement packet (224.0.0.6)
 
-![LSAck packet](screenshots/LSA-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.6.png)
+![LSAck paquet](screenshots/OSPF-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.6.png)
 
-Encore un packet de type5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui 
+Encore un paquet de type 5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui 
 est destinée au DR/BDR uniquement
 
 ---
@@ -269,7 +291,7 @@ est destinée au DR/BDR uniquement
 
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
 
- - Lors du shut de R7 le dead-interval arrive a 0 sur les routeurs ce qui a pour effet de retirer R7 de leurs Database
+ - Lors du shut de R7 le dead-interval arrive a 0 sur les routeurs ce qui a pour effet de retirer R7 de la Neighbor table
 
 ---
 
@@ -297,7 +319,7 @@ Cette convergence donne de la redondance et permet au réseau de continuer à fo
 
 #### Tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
 
-![Route après shut de R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
+![Route après shut de R7](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-R7-Down.png)
 
  - Les paquets ICMP prennent maintenant la seule route disponible jusqu'au réseau 192.168.50.0/24
 
@@ -310,7 +332,7 @@ Cette convergence donne de la redondance et permet au réseau de continuer à fo
  - show ip route
  - show ip ospf Neighbors
  - show ip ospf database
-
+```
 
 ### OSPF States Analysis
 
