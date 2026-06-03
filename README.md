@@ -47,7 +47,7 @@ Highlights:
 | Lab 3 | DHCP Relay & IP Helper Address | [Open Lab](Switching-Routing-DHCP-DTP/Lab3-Add-switch-vlan-ip-helper-DHCP-serveur/README.md) |
 | Lab 4 | DTP & Layer 3 Switching        | [Open Lab](Switching-Routing-DHCP-DTP/Lab4-DTP-DHCP-SW.L3/README.md)                         |
 | Lab 5 | CDP & Voice VLAN               | [Open Lab](Switching-Routing-DHCP-DTP/Lab5-CDP-VOICE-VLAN/README.md)                         |
-| Lab 6 | RPVST+                         | [Open Lab](Switching-Routing-DHCP-DTP/Lab6 - RPVST+/README.md)                                 |
+| Lab 6 | RPVST+                         | [Open Lab](Switching-Routing-DHCP-DTP/Lab6-RPVST+/README.md)                                 |
 | Lab 7 | OSPF                           | [Open Lab](Switching-Routing-DHCP-DTP/Lab7-OSPF/README.md)                                   |
 
 ---
