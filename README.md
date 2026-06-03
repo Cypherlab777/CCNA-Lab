@@ -1,262 +1,262 @@
-# \# CCNA-Lab
+\# CCNA-Lab
 
-# 
 
-# Personal networking labs and Cisco practice created during my CCNA studies.
 
-# 
+Personal networking labs and Cisco practice created during my CCNA studies.
 
-# \## About This Repository
 
-# 
 
-# This repository contains the networking labs I completed while preparing for the Cisco CCNA certification.
+\## About This Repository
 
-# 
 
-# The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
 
-# 
+This repository contains the networking labs I completed while preparing for the Cisco CCNA certification.
 
-# Each lab includes:
 
-# 
 
-# \* Topology diagrams
+The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
 
-# \* Device configurations
 
-# \* Verification commands
 
-# \* Troubleshooting scenarios
+Each lab includes:
 
-# \* Observations and conclusions
 
-# 
 
-# \---
+\* Topology diagrams
 
-# 
+\* Device configurations
 
-# \## Technologies \& Topics
+\* Verification commands
 
-# 
+\* Troubleshooting scenarios
 
-# \### Routing \& Switching
+\* Observations and conclusions
 
-# 
 
-# \* VLAN
 
-# \* Voice VLAN
+\---
 
-# \* Inter-VLAN Routing
 
-# \* Static Routing
 
-# \* OSPF
+\## Technologies \& Topics
 
-# \* STP / RPVST+
 
-# \* DHCP Relay
 
-# \* Layer 3 Switching
+\### Routing \& Switching
 
-# 
 
-# \### Cisco Technologies
 
-# 
+\* VLAN
 
-# \* DTP
+\* Voice VLAN
 
-# \* CDP
+\* Inter-VLAN Routing
 
-# \* OSPF
+\* Static Routing
 
-# \* Cisco IOS
+\* OSPF
 
-# 
+\* STP / RPVST+
 
-# \### Troubleshooting \& Analysis
+\* DHCP Relay
 
-# 
+\* Layer 3 Switching
 
-# \* Connectivity Troubleshooting
 
-# \* Packet Analysis
 
-# \* Protocol Verification
+\### Cisco Technologies
 
-# \* Wireshark Analysis
 
-# \* Network Documentation
 
-# 
+\* DTP
 
-# \---
+\* CDP
 
-# 
+\* OSPF
 
-# \## Current Labs
+\* Cisco IOS
 
-# 
 
-# \### Lab 1 - Switching-Routing-and-DHCP
 
-# 
+\### Troubleshooting \& Analysis
 
-# Practical lab including:
 
-# 
 
-# \* VLAN configuration
+\* Connectivity Troubleshooting
 
-# \* Inter-VLAN Routing
+\* Packet Analysis
 
-# \* DHCP Relay
+\* Protocol Verification
 
-# \* Layer 3 Switching
+\* Wireshark Analysis
 
-# \* DTP
+\* Network Documentation
 
-# \* Connectivity Troubleshooting
 
-# 
 
-# \---
+\---
 
-# 
 
-# \### Lab 2 - CDP-VOICE-VLAN
 
-# 
+\## Current Labs
 
-# Practical lab including:
 
-# 
 
-# \* Voice VLAN
+\### Lab 1 - Switching-Routing-and-DHCP
 
-# \* CDP
 
-# \* Inter-VLAN Routing
 
-# \* DHCP for IP Phones
+Practical lab including:
 
-# \* 802.1Q Frame Analysis
 
-# \* CDP Packet Analysis
 
-# 
+\* VLAN configuration
 
-# \---
+\* Inter-VLAN Routing
 
-# 
+\* DHCP Relay
 
-# \### Lab 6 - RPVST+
+\* Layer 3 Switching
 
-# 
+\* DTP
 
-# Practical lab including:
+\* Connectivity Troubleshooting
 
-# 
 
-# \* Root Bridge Election
 
-# \* Root Port / Designated Port / Alternate Port
+\---
 
-# \* STP Cost Manipulation
 
-# \* VLAN Load Balancing
 
-# \* PortFast
+\### Lab 2 - CDP-VOICE-VLAN
 
-# \* BPDU Guard
 
-# \* Troubleshooting STP Behavior
 
-# 
+Practical lab including:
 
-# \---
 
-# 
 
-# \### Lab 7 - OSPF
+\* Voice VLAN
 
-# 
+\* CDP
 
-# Practical lab including:
+\* Inter-VLAN Routing
 
-# 
+\* DHCP for IP Phones
 
-# \* Single-Area OSPF Deployment
+\* 802.1Q Frame Analysis
 
-# \* Broadcast Multi-Access Networks
+\* CDP Packet Analysis
 
-# \* Point-to-Point WAN Networks
 
-# \* DR / BDR Election
 
-# \* OSPF Packet Analysis
+\---
 
-# \* Hello, DBD, LSR, LSU and LSAck Packets
 
-# \* OSPF Neighbor States
 
-# \* ECMP Analysis
+\### Lab 6 - RPVST+
 
-# \* OSPF Convergence
 
-# \* Link Failure Simulation
 
-# \* Wireshark Packet Capture
+Practical lab including:
 
-# \* OSPF Troubleshooting
 
-# 
 
-# \---
+\* Root Bridge Election
 
-# 
+\* Root Port / Designated Port / Alternate Port
 
-# \## Certifications
+\* STP Cost Manipulation
 
-# 
+\* VLAN Load Balancing
 
-# \* CompTIA Network+ Certified (861/900)
+\* PortFast
 
-# \* Cisco CCNA (In Progress)
+\* BPDU Guard
 
-# 
+\* Troubleshooting STP Behavior
 
-# \---
 
-# 
 
-# \## Future Labs
+\---
 
-# 
 
-# Planned topics:
 
-# 
+\### Lab 7 - OSPF
 
-# \* EtherChannel (LACP/PAgP)
 
-# \* WLAN
 
-# \* First Hop Redundancy Protocols (HSRP)
+Practical lab including:
 
-# \* Three-Tier Campus Architecture
 
-# \* Network Automation Fundamentals
 
-# \* ACLs
+\* Single-Area OSPF Deployment
 
-# \* NAT
+\* Broadcast Multi-Access Networks
 
-# \* IPv6
+\* Point-to-Point WAN Networks
 
-# 
+\* DR / BDR Election
+
+\* OSPF Packet Analysis
+
+\* Hello, DBD, LSR, LSU and LSAck Packets
+
+\* OSPF Neighbor States
+
+\* ECMP Analysis
+
+\* OSPF Convergence
+
+\* Link Failure Simulation
+
+\* Wireshark Packet Capture
+
+\* OSPF Troubleshooting
+
+
+
+\---
+
+
+
+\## Certifications
+
+
+
+\* CompTIA Network+ Certified (861/900)
+
+\* Cisco CCNA (In Progress)
+
+
+
+\---
+
+
+
+\## Future Labs
+
+
+
+Planned topics:
+
+
+
+\* EtherChannel (LACP/PAgP)
+
+\* WLAN
+
+\* First Hop Redundancy Protocols (HSRP)
+
+\* Three-Tier Campus Architecture
+
+\* Network Automation Fundamentals
+
+\* ACLs
+
+\* NAT
+
+\* IPv6
+
+
 
