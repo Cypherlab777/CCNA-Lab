@@ -4,7 +4,7 @@
 
 ### Objective
 
-Créer une architecture complete incluant les réseaux broadcast mullti-access et Point-to-Point
+Build a complete architecture including Broadcast Multi-Access and Point-to-Point networks.
 
 ---
 
@@ -14,138 +14,138 @@ Créer une architecture complete incluant les réseaux broadcast mullti-access e
 
 ---
 
-### Network Configuration 
+### Network Configuration
 
-Tableau 1 : plan d'adressage 
+Table 1: Addressing Plan
 
-| Router | Interface | IP | Mask |
-|---|---|---|---|
-| R1 | G0/0 | 10.0.0.1 | /24 |
-| R1 | G0/1 | 192.168.10.1 | /24 | *
-| R2 | G0/0 | 10.0.0.2 | /24 |
-| R2 | G0/1 | 192.168.20.1 | /24 | *
-| R3 | G0/0 | 10.0.0.3 | /24 |
-| R4 | G0/0 | 10.0.0.4 | /24 |
-| R4 | SE0/0/0 | 20.0.0.1 | /30 |
-| R5 | SE0/0/0 | 20.0.0.2 | /30 |
-| R5 | SE0/0/1 | 30.0.0.1 | /30 |
-| R5 | SE0/1/0 | 40.0.0.1 | /30 |
-| R6 | SE0/0/0 | 30.0.0.2 | /30 |
-| R6 | SE0/0/1 | 50.0.0.1 | /30 |
-| R7 | SE0/0/1 | 40.0.0.2 | /30 |
-| R7 | SE0/0/0 | 60.0.0.1 | /30 |
-| R8 | SE0/0/1 | 50.0.0.2 | /30 |
-| R8 | SE0/0/0 | 60.0.0.2 | /30 |
-| R8 | G0/0 | 192.168.50.1 | /24 | *
+| Router | Interface | IP           | Mask |   |
+| ------ | --------- | ------------ | ---- | - |
+| R1     | G0/0      | 10.0.0.1     | /24  |   |
+| R1     | G0/1      | 192.168.10.1 | /24  | * |
+| R2     | G0/0      | 10.0.0.2     | /24  |   |
+| R2     | G0/1      | 192.168.20.1 | /24  | * |
+| R3     | G0/0      | 10.0.0.3     | /24  |   |
+| R4     | G0/0      | 10.0.0.4     | /24  |   |
+| R4     | SE0/0/0   | 20.0.0.1     | /30  |   |
+| R5     | SE0/0/0   | 20.0.0.2     | /30  |   |
+| R5     | SE0/0/1   | 30.0.0.1     | /30  |   |
+| R5     | SE0/1/0   | 40.0.0.1     | /30  |   |
+| R6     | SE0/0/0   | 30.0.0.2     | /30  |   |
+| R6     | SE0/0/1   | 50.0.0.1     | /30  |   |
+| R7     | SE0/0/1   | 40.0.0.2     | /30  |   |
+| R7     | SE0/0/0   | 60.0.0.1     | /30  |   |
+| R8     | SE0/0/1   | 50.0.0.2     | /30  |   |
+| R8     | SE0/0/0   | 60.0.0.2     | /30  |   |
+| R8     | G0/0      | 192.168.50.1 | /24  | * |
 
-Interface en mode passive :
+Passive Interfaces:
 
- - R1-G0/1
- - R2-G0/1
- - R8-G0/0
+* R1-G0/1
+* R2-G0/1
+* R8-G0/0
 
-Tableau 2 : OSPF configuration
+Table 2: OSPF Configuration
 
-| Router | Router ID| Priority | Role | Network type |
-|---|---|---|---|---|
-| R1 | 1.1.1.1 | 1 | DROTHER | Broadcast |
-| R2 | 2.2.2.2 | 90 | BDR | Broadcast |
-| R3 | 3.3.3.3 | 100 | DR | Broadcast |
-| R4 | 4.4.4.4 | 0 | DROTHER | Broadcast |
-| R5 | Auto | N/A | N/A | P2P |
-| R6 | Auto | N/A | N/A | P2P |
-| R7 | Auto | N/A | N/A | P2P |
-| R8 | Auto | N/A | N/A | P2P |
+| Router | Router ID | Priority | Role    | Network Type |
+| ------ | --------- | -------- | ------- | ------------ |
+| R1     | 1.1.1.1   | 1        | DROTHER | Broadcast    |
+| R2     | 2.2.2.2   | 90       | BDR     | Broadcast    |
+| R3     | 3.3.3.3   | 100      | DR      | Broadcast    |
+| R4     | 4.4.4.4   | 0        | DROTHER | Broadcast    |
+| R5     | Auto      | N/A      | N/A     | P2P          |
+| R6     | Auto      | N/A      | N/A     | P2P          |
+| R7     | Auto      | N/A      | N/A     | P2P          |
+| R8     | Auto      | N/A      | N/A     | P2P          |
 
 ### Configuration
 
-Vous trouverez ici le show run de chacun des routeurs :
+You can find the show run of each router here:
 
-| Router | Configuration |
-|---|---|
-| R1 | [R1.txt](configs/R1.txt) |
-| R2 | [R2.txt](configs/R2.txt) |
-| R3 | [R3.txt](configs/R3.txt) |
-| R4 | [R4.txt](configs/R4.txt) |
-| R5 | [R5.txt](configs/R5.txt) |
-| R6 | [R6.txt](configs/R6.txt) |
-| R7 | [R7.txt](configs/R7.txt) |
-| R8 | [R8.txt](configs/R8.txt) |
+| Router | Configuration            |
+| ------ | ------------------------ |
+| R1     | [R1.txt](configs/R1.txt) |
+| R2     | [R2.txt](configs/R2.txt) |
+| R3     | [R3.txt](configs/R3.txt) |
+| R4     | [R4.txt](configs/R4.txt) |
+| R5     | [R5.txt](configs/R5.txt) |
+| R6     | [R6.txt](configs/R6.txt) |
+| R7     | [R7.txt](configs/R7.txt) |
+| R8     | [R8.txt](configs/R8.txt) |
+
 ---
 
 ### Verification
 
-#### Table de routage de R8
+#### R8 Routing Table
 
 ![Vérification de la table de routage de R8](screenshots/Vérification/R8-Ip-Route.png)
 
- - Nous observons dans ce Screenshot, toutes les routes OSPF vers tous les réseaux 
+* We can observe in this screenshot all OSPF routes to all networks.
 
 ---
 
-#### Table des voisins OSPF
+#### OSPF Neighbor Table
 
 ![Vérification de ta table des voisins R3](screenshots/Vérification/R3-show-ip-ospf-neighbor.png)
 
- - Nous observons dans ce Screenshot, les voisins du R3. 
- - Ces voisins sont les Routeurs 1,2 et 4.
- - Nous observons également que le router 2 est le BDR et que les routeurs 4 et 1 sont en état full avec le Routeur 3 (DR)
+* We can observe in this screenshot the neighbors of R3.
+* These neighbors are Routers 1, 2 and 4.
+* We can also observe that Router 2 is the BDR and that Routers 4 and 1 are in a Full state with Router 3 (DR).
 
 ---
 
-#### Database de R8
+#### R8 Database
 
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
 
- - Nous observons dans ce Screenshot, tous les LSAs de tous les routeurs, 8 en tout. 
- - Nous observons également les network LSAs
+* We can observe in this screenshot all LSAs from all routers, 8 in total.
+* We can also observe the Network LSAs.
 
 ---
 
-#### Interfaces de R4
+#### R4 Interfaces
 
 ![Vérification des interfaces de R4](screenshots/Vérification/R4-Show-Ip-Ospf-Interface.png)
 
- - Nous observons dans ce Screenshot, toutes les infos relative à ospf sur les interfaces du R4
- - Nous observons que le protocol est up, qu'il est dans la area 0, que le process ID est le 1
- - Nous observons également que le router ID d du router ainsi que le DR (R3) et le BDR (R2)
- - Nous observons timer : Hello toutes les 10 secondes et le dead-interval de 40 (4 x le Hello)
- - Nous observons aussi le type de network : Broadcast et Point-To-Point, et le coût également
+* We can observe in this screenshot all OSPF information related to R4 interfaces.
+* We can observe that the protocol is up, that it belongs to Area 0 and that the Process ID is 1.
+* We can also observe the router ID of the router as well as the DR (R3) and the BDR (R2).
+* We can observe the timers: Hello every 10 seconds and a Dead Interval of 40 seconds (4 x Hello).
+* We can also observe the network type: Broadcast and Point-to-Point, as well as the cost.
 
 ---
 
-#### Ping depuis PCA vers DC et PCB successful
+#### Successful Ping from PCA to DC and PCB
 
 ![Vérification PCA ping DC et PCB](screenshots/Vérification/PCA-Ping-DC-PCB.png)
 
- - Nous observons dans ce screenshot que tous les pings passent sans le moindre problème 
+* We can observe in this screenshot that all pings are successful without any issue.
 
 ---
 
-#### Tracert depuis PCB vers DC et PCA successful
+#### Successful Tracert from PCB to DC and PCA
 
 ![Vérification PCB tracert DC et PCA](screenshots/Vérification/PCB-Tracert-DC-PCA.png)
 
- - Nous observons dans ce Screenshot, le chemin que prennent les paquets vers les différentes 
-destinations
+* We can observe in this screenshot the path taken by packets to the different destinations.
 
 ---
 
 ### Troubleshooting
 
-#### Problème 1 : aucune route ne mènent au Bâtiment B 192.168.20.0.
- - Cause : Aucun réseau déclaré a ospf sur le R2
- - Solution : Utilisation de tracert, ce qui m'a permis de trouver sur quels Routeurs était le
-problème. J'ai donc trouvé et activer ospf sur l'interface g0/0 10.0.0.2/24
+#### Problem 1: No route leading to Building B 192.168.20.0
+
+* Cause: No network was advertised into OSPF on R2.
+* Solution: I used tracert, which allowed me to identify on which routers the issue was located. I then found the problem and enabled OSPF on interface G0/0 10.0.0.2/24.
 
 ---
 
-#### Problème 2 : Lors du changement de priorité des R2 et R3 pour un changement de DR BDR, aucun changement ne c'est effectué
- - Cause : Ospf est non-preemtive, ce qui empêche le changement automatique du DR et BDR
- - Solution : la commande clear ip ospf process ou alors faire un shut/no shut des interfaces 
-sur le SW2 afin que ospf se ré initialise 
+#### Problem 2: When changing the priority of R2 and R3 to modify the DR/BDR election, no change occurred
 
-------------------------------------------------
+* Cause: OSPF is non-preemptive, which prevents an automatic change of the DR and BDR.
+* Solution: Use the `clear ip ospf process` command or perform a shut/no shut on the interfaces connected to SW2 so that OSPF reinitializes.
+
+---
 
 ## Part 2 - Broadcast Multi-Access Analysis
 
@@ -159,9 +159,9 @@ sur le SW2 afin que ospf se ré initialise
 
 ![Identification du DR et du BDR](screenshots/DR-BDR/R1view-DR-R3-BDR-R2-Initial.png)
 
- - Router 3 est élu DR car il a la priorité la plus haute sur le segment.
- - Router 2 est élu BDR car il a la deuxième priorité la plus élevée.
- - En cas d'égalité sur la priorité, le tie-breaker aurais tranché sur base du router-id la plus élevé 
+* Router 3 is elected DR because it has the highest priority on the segment.
+* Router 2 is elected BDR because it has the second highest priority.
+* In the event of a priority tie, the tie-breaker would have selected the router with the highest router ID.
 
 ---
 
@@ -169,93 +169,87 @@ sur le SW2 afin que ospf se ré initialise
 
 ![Un problème est survenu sur le DR](screenshots/DR-BDR/R2view-DR-Down-Dead-interval-0.png)
 
- - L’interface G0/0 de R3 est mise hors ligne afin de simuler une panne du DR., ce qui entraine à la
-fin du dead-interval un basculement de DR sur le BDR
+* R3's G0/0 interface is brought down in order to simulate a DR failure, which causes the BDR to take over as DR once the Dead Interval expires.
 
 ---
 
-
 ![R2 est Devenu DR car il était BDR](screenshots/DR-BDR/R1view-New-DR-R2.png)
 
- - R2 est devenu DR suite au problème survenu sur le DR, R2 est élu DR car il était BDR avec une priorité de 90
+* R2 became the DR after the failure of the previous DR. R2 was elected DR because it was the BDR with a priority of 90.
 
 ---
 
 ![R3 est redevenu up mais n'est pas élu DR car OSPF est non-preemtive](screenshots/DR-BDR/R1view-R3-back-no-preemtive.png)
 
- - R3 revient en ligne, malgré sa priorité la plus élevé, il ne redevient pas DR car OSPF est ce que
-l'on appelle non-preemtive
+* R3 comes back online, but despite having the highest priority, it does not become DR again because OSPF is what is known as non-preemptive.
 
 ---
 
 ### OSPF Packet Analysis
 
-#### Voici les différents packet OSPF capturés dans les sniffers
+#### Here are the different OSPF packets captured using sniffers.
 
- - Le Hello packet
+* Hello Packet
 
 ![Hello packet](screenshots/OSPF-Packets/R1-Type1-Hello-Packet-Multicast-224.0.0.5.png)
 
-Le Hello est un paquet de type 1 envoyé par R1 à l'adresse multicast 224.0.0.5 par le router pour établir un voisinage et signaler qu'il est toujours en "vie"
+The Hello packet is a Type 1 packet sent by R1 to the multicast address 224.0.0.5 in order to establish neighbor relationships and indicate that it is still alive.
 
 ---
 
- - Le Database descrition packet
+* Database Description Packet
 
 ![DBD paquet](screenshots/OSPF-Packets/R1-Type2-DBD-Packet-Unicast-10.0.0.2.png)
 
-Le DBD est un paquet de type 2 envoyé par R1 à l'adresse 10.0.0.2 (unicast) afin de partager sa data base avec R2
+The Database Description packet is a Type 2 packet sent by R1 to the address 10.0.0.2 (unicast) in order to share its database with R2.
 
 ---
 
- - Le Link state request packet
+* Link State Request Packet
 
 ![LSR paquet](screenshots/OSPF-Packets/R4-Type3-LSR-Packet-Unicast-10.0.0.3.png)
 
-Le LSR est un paquet de type 3 envoyé par R4 à l'adresse 10.0.0.3 afin de réclamer des informations manquante sur R3
+The LSR is a Type 3 packet sent by R4 to the address 10.0.0.3 in order to request missing information from R3.
 
 ---
 
- - Le Link state Update packet
+* Link State Update Packet
 
 ![LSU paquet](screenshots/OSPF-Packets/R1-Type4-LSU-Packet-Multicast-224.0.0.5.png)
 
-Le LSU est un paquet de type 4 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin de partager la MAJ de sa database aux autres
+The LSU is a Type 4 packet sent by R1 to the multicast address 224.0.0.5 in order to share updates to its database with the other routers.
 
 ---
 
- - Le Link state acknowledgement packet
+* Link State Acknowledgement Packet
 
 ![LSAck paquet](screenshots/OSPF-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.5.png)
 
-Le LSAck est un paquet de type 5 envoyé par R1 à l'adresse Multicast 224.0.0.5 afin d'accuser réception des informations réclamées aux autres
+The LSAck is a Type 5 packet sent by R1 to the multicast address 224.0.0.5 in order to acknowledge receipt of the requested information.
 
 ---
 
- - Le Link state acknowledgement packet (224.0.0.6)
+* Link State Acknowledgement Packet (224.0.0.6)
 
 ![LSAck paquet](screenshots/OSPF-Packets/R1-Type5-LSAck-Packet-Multicast-224.0.0.6.png)
 
-Encore un paquet de type 5 LSAck mais cette fois envoyé par R1 à l'adresse Multicast 224.0.0.6 qui 
-est destinée au DR/BDR uniquement
+Another Type 5 LSAck packet, but this time sent by R1 to the multicast address 224.0.0.6, which is reserved for the DR and BDR only.
 
 ---
 
 ### Observations
 
-- Une fois que le DR est offline et qu'il revient online, il n'est plus DR car OSPF est no-preemtive.
+* Once the DR goes offline and then comes back online, it is no longer the DR because OSPF is non-preemptive.
 
-- Je remarque aussi que les Routeurs même en états full peuvent envoyé des paquets unicast aux DROTHER pour avoir certaines informations manquante, donc l'état full ne veux pas forcément dire une communication exclusive en multicast 224.0.0.5 pour tout le monde et 224.0.0.6 pour DR/BDR
+* I also noticed that routers, even when in a Full state, can send unicast packets to DROTHER routers in order to obtain missing information. Therefore, the Full state does not necessarily mean that communication is exclusively done using multicast 224.0.0.5 for everyone and 224.0.0.6 for the DR/BDR.
 
-- Je remarque également que seules les paquets LSU contiennent réellement des LSA complets.
+* I also noticed that only LSU packets actually contain complete LSAs.
 
-- Multicast 224.0.0.5 = Tout le monde
+* Multicast 224.0.0.5 = Everyone
 
-- Multicast 224.0.0.6 = DR/BDR
+* Multicast 224.0.0.6 = DR/BDR
 
 ---
-
-------------------------------------------------
 
 ## Part 3 - Point-to-Point WAN Analysis
 
@@ -267,67 +261,65 @@ est destinée au DR/BDR uniquement
 
 ### Link Failure Simulation
 
-#### Tracert le DC depuis PCA afin de constater le chemin initial des paquets ICMP :
+#### Tracert to the DC from PCA in order to observe the initial path taken by ICMP packets:
 
 ![Route initial](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-Initial.png)
 
- - Les paquets ICMP empruntent des routes différentes à partir de R5, ce qui ne me semble pas 
-être un comportement normal
+* ICMP packets take different paths starting from R5, which does not seem like normal behavior to me.
 
 ---
 
-#### la table de routage de R5 qui montre les deux routes du même coût.
+#### R5 Routing Table Showing the Two Equal-Cost Routes
 
 ![R5 table de routage](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-Initial.png)
 
- - La table de routage nous montre que deux routes sont disponibles vers le réseau 192.168.50.0/24 (toutes les deux a 129 de coût) avec le même coût ce qui d'éclanche le mécanisme ECMP. Donc le comportement des paquets ICMP lors du tracert de PCA au DC sont un comportement normal finalement
+* The routing table shows that two routes are available to reach the 192.168.50.0/24 network (both with a cost of 129). Since both routes have the same cost, the ECMP mechanism is triggered. Therefore, the behavior of the ICMP packets during the tracert from PCA to the DC is actually normal.
 
- - l'AD quand à elle reste la même car c'est l'AD par défaut d'OSPF 
+* The AD remains the same because it is the default OSPF Administrative Distance.
 
 ---
 
-#### Shutdown volontaire des interface de R7 afin d'observer le chemin que va prendre les pings :
+#### Manual Shutdown of R7 Interfaces in Order to Observe the Path Taken by the Pings
 
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
 
- - Lors du shut de R7 le dead-interval arrive a 0 sur les routeurs ce qui a pour effet de retirer R7 de la Neighbor table
+* When R7 is shut down, the Dead Interval reaches 0 on the routers, which causes R7 to be removed from the Neighbor Table.
 
 ---
 
-#### Convergence OSPF
+#### OSPF Convergence
 
-Après le shut de R7 :
+After shutting down R7:
 
-1. Le Dead-interval expire.
-2. R7 est supprimé de la table des voisins.
-3. Les LSAs sont mis à jour.
-4. L'algorithme SPF est recalculé.
-5. Le trafic est automatiquement redirigé.
+1. The Dead Interval expires.
+2. R7 is removed from the neighbor table.
+3. The LSAs are updated.
+4. The SPF algorithm is recalculated.
+5. Traffic is automatically redirected.
 
-Cette convergence donne de la redondance et permet au réseau de continuer à fonctionner après un lien mort sans intervention manuelle.
+This convergence provides redundancy and allows the network to continue operating after a link failure without manual intervention.
 
 ---
 
-#### Voici la table de routage de R5 après le shutdown de R7
+#### R5 Routing Table After the Shutdown of R7
 
 ![R5 table de routage après shutdown R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
 
- - La table de routage ne montre plus qu'une seule route disponible vers le Réseau 192.168.50.0/24
+* The routing table now shows only a single available route to reach the 192.168.50.0/24 network.
 
 ---
 
-#### Tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
+#### Tracert to the DC from PCA After Shutting Down R7 to Observe the New Path Taken by ICMP Packets
 
 ![Route après shut de R7](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-R7-Down.png)
 
- - Les paquets ICMP prennent maintenant la seule route disponible jusqu'au réseau 192.168.50.0/24
+* ICMP packets now take the only available route to reach the 192.168.50.0/24 network.
 
 ### Verification
 
 ```Cisco
-
  - show ip route
- - show ip ospf Neighbors
+ - show ip ospf neighbors
  - show ip ospf interface
  - show ip ospf database
  - Tracert
@@ -336,46 +328,49 @@ Cette convergence donne de la redondance et permet au réseau de continuer à fo
 
 ### OSPF States Analysis
 
-#### Topology 
+#### Topology
 
 ![States analysis topology](screenshots/Topology/States-Analysis-Topology.png)
 
 ---
 
-#### Les states OSPF dans un Point-to-Point Network 
+#### OSPF States in a Point-to-Point Network
 
-Debug command capture : 
+Debug command capture:
 
 ![Route après shut de R7](screenshots/Debug/R10-P2P-States-debug-Analysis.png)
 
- - Nous observons sur ce screen les différentes étape par lequels passe les Routeurs dans OSPF
+* We can observe in this screenshot the different stages that routers go through in OSPF.
 
- - 1 : 2 Way : les routeurs se "voient" et sont voisins
- - 2 : Exstart : Négociation de qui est master et qui est slave, dans ce cas nous sommes slave
- - 3 : Exchange : Echange des databases
- - 4 : Loading : Echange des données manquante (LSR/LSU)
- - 5 : Full : Les routeurs sont maintenant on totalement synchronisé leurs LSDB
+* 1 : 2-Way : the routers can see each other and become neighbors.
+
+* 2 : ExStart : negotiation to determine which router is the master and which is the slave. In this case, we are the slave.
+
+* 3 : Exchange : exchange of databases.
+
+* 4 : Loading : exchange of missing information (LSR/LSU).
+
+* 5 : Full : the routers have now fully synchronized their LSDBs.
 
 ---
 
 ### Observations
 
- - La connexion étant une connexion Point-to-Point, il est normal de ne pas avoir eu 
-d'élection d'un DR et d'un BDR, cette élection se fessant uniquement sur un réseau Ethernet 
-(broadcast multi-access)
+* Since this is a Point-to-Point connection, it is normal that no DR or BDR election takes place. This election only occurs on Ethernet Broadcast Multi-Access networks.
 
----------------------------------------
+---
 
 ## Skills Gained
 
-- Configurer OSPF sur des réseaux Broadcast et Point-to-Point
-- Comprendre l'élection du DR et du BDR
-- Capturer et analyser les différents paquets OSPF
-- Observer les états de voisinage OSPF avec les commandes de debug
-- Comprendre comment les routeurs construisent et synchronisent leur LSDB
-- Observer le comportement d'OSPF lors d'une panne de lien
-- Comprendre le fonctionnement de l'ECMP
-- Utiliser les principales commandes de vérification OSPF
-- Résoudre des problèmes liés à OSPF
+* Configure OSPF on Broadcast and Point-to-Point networks
+* Understand DR and BDR elections
+* Capture and analyze different OSPF packets
+* Observe OSPF neighbor states using debug commands
+* Understand how routers build and synchronize their LSDBs
+* Observe OSPF behavior during a link failure
+* Understand how ECMP works
+* Use the main OSPF verification commands
+* Troubleshoot OSPF-related issues
 
 ---
+
