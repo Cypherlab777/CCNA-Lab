@@ -297,7 +297,7 @@ Another Type 5 LSAck packet, but this time sent by R1 to the multicast address 2
 
 ---
 
-#### OSPF Convergence
+#### Part 4 - OSPF Convergence
 
 After shutting down R7:
 
