@@ -1,68 +1,116 @@
 # CCNA Lab Portfolio
-
 ---
 
 ## About This Repository
 
 This repository contains the networking labs I completed while preparing for the Cisco CCNA certification.
 
-The goal is to strengthen my practical networking skills through configuration, troubleshooting, packet analysis and network design.
+The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
+
+Each lab includes:
+
+* Network topologies
+* Device configurations
+* Verification commands
+* Troubleshooting scenarios
+* Technical documentation
+* Observations and conclusions
+
+---
+
+## Featured Lab
+
+### Lab 7 - OSPF
+
+Highlights:
+
+* DR / BDR Election
+* OSPF Neighbor States
+* OSPF Packet Analysis
+* ECMP
+* OSPF Convergence
+* Link Failure Simulation
+* Broadcast & Point-to-Point Networks
+* Wireshark Analysis
+* OSPF Troubleshooting
+
+📁 **[Open Lab](Lab7-OSPF/README.md)**
 
 ---
 
 ## Current Labs
 
-| Lab | Topic | Main Technologies |
-|------|------|------|
-| Lab 1 | Switching, Routing and DHCP | VLAN, Inter-VLAN Routing, DHCP Relay, DTP |
-| Lab 2 | Voice VLAN and CDP | Voice VLAN, CDP, DHCP, Packet Analysis |
-| Lab 6 | RPVST+ | STP, Root Bridge Election, Port Roles, BPDU Guard |
-| Lab 7 | OSPF | DR/BDR, ECMP, Convergence, Packet Analysis |
+| Lab   | Topic                          | Link                                                              |
+| ----- | ------------------------------ | ----------------------------------------------------------------- |
+| Lab 1 | VLAN Segmentation              | [Open Lab](Lab1-VLAN-Segmentation/README.md)                      |
+| Lab 2 | Router-on-a-Stick              | [Open Lab](Lab2-Add-Router-On-a-Stick/README.md)                  |
+| Lab 3 | DHCP Relay & IP Helper Address | [Open Lab](Lab3-Add-switch-vlan-ip-helper-DHCP-serveur/README.md) |
+| Lab 4 | DTP & Layer 3 Switching        | [Open Lab](Lab4-DTP-DHCP-SW.L3/README.md)                         |
+| Lab 5 | CDP & Voice VLAN               | [Open Lab](Lab5-CDP-VOICE-VLAN/README.md)                         |
+| Lab 6 | RPVST+                         | [Open Lab](Lab6-RPVST+/README.md)                                 |
+| Lab 7 | OSPF                           | [Open Lab](Lab7-OSPF/README.md)                                   |
 
 ---
 
 ## Skills Demonstrated
 
 ### Routing
-- OSPF
-- Static Routing
-- Route Verification
+
+* Static Routing
+* Router-on-a-Stick
+* OSPF
+* Route Verification
 
 ### Switching
-- VLAN
-- Voice VLAN
-- Inter-VLAN Routing
-- STP / RPVST+
-- DTP
 
-### Troubleshooting & Analysis
-- Wireshark
-- Packet Analysis
-- Connectivity Troubleshooting
-- Protocol Verification
+* VLAN Segmentation
+* Voice VLAN
+* DTP
+* STP / RPVST+
+* Layer 3 Switching
 
-### Documentation
-- Network Topologies
-- Verification Procedures
-- Failure Simulations
-- Technical Documentation
+### Services
+
+* DHCP
+* DHCP Relay
+* IP Helper Address
+
+### Analysis & Troubleshooting
+
+* Packet Tracer Sniffer
+* Wireshark
+* Packet Analysis
+* Connectivity Troubleshooting
+* Protocol Verification
+* Network Documentation
 
 ---
 
 ## Certifications
 
-- ✅ CompTIA Network+ (861/900)
-- 🚧 Cisco CCNA (In Progress)
+* ✅ CompTIA Network+ (861/900)
+* 🚧 Cisco CCNA (In Progress)
 
 ---
 
 ## Future Labs
 
-- EtherChannel (LACP/PAgP)
-- WLAN
-- HSRP
-- Three-Tier Campus Architecture
-- ACLs
-- NAT
-- IPv6
-- Network Automation
+Planned topics:
+
+* EtherChannel (LACP / PAgP)
+* WLAN
+* ACLs
+* NAT
+* HSRP
+* IPv6
+* Three-Tier Campus Architecture
+* Network Automation Fundamentals
+
+---
+
+## Tools Used
+
+* Cisco Packet Tracer
+* Wireshark
+* GitHub
+* Cisco IOS
