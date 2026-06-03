@@ -78,7 +78,6 @@ Highlights:
 ### Analysis & Troubleshooting
 
 * Packet Tracer Sniffer
-* Wireshark
 * Packet Analysis
 * Connectivity Troubleshooting
 * Protocol Verification
@@ -111,6 +110,5 @@ Planned topics:
 ## Tools Used
 
 * Cisco Packet Tracer
-* Wireshark
 * GitHub
 * Cisco IOS
