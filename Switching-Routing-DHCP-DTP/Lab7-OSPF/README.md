@@ -368,8 +368,6 @@ d'élection d'un DR et d'un BDR, cette élection se fessant uniquement sur un r�
 
 ## Skills Gained
 
-## Skills Gained
-
 - Configurer OSPF sur des réseaux Broadcast et Point-to-Point
 - Comprendre l'élection du DR et du BDR
 - Capturer et analyser les différents paquets OSPF
