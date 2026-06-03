@@ -34,7 +34,7 @@ Highlights:
 * Wireshark Analysis
 * OSPF Troubleshooting
 
-📁 **[Open Lab](Lab7-OSPF/README.md)**
+📁 **[Open Lab](Switching-Routing-DHCP-DTP/Lab7-OSPF/README.md)**
 
 ---
 
