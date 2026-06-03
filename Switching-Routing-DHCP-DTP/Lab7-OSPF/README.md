@@ -297,7 +297,7 @@ Another Type 5 LSAck packet, but this time sent by R1 to the multicast address 2
 
 ---
 
-#### Part 4 - OSPF Convergence
+#### OSPF Convergence
 
 After shutting down R7:
 
@@ -336,7 +336,7 @@ This convergence provides redundancy and allows the network to continue operatin
  - Ping
 ```
 
-### OSPF States Analysis
+### Part 4 - OSPF States Analysis
 
 #### Topology
 
