@@ -108,7 +108,7 @@ Vous trouverez ici le show run de chacun des routeurs :
 
  - Nous observons dans ce Screenshot, toutes les infos relative à ospf sur les interfaces du R4
  - Nous observons que le protocol est up, qu'il est dans la area 0, que le process ID est le 1
- - Nous observons également que le router ID d du router mais aussi le DR (R3) et le BDR (R2)
+ - Nous observons également que le router ID d du router ainsi que le DR (R3) et le BDR (R2)
  - Nous observons timer : Hello toutes les 10 secondes et le dead-interval de 40 (4 x le Hello)
  - Nous observons aussi le type de network : Broadcast et Point-To-Point, et le coût également
 
@@ -139,7 +139,6 @@ destinations
 problème. J'ai donc trouvé et activer ospf sur l'interface g0/0 10.0.0.2/24
 
 ---
-
 
 #### Problème 2 : Lors du changement de priorité des R2 et R3 pour un changement de DR BDR, aucun changement ne c'est effectué
  - Cause : Ospf est non-preemtive, ce qui empêche le changement automatique du DR et BDR
@@ -272,16 +271,16 @@ est destinée au DR/BDR uniquement
 
 ![Route initial](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-Initial.png)
 
- - Les paquets ICMP empruntent alternativement les deux routes disponibles à partir de R5 grâce au mécanisme ECMP.
+ - Les paquets ICMP empruntent des routes différentes à partir de R5, ce qui ne me semble pas 
+être un comportement normal
 
 ---
-
 
 #### la table de routage de R5 qui montre les deux routes du même coût.
 
 ![R5 table de routage](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-Initial.png)
 
- - La table de routage nous montre que deux routes sont disponible vers le réseau 192.168.50.0/24 (toutes les deux a 129 de coût) avec le même coût ce qui d'éclanche le mécanisme ECMP. Donc le comportement des paquets ICMP lors du tracert de PCA au DC sont un comportement normal finalement
+ - La table de routage nous montre que deux routes sont disponibles vers le réseau 192.168.50.0/24 (toutes les deux a 129 de coût) avec le même coût ce qui d'éclanche le mécanisme ECMP. Donc le comportement des paquets ICMP lors du tracert de PCA au DC sont un comportement normal finalement
 
  - l'AD quand à elle reste la même car c'est l'AD par défaut d'OSPF 
 
@@ -327,19 +326,58 @@ Cette convergence donne de la redondance et permet au réseau de continuer à fo
 
 ```Cisco
 
- - Ping
- - Tracert
  - show ip route
  - show ip ospf Neighbors
+ - show ip ospf interface
  - show ip ospf database
+ - Tracert
+ - Ping
 ```
 
 ### OSPF States Analysis
 
+#### Topology 
+
+![States analysis topology](screenshots/Topology/States-Analysis-Topology.png)
+
+---
+
+#### Les states OSPF dans un Point-to-Point Network 
+
+Debug command capture : 
+
+![Route après shut de R7](screenshots/Debug/R10-P2P-States-debug-Analysis.png)
+
+ - Nous observons sur ce screen les différentes étape par lequels passe les Routeurs dans OSPF
+
+ - 1. 2 Way : les routeurs se "voient" et sont voisins
+ - 2. Exstart : Négociation de qui est master et qui est slave, dans ce cas nous sommes slave
+ - 3. Exchange : Echange des databases
+ - 4. Loading : Echange des données manquante (LSR/LSU)
+ - 5. Full : Les routeurs sont maintenant on totalement synchronisé leurs LSDB
+
+---
+
 ### Observations
 
-Lors du tracert de PCA vers Data center, je remarque que la sortie est étrange, cela s'explique par le ECMP (Equal-Cost-Multi-Path). Les routes vers DC (192.168.50.0) on le même coût ce qui enclenche le mécanisme ECMP et répartis les paquets entre les deux routes du même coût.
+ - La connexion étant une connexion Point-to-Point, il est normal de ne pas avoir eu 
+d'élection d'un DR et d'un BDR, cette élection se fessant uniquement sur un réseau Ethernet 
+(broadcast multi-access)
 
 ---------------------------------------
 
 ## Skills Gained
+
+## Skills Gained
+
+- Configurer OSPF sur des réseaux Broadcast et Point-to-Point
+- Comprendre l'élection du DR et du BDR
+- Capturer et analyser les différents paquets OSPF
+- Observer les états de voisinage OSPF avec les commandes de debug
+- Comprendre comment les routeurs construisent et synchronisent leur LSDB
+- Observer le comportement d'OSPF lors d'une panne de lien
+- Comprendre le fonctionnement de l'ECMP
+- Utiliser les principales commandes de vérification OSPF
+- Résoudre des problèmes liés à OSPF
+
+---
