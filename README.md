@@ -42,7 +42,7 @@ Highlights:
 
 | Lab   | Topic                          | Link                                                              |
 | ----- | ------------------------------ | ----------------------------------------------------------------- |
-| Lab 1 | VLAN Segmentation              | [Open Lab](Lab1-VLAN-Segmentation/README.md)                      |
+| Lab 1 | VLAN Segmentation              | [Open Lab](Switching-Routing-DHCP-DTP/Lab1-VlAN-Segmentation/README.md)                      |
 | Lab 2 | Router-on-a-Stick              | [Open Lab](Lab2-Add-Router-On-a-Stick/README.md)                  |
 | Lab 3 | DHCP Relay & IP Helper Address | [Open Lab](Lab3-Add-switch-vlan-ip-helper-DHCP-serveur/README.md) |
 | Lab 4 | DTP & Layer 3 Switching        | [Open Lab](Lab4-DTP-DHCP-SW.L3/README.md)                         |
