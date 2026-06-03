@@ -350,11 +350,11 @@ Debug command capture :
 
  - Nous observons sur ce screen les différentes étape par lequels passe les Routeurs dans OSPF
 
- - 1 2 Way : les routeurs se "voient" et sont voisins
- - 2 Exstart : Négociation de qui est master et qui est slave, dans ce cas nous sommes slave
- - 3 Exchange : Echange des databases
- - 4 Loading : Echange des données manquante (LSR/LSU)
- - 5 Full : Les routeurs sont maintenant on totalement synchronisé leurs LSDB
+ - 1 : 2 Way : les routeurs se "voient" et sont voisins
+ - 2 : Exstart : Négociation de qui est master et qui est slave, dans ce cas nous sommes slave
+ - 3 : Exchange : Echange des databases
+ - 4 : Loading : Echange des données manquante (LSR/LSU)
+ - 5 : Full : Les routeurs sont maintenant on totalement synchronisé leurs LSDB
 
 ---
 
