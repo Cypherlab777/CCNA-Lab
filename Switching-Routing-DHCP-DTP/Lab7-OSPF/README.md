@@ -279,6 +279,14 @@ Another Type 5 LSAck packet, but this time sent by R1 to the multicast address 2
 
 ---
 
+#### ECMP
+
+- ECMP (Equal-Cost Multi-Path) is an OSPF mechanism that occurs when two OSPF routes have the same cost to reach a destination network.
+
+- In this case, OSPF installs both routes in the routing table.
+
+- Traffic can be distributed across the available paths, which provides both redundancy and load balancing.
+
 #### Manual Shutdown of R7 Interfaces in Order to Observe the Path Taken by the Pings
 
 ![R7 est désactivé](screenshots/Link-Failure-Simulation/R7-Shutdown.png)
