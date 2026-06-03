@@ -1,262 +1,68 @@
-\# CCNA-Lab
+# CCNA Lab Portfolio
 
+---
 
-
-Personal networking labs and Cisco practice created during my CCNA studies.
-
-
-
-\## About This Repository
-
-
+## About This Repository
 
 This repository contains the networking labs I completed while preparing for the Cisco CCNA certification.
 
+The goal is to strengthen my practical networking skills through configuration, troubleshooting, packet analysis and network design.
 
+---
 
-The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
+## Current Labs
 
+| Lab | Topic | Main Technologies |
+|------|------|------|
+| Lab 1 | Switching, Routing and DHCP | VLAN, Inter-VLAN Routing, DHCP Relay, DTP |
+| Lab 2 | Voice VLAN and CDP | Voice VLAN, CDP, DHCP, Packet Analysis |
+| Lab 6 | RPVST+ | STP, Root Bridge Election, Port Roles, BPDU Guard |
+| Lab 7 | OSPF | DR/BDR, ECMP, Convergence, Packet Analysis |
 
+---
 
-Each lab includes:
+## Skills Demonstrated
 
+### Routing
+- OSPF
+- Static Routing
+- Route Verification
 
+### Switching
+- VLAN
+- Voice VLAN
+- Inter-VLAN Routing
+- STP / RPVST+
+- DTP
 
-\* Topology diagrams
+### Troubleshooting & Analysis
+- Wireshark
+- Packet Analysis
+- Connectivity Troubleshooting
+- Protocol Verification
 
-\* Device configurations
+### Documentation
+- Network Topologies
+- Verification Procedures
+- Failure Simulations
+- Technical Documentation
 
-\* Verification commands
+---
 
-\* Troubleshooting scenarios
+## Certifications
 
-\* Observations and conclusions
+- ✅ CompTIA Network+ (861/900)
+- 🚧 Cisco CCNA (In Progress)
 
+---
 
+## Future Labs
 
-\---
-
-
-
-\## Technologies \& Topics
-
-
-
-\### Routing \& Switching
-
-
-
-\* VLAN
-
-\* Voice VLAN
-
-\* Inter-VLAN Routing
-
-\* Static Routing
-
-\* OSPF
-
-\* STP / RPVST+
-
-\* DHCP Relay
-
-\* Layer 3 Switching
-
-
-
-\### Cisco Technologies
-
-
-
-\* DTP
-
-\* CDP
-
-\* OSPF
-
-\* Cisco IOS
-
-
-
-\### Troubleshooting \& Analysis
-
-
-
-\* Connectivity Troubleshooting
-
-\* Packet Analysis
-
-\* Protocol Verification
-
-\* Wireshark Analysis
-
-\* Network Documentation
-
-
-
-\---
-
-
-
-\## Current Labs
-
-
-
-\### Lab 1 - Switching-Routing-and-DHCP
-
-
-
-Practical lab including:
-
-
-
-\* VLAN configuration
-
-\* Inter-VLAN Routing
-
-\* DHCP Relay
-
-\* Layer 3 Switching
-
-\* DTP
-
-\* Connectivity Troubleshooting
-
-
-
-\---
-
-
-
-\### Lab 2 - CDP-VOICE-VLAN
-
-
-
-Practical lab including:
-
-
-
-\* Voice VLAN
-
-\* CDP
-
-\* Inter-VLAN Routing
-
-\* DHCP for IP Phones
-
-\* 802.1Q Frame Analysis
-
-\* CDP Packet Analysis
-
-
-
-\---
-
-
-
-\### Lab 6 - RPVST+
-
-
-
-Practical lab including:
-
-
-
-\* Root Bridge Election
-
-\* Root Port / Designated Port / Alternate Port
-
-\* STP Cost Manipulation
-
-\* VLAN Load Balancing
-
-\* PortFast
-
-\* BPDU Guard
-
-\* Troubleshooting STP Behavior
-
-
-
-\---
-
-
-
-\### Lab 7 - OSPF
-
-
-
-Practical lab including:
-
-
-
-\* Single-Area OSPF Deployment
-
-\* Broadcast Multi-Access Networks
-
-\* Point-to-Point WAN Networks
-
-\* DR / BDR Election
-
-\* OSPF Packet Analysis
-
-\* Hello, DBD, LSR, LSU and LSAck Packets
-
-\* OSPF Neighbor States
-
-\* ECMP Analysis
-
-\* OSPF Convergence
-
-\* Link Failure Simulation
-
-\* Wireshark Packet Capture
-
-\* OSPF Troubleshooting
-
-
-
-\---
-
-
-
-\## Certifications
-
-
-
-\* CompTIA Network+ Certified (861/900)
-
-\* Cisco CCNA (In Progress)
-
-
-
-\---
-
-
-
-\## Future Labs
-
-
-
-Planned topics:
-
-
-
-\* EtherChannel (LACP/PAgP)
-
-\* WLAN
-
-\* First Hop Redundancy Protocols (HSRP)
-
-\* Three-Tier Campus Architecture
-
-\* Network Automation Fundamentals
-
-\* ACLs
-
-\* NAT
-
-\* IPv6
-
-
-
+- EtherChannel (LACP/PAgP)
+- WLAN
+- HSRP
+- Three-Tier Campus Architecture
+- ACLs
+- NAT
+- IPv6
+- Network Automation
