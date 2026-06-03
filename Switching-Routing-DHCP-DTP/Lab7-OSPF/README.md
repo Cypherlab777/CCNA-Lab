@@ -83,6 +83,16 @@ Vous trouverez ici le show run de chacun des routeurs :
 
 ---
 
+#### Table des voisins OSPF
+
+![Vérification de ta table des voisins R3](screenshots/Vérification/R3-show-ip-ospf-neighbor.png)
+
+ - Nous observons dans le ce Screenshot, les voisins du R3. 
+ - Ces voisins sont les Routeurs 1,2 et 4.
+ - Nous observons également que le router 2 est le BDR et que les routeurs 4 et 1 sont en état full avec le Routeur 1 (DR)
+
+---
+
 #### Database de R8
 
 ![Vérification de la database de R8](screenshots/Vérification/R8-Database.png)
@@ -214,7 +224,7 @@ est destinée au DR/BDR uniquement
 
 - Je remarque aussi que les Routeurs même en états full peuvent envoyé des paquets unicast aux DROTHER pour avoir certaines informations manquante, donc l'état full ne veux pas forcément dire une communication exclusive en multicast 224.0.0.5 pour tout le monde et 224.0.0.6 pour DR/BDR
 
-- Je remarque également que seules les paquets LSU contiennent réellement des LSA complets
+- Je remarque également que seules les paquets LSU contiennent réellement des LSA complets.
 
 - Multicast 224.0.0.5 = Tout le monde
 
@@ -234,7 +244,7 @@ est destinée au DR/BDR uniquement
 
 ### Link Failure Simulation
 
-#### Le tracert le DC depuis PCA afin de constater le chemin initial des paquets ICMP :
+#### Tracert le DC depuis PCA afin de constater le chemin initial des paquets ICMP :
 
 ![Route initial](screenshots/Link-Failure-Simulation/PCA-Tracert-DC-Initial.png)
 
@@ -261,17 +271,17 @@ est destinée au DR/BDR uniquement
 
 ---
 
-### Convergence OSPF
+#### Convergence OSPF
 
 Après le shut de R7 :
 
-1. Le Dead-interval Timer expire.
+1. Le Dead-interval expire.
 2. R7 est supprimé de la table des voisins.
 3. Les LSAs sont mis à jour.
 4. L'algorithme SPF est recalculé.
 5. Le trafic est automatiquement redirigé.
 
-Cette convergence donne de la redondance et permet au réseau de continuer à fonctionner après une lien mort sans intervention manuelle.
+Cette convergence donne de la redondance et permet au réseau de continuer à fonctionner après un lien mort sans intervention manuelle.
 
 ---
 
@@ -283,13 +293,22 @@ Cette convergence donne de la redondance et permet au réseau de continuer à fo
 
 ---
 
-#### Je tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
+#### Tracert le DC depuis PCA après le shut de R7 pour constater le nouveau chemin que prennent les paquets ICMP
 
 ![Route après shut de R7](screenshots/Link-Failure-Simulation/R5-Show-Ip-Route-R7-Down.png)
 
  - Les paquets ICMP prennent maintenant la seule route disponible jusqu'au réseau 192.168.50.0/24
 
 ### Verification
+
+```Cisco
+
+ - Ping
+ - Tracert
+ - show ip route
+ - show ip ospf Neighbors
+ - show ip ospf database
+
 
 ### OSPF States Analysis
 
