@@ -44,8 +44,8 @@ Build an end-to-end IPv6 network using:
 
 | Vlan | HSRP Group | Virtual Gateway |
 |---|---|---|
-| 10 | 10 | FE80::5:73FF:FEA0:10 |
-| 20 | 20 | FE80::5:73FF:FEA0:20 |
+| 10 |    10 | FE80::5:73FF:FEA0:10 |
+| 20 |    20 | FE80::5:73FF:FEA0:20 |
 
 ### PCs Addressing Plan
 
