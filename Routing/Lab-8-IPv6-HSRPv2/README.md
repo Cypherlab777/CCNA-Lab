@@ -55,6 +55,13 @@ Build an end-to-end IPv6 network using:
 | PC2 | 20 | EUI-64 (SLAAC) | /64 | FE80::5:73FF:FEA0:20 |
 | DC | N/A | 2001:5::10 | /64 | 2001:5::1 |
 
+| Router | Configuration            |
+| ------ | ------------------------ |
+| R1     | [R1.txt](configs/R1.txt) |
+| R2     | [R2.txt](configs/R2.txt) |
+| R3     | [R3.txt](configs/R3.txt) |
+| R4     | [R4.txt](configs/R4.txt) |
+
 ---
 
 ## Vérification
