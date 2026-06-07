@@ -59,26 +59,26 @@ Build an end-to-end IPv6 network using:
 
 ## Vérification
 
-![R1 Routing table](Screenshot/Vérification/R1-Show-IPv6-Route.png)
+![R1 Routing table](Screenshots/Vérification/R1-Show-IPv6-Route.png)
 
  - Verification of R1's routing table
 
 ---
 
-![R1 Neighbors table](Screenshot/Vérification/R1-Show-IPv6-Neighbor.png)
+![R1 Neighbors table](Screenshots/Vérification/R1-Show-IPv6-Neighbor.png)
 
  - Verification of R1's IPv6 neighbor table (NDP) 
 
 ---
 
-![R2 Standby](Screenshot/Vérification/R2-Show-Standby.png)
+![R2 Standby](Screenshots/Vérification/R2-Show-Standby.png)
 
  - Verification of the HSRPv2 configuration on R2
  - Observation of R2 in Standby mode for both groups
 
 ---
 
-![R3 Routing table](Screenshot/Vérification/R3-Show-IPv6-Route.png)
+![R3 Routing table](Screenshots/Vérification/R3-Show-IPv6-Route.png)
 
  - Verification of R3's routing table
  - Observation of the IPv6 host route (/128)
@@ -90,7 +90,7 @@ Build an end-to-end IPv6 network using:
 
 ### Router Solicitation
 
-![Router Sollicitation](Screenshot/NDP-SCLAAC/PC2-RS-0x85-All-Router.png)
+![Router Sollicitation](Screenshots/NDP-SCLAAC/PC2-RS-0x85-All-Router.png)
 
  - We can observe the packet sent by PC2 containing the Type 133 (0x85) Router Solicitation message in order to obtain the information required for IPv6 configuration through SLAAC.
  - We can also observe that the packet is sent to the FF02::2 address, which corresponds to the All Routers multicast address, because PC2 does not know R1's MAC address.
@@ -99,7 +99,7 @@ Build an end-to-end IPv6 network using:
 
 ### Router Advertisement 
 
-![Router Advertisement](Screenshot/NDP-SCLAAC/R1-RA-0x86-All-Nodes.png)
+![Router Advertisement](Screenshots/NDP-SCLAAC/R1-RA-0x86-All-Nodes.png)
 
  - We can observe the packet sent by R1 containing the Type 134 (0x86) Router Advertisement message in response to the Router Solicitation sent by PC2.
  - This packet contains the network prefix as well as R1's gateway information (which is the HSRPv2 virtual gateway).
@@ -108,13 +108,13 @@ Build an end-to-end IPv6 network using:
 
 ### EUI-64/SLAAC
 
-![EUI-64/SLAAC PC1](Screenshot/NDP-SCLAAC/PC1-EUI-64-Successful.png)
+![EUI-64/SLAAC PC1](Screenshots/NDP-SCLAAC/PC1-EUI-64-Successful.png)
 
  - EUI-64/SLAAC configuration on PC1 successful
  - IPv6 ULA: FD00:10:0:10:203:E4FF:FE94:86B6/64
  - HSRPv2 virtual IP = FE80::5:73FF:FEA0:10
 
-![EUI-64/SLAAC PC2](Screenshot/NDP-SCLAAC/PC2-EUI-64-Successful.png)
+![EUI-64/SLAAC PC2](Screenshots/NDP-SCLAAC/PC2-EUI-64-Successful.png)
 
  - EUI-64/SLAAC configuration on PC2 successful
  - HSRPv2 virtual IP = FE80::5:73FF:FEA0:20
@@ -125,13 +125,13 @@ Build an end-to-end IPv6 network using:
 
 ## Initial Configuration Verification
 
-![PC1 Tracert](Screenshot/Initial-config/PC1-Tracert-DC.png)
+![PC1 Tracert](Screenshots/Initial-config/PC1-Tracert-DC.png)
 
  - We can observe the normal packet path from PC1, going through R1, which is the Active router.
 
 ---
 
-![PC2 Tracert](Screenshot/Initial-config/PC2-Tracert-DC.png)
+![PC2 Tracert](Screenshots/Initial-config/PC2-Tracert-DC.png)
 
  - We can observe the normal packet path from PC2, going through R1, which is the Active router.
 
@@ -139,7 +139,7 @@ Build an end-to-end IPv6 network using:
 
 ## Simulating a Failure on R1
 
-![R2 failover](Screenshot/R1-Down-config/R2-failover.png)
+![R2 failover](Screenshots/R1-Down-config/R2-failover.png)
 
  - A failure occurred on R1.
  - R2, which was previously in Standby mode, took over and became Active.
@@ -151,7 +151,7 @@ Build an end-to-end IPv6 network using:
 
 ### NDP Cache Issue
 
-![Bad NDP entry](Screenshot/R1-Down-config/PC2-Still-MAC-R1.png)
+![Bad NDP entry](Screenshots/R1-Down-config/PC2-Still-MAC-R1.png)
 
  - As we can see, PC2 had kept the association between the HSRP virtual address and R1's MAC address in memory:
 FE80::5:73FF:FEA0:20 (HSRP Gateway) ---> 0060.3EBC.A801 (R1 MAC)
@@ -162,7 +162,7 @@ FE80::5:73FF:FEA0:20 (HSRP Gateway) ---> 0007.EC48.8C01 (R2 MAC)
 
 ### Failover Verification
 
-![Pc2 Tracert new path](Screenshot/R1-Down-config/PC2-Tracert-DC-Failover-Path.png)
+![Pc2 Tracert new path](Screenshots/R1-Down-config/PC2-Tracert-DC-Failover-Path.png)
 
  - After rebooting PC2 due to the cache issue, pings started working correctly again.
  - We can observe the new path taken by packets from PC2, now going through R2 following the failover.
@@ -170,7 +170,7 @@ FE80::5:73FF:FEA0:20 (HSRP Gateway) ---> 0007.EC48.8C01 (R2 MAC)
 
 ### R1 Returns
 
-![R1 back](Screenshot/R1-Down-config/R1-Back.png)
+![R1 back](Screenshots/R1-Down-config/R1-Back.png)
 
  - After the intervention on R1, R1 resumes its role as the Active router.
  - Normally, R1 should have automatically regained its role thanks to preemption.
