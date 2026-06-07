@@ -1,5 +1,4 @@
-Lab 8 IPv6 & HSRP Part 2
-
+Lab 8 IPv6 & HSRP 
 ---
 
 ## Objective
