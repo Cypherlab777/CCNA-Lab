@@ -20,7 +20,7 @@ Build an end-to-end IPv6 network using:
 
 ## Topology 
 
-![Topology](Screenshot/Topology/Topology.png)
+![Topology](Screenshots/Topology/Topology.png)
 
 ---
 
