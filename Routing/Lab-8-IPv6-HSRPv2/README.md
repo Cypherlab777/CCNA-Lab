@@ -1,7 +1,10 @@
 Lab 8 IPv6 & HSRP 
+
 ---
 
 ## Objective
+
+---
 
 Build an end-to-end IPv6 network using:
 
