@@ -200,9 +200,9 @@ Issue 3 :
 
  - During my initial configuration, I used 2911 routers. Once everything was configured, I encountered several issues :
 
- 1 Preemption remained disabled even after being enabled.
- 2 R2 did not become Active despite tracking being enabled.
- 3 Various routing issues.
+ - Preemption remained disabled even after being enabled.
+ - R2 did not become Active despite tracking being enabled.
+ - Various routing issues.
 
 I was therefore unable to observe and document the behavior I wanted accurately.
 
