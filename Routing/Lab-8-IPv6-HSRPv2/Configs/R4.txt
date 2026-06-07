@@ -1,0 +1,44 @@
+R4#show run
+Building configuration...
+
+Current configuration : 916 bytes
+!
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R4
+!
+no ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+spanning-tree mode pvst
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:5::1/64
+ ipv6 enable
+!
+interface Serial0/2/0
+ no ip address
+ ipv6 address 2001:3::2/64
+ ipv6 enable
+ clock rate 2000000
+!
+ip flow-export version 9
+!
+ipv6 route FD00:10::/48 Serial0/2/0 2001:3::1
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+end

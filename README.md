@@ -1,5 +1,8 @@
 # CCNA Lab Portfolio
+
+Hands-on Cisco CCNA lab portfolio documenting my journey through routing, switching, troubleshooting and protocol analysis.
 ---
+
 
 ## About This Repository
 
@@ -49,6 +52,8 @@ Highlights:
 | Lab 5 | CDP & Voice VLAN               | [Open Lab](Switching-Routing-DHCP-DTP/Lab5-CDP-VOICE-VLAN/README.md)                         |
 | Lab 6 | RPVST+                         | [Open Lab](Switching/Lab6-RPVST+/README.md)                                 |
 | Lab 7 | OSPF                           | [Open Lab](Routing/Lab7-OSPF/README.md)                                   |
+| Lab 8 | IPv6 - HSRPv2                           | [Open Lab](Routing/Lab-8-IPv6-HSRPv2/README.md)                                   |
+
 
 ---
 
@@ -56,10 +61,14 @@ Highlights:
 
 ### Routing
 
-* Static Routing
-* Router-on-a-Stick
-* OSPF
-* Route Verification
+* IPv4 Routing
+* IPv6 Routing
+* IPv4 Static Routing
+* IPv6 Static routing
+* IPv4 Router-on-a-Stick
+* IPv6 Router-on-a-Stick
+* OSPFv2
+* HSRPv2
 
 ### Switching
 
@@ -68,6 +77,14 @@ Highlights:
 * DTP
 * STP / RPVST+
 * Layer 3 Switching
+
+### Addressing
+
+* IPv6 EUI-64/SLAAC
+* IPv6 GUA
+* IPv6 ULA
+* IPv4 Subnetting
+* IPv4 VLSM
 
 ### Services
 
@@ -100,8 +117,6 @@ Planned topics:
 * WLAN
 * ACLs
 * NAT
-* HSRP
-* IPv6
 * Three-Tier Campus Architecture
 * Network Automation Fundamentals
 
