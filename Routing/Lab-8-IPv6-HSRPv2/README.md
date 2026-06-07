@@ -59,11 +59,11 @@ Build an end-to-end IPv6 network using:
 
 | Router | Configuration            |
 | ------ | ------------------------ |
-| R1     | [R1.txt](configs/R1.txt) |
-| R2     | [R2.txt](configs/R2.txt) |
-| R3     | [R3.txt](configs/R3.txt) |
-| R4     | [R4.txt](configs/R4.txt) |
-| SW1    | [SW1.txt](configs/SW1.txt) |
+| R1     | [R1.txt](Configs/R1.txt) |
+| R2     | [R2.txt](Configs/R2.txt) |
+| R3     | [R3.txt](Configs/R3.txt) |
+| R4     | [R4.txt](Configs/R4.txt) |
+| SW1    | [SW1.txt](Configs/SW1.txt) |
 
 ---
 
