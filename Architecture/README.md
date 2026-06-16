@@ -1,21 +1,14 @@
 # Lab 9
 
-
-
 ---
 
-
-
 ## Overview
-
 
 
 Ce projet combine plusieurs technologies Cisco vues durant mon apprentissage afin de les faire fonctionner ensemble dans un même environnement.
 
 
-
 L'infrastructure simule une entreprise composée de deux sites :
-
 
 
 * Un Headquarters (HQ) utilisant une architecture 3-Tier.
@@ -23,13 +16,10 @@ L'infrastructure simule une entreprise composée de deux sites :
 * Le plan d'adressage de l'entreprise est basé sur le réseau privé 172.16.0.0/16, découpé en plusieurs sous-réseaux répartis entre le siège et la succursale.
 
 
-
 Ce lab est une sorte de checkpoint me permettant de consolider mes connaissances et de les mettre en pratique dans un environnement plus réaliste.
 
 
-
 Technologies mises en œuvre :
-
 
 
 * Architecture 3-Tier
@@ -43,9 +33,7 @@ Technologies mises en œuvre :
 * Layer 2 Hardening
 
 
-
 ---
-
 
 
 ## Objectives
@@ -430,11 +418,11 @@ La connectivité entre le Headquarter et la Branch a été vérifiée avec succ�
 
 
 
-![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1)
+![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1.png)
 
 
 
-![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1)
+![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1.png)
 
 
 
