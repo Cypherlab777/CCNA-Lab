@@ -120,7 +120,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\##### VLAN Design
+\#### VLAN Design
 
 
 
@@ -152,7 +152,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\##### HSRP Design
+\#### HSRP Design
 
 
 
@@ -188,7 +188,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\##### Routing Design
+\#### Routing Design
 
 
 
@@ -226,7 +226,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\##### Devices Running-Config
+\#### Devices Running-Config
 
 
 
@@ -266,7 +266,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\##### VLAN Design
+\#### VLAN Design
 
 
 
@@ -288,7 +288,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\##### HSRP Design
+\#### HSRP Design
 
 
 
@@ -310,7 +310,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\##### Routing Design
+\#### Routing Design
 
 
 
@@ -336,7 +336,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\##### Devices Running-Config
+\#### Devices Running-Config
 
 
 
