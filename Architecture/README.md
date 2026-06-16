@@ -1,4 +1,4 @@
-# Lab 9 Entreprise Network
+# Lab 9 Enterprise Network
 
 ## Overview
 
@@ -226,6 +226,9 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | 10.0.1.4/30 | R2-Edge | G0/1 | 10.0.1.6 |
 | 10.0.1.8/30 | SW-CD | G1/0/6 | 10.0.1.9 |
 | 10.0.1.8/30 | SW-CD2 | G1/0/6 | 10.0.1.10 |
+
+---
+
 #### Devices Running-Config
 
 
@@ -669,7 +672,7 @@ Dans la partie ethernet et iP nous avons :
 
 SRC IP : 172.16.15.10 = L'adresse IP du Serveur DHCP
 
-DEST ADDR = 000.0C07.AC32 = Adresse MAC du DHCP Relay
+DEST ADDR = 0000.0C07.AC32 = Adresse MAC du DHCP Relay
 
 DEST IP : 172.16.16.61 = Adresse IP du DHCP Relay
 
@@ -751,7 +754,7 @@ Dans la partie ethernet et IP nous avons :
 
 SRC IP : 172.16.15.10 = L'adresse IP du Serveur DHCP
 
-DEST ADDR = 000.0C07.AC32 = Adresse MAC du  DHCP Relay
+DEST ADDR = 0000.0C07.AC32 = Adresse MAC du  DHCP Relay
 
 DEST IP : 172.16.16.61 = Adresse IP du DHCP Relay
 
@@ -829,7 +832,7 @@ Solution
 
 ---
 
-### Issue #2 — ECMP Path Sélection Not Optimal
+### Issue #2 — ECMP Path Selection Not Optimal
 
 ---
 
