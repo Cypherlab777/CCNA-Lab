@@ -590,11 +590,11 @@ La connectivité entre la Branch et le Headquarter a été vérifiée avec succ�
 
 
 
-![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1.png)
+![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC11-Tracert-R2-Edge-Path-SW-CD.png)
 
 
 
-![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC2-Tracert-R1-Edge-Path-SW-D2.png)
+![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC12-Tracert-R2-Edge-Path-SW-CD.png)
 
 
 
@@ -603,20 +603,6 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -669,7 +655,7 @@ Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
 
 
-![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(2).png)
+![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Discover(2).png)
 
 
 
