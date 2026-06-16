@@ -798,7 +798,7 @@ Chemin attendu :
 
 * PC9 - SW-A5 - SW-D2 - SW-C2
 
-Chemin emprunté :
+Chemin constaté :
 
 * PC9 - SW-A5 - SW-D2 - SW-A4 - SW-D1 - SW-C2
 
@@ -822,6 +822,8 @@ Le trafic a immédiatement recommencé à emprunter le chemin attendu.
 
 Problème résolu !
 
+---
+
 Symptoms 
 
 * Chemin étrange constaté.
@@ -843,29 +845,50 @@ Solution
 
 ---
 
-### Issue #2 — ECMP Path Selection Not Optimal
+### Issue #2 — ECMP Path Sélection Not Optimal
 
+Lors d'un test de connectivité entre PC1 et SW-C1, je me suis rendu compte que le paquet empruntait une route étrange, un peu comme dans le problème numéro 1.
 
+Chemin attendu :
 
-#### Symptoms
+SW-A1 - SW-D1 - SW-C1 - SW-D1 - SW-A1 - PC1
 
-#### Root Cause
+Chemin constaté :
 
-#### Solution
+SW-A1 - SW-D1 - SW-C1 - SW-D2 - SW-A4 - SW-D1 - SW-A1 - PC1
 
+Je me suis de nouveau demandé pourquoi le paquet, à partir de SW-D2, ne passait pas directement par SW-A1.
 
+J'ai vérifié le spanning-tree du VLAN 10 sur SW-D2 et je me suis rendu compte que le port Fa0/1 était dans l'état BLK. J'avais donc déjà un début d'explication.
 
-### Issue #3 — Native VLAN Mismatch
+Mais cela ne réglait pas mon problème d'origine : pourquoi le paquet n'empruntait-il pas le chemin qui me semblait le plus logique ?
 
+J'ai alors vérifié la table de routage et j'ai remarqué qu'il y avait deux chemins disponibles vers le VLAN 10. Je me suis donc rendu compte qu'ECMP faisait simplement son travail, c'est-à-dire utiliser plusieurs chemins ayant le même coût.
 
+À mon sens, le chemin pouvait être optimisé. J'ai donc décidé d'augmenter le coût OSPF du lien entre SW-C1 et SW-D2 à 5.
 
-#### Symptoms
+Cette modification a eu pour effet de supprimer le second chemin de coût égal vers cette destination et de forcer le trafic à emprunter le chemin souhaité.
 
-#### Root Cause
+Problème résolu !
 
-#### Solution
+Symptoms
 
+* Chemin inattendu constaté lors du test de connectivité.
 
+---
+
+Root Cause
+
+* Deux chemins de coût égal étaient présents dans la table de routage, ce qui entraînait l'utilisation 
+d'ECMP.
+
+---
+
+Solution
+
+* Augmentation du coût OSPF sur le lien SW-C1 ↔ SW-D2 afin de privilégier le chemin souhaité.
+
+---
 
 ## Skills Gained
 
