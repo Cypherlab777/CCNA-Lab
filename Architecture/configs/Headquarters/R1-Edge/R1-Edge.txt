@@ -1,0 +1,55 @@
+R1-Edge#show running-config 
+Building configuration...
+
+Current configuration : 948 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1-Edge
+!
+no ip cef
+no ipv6 cef
+!
+license udi pid CISCO2911/K9 sn FTX15244554-
+!
+spanning-tree mode pvst
+!
+interface GigabitEthernet0/0
+ ip address 10.0.0.18 255.255.255.252
+ ip ospf 1 area 0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 10.0.0.22 255.255.255.252
+ ip ospf 1 area 0
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ ip address 10.10.10.1 255.255.255.252
+ ip ospf 1 area 0
+!
+interface Serial0/0/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+!
+ip classless
+!
+ip flow-export version 9
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+end
