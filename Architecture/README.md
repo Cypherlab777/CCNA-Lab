@@ -788,17 +788,60 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 ## Troubleshooting
 
+---
 
 ### Issue #1 — OSPF Adjacency Missing (SW-D2 ↔ SW-C2)
 
+Lors d'un test de connectivité entre PC9 et SW-C2, je me suis rendu compte que le paquet empruntait une route étrange.
 
-#### Symptoms
+Chemin attendu :
 
-#### Root Cause
+* PC9 - SW-A5 - SW-D2 - SW-C2
 
-#### Solution
+Chemin emprunté :
 
+* PC9 - SW-A5 - SW-D2 - SW-A4 - SW-D1 - SW-C2
 
+Je me suis demandé pourquoi le paquet faisait ce long détour, ce qui me semblait être un comportement assez étrange.
+
+J'ai donc vérifié les adjacences OSPF et je me suis rendu compte que sur le Port-Channel 1, aucune adjacence n'était établie et qu'aucun paquet Hello n'était reçu malgré OSPF activé.
+
+J'ai ensuite vérifié la configuration sur SW-C2 et j'ai remarqué qu'aucune adresse IP n'était configurée sur le Port-Channel 1.
+
+J'ai donc décidé de configurer l'adresse manquante.
+
+Une fois l'adresse configurée, à ma grande surprise, un message indiquant un chevauchement d'adresses (« overlap with Gi1/0/2 ») est apparu.
+
+Gi1/0/2 étant un port membre du Port-Channel 1, j'ai alors vérifié sa configuration et constaté que l'adresse IP y était configurée.
+
+J'ai donc supprimé cette adresse avec la commande no ip address sur Gi1/0/2 puis reconfiguré cette même adresse sur Po1.
+
+Une fois cela fait, le message indiquant l'établissement d'une nouvelle adjacence OSPF s'est affiché à l'écran.
+
+Le trafic a immédiatement recommencé à emprunter le chemin attendu.
+
+Problème résolu !
+
+Symptoms 
+
+* Chemin étrange constaté.
+* Aucune adjacence OSPF présente sur Po1.
+
+---
+
+Root Cause
+
+* L'adresse IP était configurée sur une interface physique membre de l'EtherChannel au lieu du Port-Channel.
+
+---
+
+Solution
+
+* Suppression de l'adresse IP sur Gi1/0/2.
+* Configuration de l'adresse IP sur le Port-Channel 1.
+* Vérification de l'établissement de l'adjacence OSPF.
+
+---
 
 ### Issue #2 — ECMP Path Selection Not Optimal
 
