@@ -171,17 +171,17 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 | Device | Config |
 |---|---|
-| SW-A1 | [SW-A1.txt](configs/SW-A1.txt) |
-| SW-A2 | [SW-A2.txt](configs/SW-A2.txt) |
-| SW-A3 | [SW-A3.txt](configs/SW-A3.txt) |
-| SW-A4 | [SW-A4.txt](configs/SW-A4.txt) |
-| SW-A5 | [SW-A5.txt](configs/SW-A5.txt) |
-| SW-A6 | [SW-A6.txt](configs/SW-A6.txt) |
-| SW-D1 | [SW-D1.txt](configs/SW-D1.txt) |
-| SW-D2 | [SW-D2.txt](configs/SW-D2.txt) |
-| SW-C1 | [SW-C1.txt](configs/SW-C1.txt) |
-| SW-C2 | [SW-C2.txt](configs/SW-C2.txt) |
-| R1-Edge | [R1-Edge.txt](configs/R1-Edge.txt) |
+| SW-A1 | [SW-A1.txt](configs/Headquarters/SW-A1.txt) |
+| SW-A2 | [SW-A2.txt](configs/Headquarters/SW-A2.txt) |
+| SW-A3 | [SW-A3.txt](configs/Headquarters/SW-A3.txt) |
+| SW-A4 | [SW-A4.txt](configs/Headquarters/SW-A4.txt) |
+| SW-A5 | [SW-A5.txt](configs/Headquarters/SW-A5.txt) |
+| SW-A6 | [SW-A6.txt](configs/Headquarters/SW-A6.txt) |
+| SW-D1 | [SW-D1.txt](configs/Headquarters/SW-D1.txt) |
+| SW-D2 | [SW-D2.txt](configs/Headquarters/SW-D2.txt) |
+| SW-C1 | [SW-C1.txt](configs/Headquarters/SW-C1.txt) |
+| SW-C2 | [SW-C2.txt](configs/Headquarters/SW-C2.txt) |
+| R1-Edge | [R1-Edge.txt](configs/Headquarters/R1-Edge.txt) |
 
 
 ---
