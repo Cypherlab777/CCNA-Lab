@@ -231,13 +231,13 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 | Device | Config |
 |---|---|
-| SW-A01 | [SW-A01.txt](configs/SW-A01.txt) |
-| SW-A02 | [SW-A02.txt](configs/SW-A02.txt) |
-| SW-A03 | [SW-A03.txt](configs/SW-A03.txt) |
-| SW-A04 | [SW-A04.txt](configs/SW-A04.txt) |
-| SW-CD | [SW-CD.txt](configs/SW-CD.txt) |
-| SW-CD2 | [SW-CD2.txt](configs/SW-CD2.txt) |
-| R2-Edge | [R2-Edge.txt](configs/R2-Edge.txt) |
+| SW-A01 | [SW-A01.txt](configs/Branch-Office/SW-A/SW-A01.txt) |
+| SW-A02 | [SW-A02.txt](configs/Branch-Office/SW-A/SW-A02.txt) |
+| SW-A03 | [SW-A03.txt](configs/Branch-Office/SW-A/SW-A03.txt) |
+| SW-A04 | [SW-A04.txt](configs/Branch-Office/SW-A/SW-A04.txt) |
+| SW-CD | [SW-CD.txt](configs/Branch-Office/SW-CD/SW-CD.txt) |
+| SW-CD2 | [SW-CD2.txt](configs/Branch-Office/SW-CD/SW-CD2.txt) |
+| R2-Edge | [R2-Edge.txt](configs/Branch-Office/R2-Edge/R2-Edge.txt) |
 
 
 ---
