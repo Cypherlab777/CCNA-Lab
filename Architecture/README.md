@@ -422,7 +422,7 @@ La connectivité entre le Headquarter et la Branch a été vérifiée avec succ�
 
 
 
-![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1.png)
+![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SW-D2.png)
 
 
 
