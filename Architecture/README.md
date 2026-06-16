@@ -1,3 +1,7 @@
+\# Lab 9
+
+
+
 \## Overview
 
 
@@ -46,7 +50,7 @@ Technologies mises en œuvre :
 
 
 
-\--- 
+\---
 
 
 
@@ -286,7 +290,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 | 30 | SW-CD | SW-CD2 | 172.16.132.1 |
 
-| 40 | SW-CD2 | SW-CD | 172.16.133.1 | 
+| 40 | SW-CD2 | SW-CD | 172.16.133.1 |
 
 | 60 | SW-CD2 | SW-CD | 172.16.133.129 |
 
@@ -498,7 +502,7 @@ La communication entre plusieurs VLANs a été validée afin de confirmer le bon
 
 
 
-\#### External Connectivity 
+\#### External Connectivity
 
 
 
@@ -754,7 +758,7 @@ L'observation des paquets DHCP serait plus complète avec Wireshark sous GNS3.Ma
 
 
 
-Dans ce lab, l'analyse est donc limitée aux informations visibles. 
+Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
 
 
@@ -784,7 +788,7 @@ Ce paquet sert a découvrir si il y a un serveur DHCP.
 
 
 
-Dans la partie ethernet et ip nous avons : 
+Dans la partie ethernet et ip nous avons :
 
 
 
@@ -800,17 +804,17 @@ Le paquet est envoyé en broadcast pour découvrir si un serveur DHCP existe
 
 
 
-Dans la partie UDP nous avons : 
+Dans la partie UDP nous avons :
 
 
 
-SOURCE PORT : 68 = Ce qui correspond au port client 
+SOURCE PORT : 68 = Ce qui correspond au port client
 
-DEST PORT : 67 = Ce qui correspond au port serveur 
+DEST PORT : 67 = Ce qui correspond au port serveur
 
 
 
-Dans la partie DHCP : 
+Dans la partie DHCP :
 
 
 
@@ -906,9 +910,9 @@ Dans la partie DHCP :
 
 
 
-OP:0x01 = BOOTREQUEST  
+OP:0x01 = BOOTREQUEST
 
-CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du PC  
+CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du PC
 
 
 
