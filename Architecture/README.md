@@ -46,7 +46,7 @@ Technologies mises en œuvre :
 
 
 
-\--- 
+\---
 
 
 
@@ -142,7 +142,13 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
+
+
 \*\*Note :\*\* Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (172.16.15.10).
+
+
+
+\---
 
 
 
@@ -175,6 +181,10 @@ VLAN 20, 40 et 60 utilisent SW-D2 comme passerelle active HSRP et comme Root Bri
 
 
 Cette répartition permet d'équilibrer la charge entre les deux switches de distribution tout en maintenant un alignement cohérent entre HSRP et RPVST+.
+
+
+
+\---
 
 
 
@@ -212,6 +222,10 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
+\---
+
+
+
 \##### Devices Running-Config
 
 
@@ -244,11 +258,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-
-
 \---
-
-
 
 
 
@@ -274,6 +284,10 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
+\---
+
+
+
 \##### HSRP Design
 
 
@@ -286,9 +300,13 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 | 30 | SW-CD | SW-CD2 | 172.16.132.1 |
 
-| 40 | SW-CD2 | SW-CD | 172.16.133.1 | 
+| 40 | SW-CD2 | SW-CD | 172.16.133.1 |
 
 | 60 | SW-CD2 | SW-CD | 172.16.133.129 |
+
+
+
+\---
 
 
 
@@ -311,6 +329,10 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | 10.0.1.8/30 | SW-CD | G1/0/6 | 10.0.1.9 |
 
 | 10.0.1.8/30 | SW-CD2 | G1/0/6 | 10.0.1.10 |
+
+
+
+\---
 
 
 
@@ -416,6 +438,10 @@ SW-D1 est Root Bridge pour les VLANs 10, 30 et 50 afin d'être aligné avec HSRP
 
 
 
+\---
+
+
+
 \#### SW-D2
 
 
@@ -443,6 +469,10 @@ SW-D2 est Root Bridge pour les VLANs 20, 40 et 60 afin d'être aligné avec HSRP
 
 
 SW-D1 est actif pour les VLANs 10, 30 et 50 tandis que SW-D2 reste en état Standby.
+
+
+
+\---
 
 
 
@@ -498,7 +528,11 @@ La communication entre plusieurs VLANs a été validée afin de confirmer le bon
 
 
 
-\#### External Connectivity 
+\---
+
+
+
+\#### External Connectivity
 
 
 
@@ -582,6 +616,10 @@ SW-CD est Root Bridge pour les VLANs 10 et 30 afin d'être aligné avec HSRP.
 
 
 
+\---
+
+
+
 \#### SW-CD2
 
 
@@ -611,6 +649,10 @@ SW-CD2 est Root Bridge pour les VLANs 40 et 60 afin d'être aligné avec HSRP.
 
 
 SW-CD est actif pour les VLANs 10 et 30 tandis que SW-CD2 reste en état Standby.
+
+
+
+\---
 
 
 
@@ -754,7 +796,7 @@ L'observation des paquets DHCP serait plus complète avec Wireshark sous GNS3.Ma
 
 
 
-Dans ce lab, l'analyse est donc limitée aux informations visibles. 
+Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
 
 
@@ -784,7 +826,7 @@ Ce paquet sert a découvrir si il y a un serveur DHCP.
 
 
 
-Dans la partie ethernet et ip nous avons : 
+Dans la partie ethernet et ip nous avons :
 
 
 
@@ -800,17 +842,17 @@ Le paquet est envoyé en broadcast pour découvrir si un serveur DHCP existe
 
 
 
-Dans la partie UDP nous avons : 
+Dans la partie UDP nous avons :
 
 
 
-SOURCE PORT : 68 = Ce qui correspond au port client 
+SOURCE PORT : 68 = Ce qui correspond au port client
 
-DEST PORT : 67 = Ce qui correspond au port serveur 
+DEST PORT : 67 = Ce qui correspond au port serveur
 
 
 
-Dans la partie DHCP : 
+Dans la partie DHCP :
 
 
 
@@ -906,9 +948,9 @@ Dans la partie DHCP :
 
 
 
-OP:0x01 = BOOTREQUEST  
+OP:0x01 = BOOTREQUEST
 
-CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du PC  
+CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du PC
 
 
 
