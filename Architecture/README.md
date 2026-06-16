@@ -100,11 +100,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 ---
 
-
-
 ### HQ — 3-Tier Architecture
-
-
 
 ---
 
@@ -124,16 +120,11 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 | 60 | DR | 172.16.16.0/26 | 172.16.16.62 | 172.16.16.61 |
 
 
-Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (172.16.15.10).
-
-
+Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique : 172.16.15.10.
 
 ---
 
-
-
 #### HSRP Design
-
 
 
 | Vlan | Active | Standby | Virtual Gateway |
@@ -150,13 +141,10 @@ VLAN 10, 30 et 50 utilisent SW-D1 comme passerelle active HSRP et comme Root Bri
 VLAN 20, 40 et 60 utilisent SW-D2 comme passerelle active HSRP et comme Root Bridge RPVST+.
 
 
-
 Cette répartition permet d'équilibrer la charge entre les deux switches de distribution tout en maintenant un alignement cohérent entre HSRP et RPVST+.
 
 
-
 ---
-
 
 
 #### Routing Design
@@ -177,8 +165,10 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | 10.0.0.16/30 | R1-Edge | G0/0 | 10.0.0.18 |
 | 10.0.0.20/30 | SW-C2 | Po1 | 10.0.0.21 |
 | 10.0.0.20/30 | R1-Edge | G0/1 | 10.0.0.22 |
-#### Devices Running-Config
 
+---
+
+#### Devices Running-Config
 
 
 | Device | Config |
@@ -194,18 +184,16 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | SW-C1 | [SW-C1.txt](configs/SW-C1.txt) |
 | SW-C2 | [SW-C2.txt](configs/SW-C2.txt) |
 | R1-Edge | [R1-Edge.txt](configs/R1-Edge.txt) |
+
+
 ---
-
-
-
 
 
 ### Branch — 2-Tier Collapsed Core Architecture
 
-
+---
 
 #### VLAN Design
-
 
 
 | Vlan | Name | Network | Gateway SW-CD | Gateway SW-CD2 |
@@ -214,8 +202,10 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | 30 | RH | 172.16.132.0/24 | 172.16.132.254 | 172.16.132.253 |
 | 40 | IT | 172.16.133.0/25 | 172.16.133.126 | 172.16.133.125 |
 | 60 | DR | 172.16.133.128/26 | 172.16.133.190 | 172.16.133.189 |
-#### HSRP Design
 
+---
+
+#### HSRP Design
 
 
 | Vlan | Active | Standby | Virtual Gateway |
@@ -224,8 +214,10 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | 30 | SW-CD | SW-CD2 | 172.16.132.1 |
 | 40 | SW-CD2 | SW-CD | 172.16.133.1 |
 | 60 | SW-CD2 | SW-CD | 172.16.133.129 |
-#### Routing Design
 
+---
+
+#### Routing Design
 
 
 | Network | Device | Interface | IP Address |
@@ -239,7 +231,6 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 #### Devices Running-Config
 
 
-
 | Device | Config |
 |---|---|
 | SW-A01 | [SW-A01.txt](configs/SW-A01.txt) |
@@ -249,9 +240,9 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 | SW-CD | [SW-CD.txt](configs/SW-CD.txt) |
 | SW-CD2 | [SW-CD2.txt](configs/SW-CD2.txt) |
 | R2-Edge | [R2-Edge.txt](configs/R2-Edge.txt) |
+
+
 ---
-
-
 
 ## Security & Hardening
 
@@ -266,14 +257,13 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 * Désactivation de DTP.
 * Activation de passive-interface sur les SVI des switches de distribution.
 
-
+---
 
 ## Headquarters Verification & Testing
 
-
+---
 
 ### VLAN Verification
-
 
 
 ![Vlan verification](screenshots/Verification/Headquarters/Vlan/SW-A1-Show-Vlan-Brief-SW-A1.png)
@@ -283,9 +273,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 Les VLANs ont été correctement créés sur les switchs d'accès
 
 
-
 ---
-
 
 
 ### Trunk Verification
@@ -381,13 +369,11 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 ---
 
 
-
 ### End-to-End Connectivity
 
-
+---
 
 #### Internal Connectivity
-
 
 
 ![inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan10-Ping-Vlan60.png)
@@ -412,7 +398,7 @@ La communication entre plusieurs VLANs a été validée afin de confirmer le bon
 
 La connectivité entre le Headquarter et la Branch a été vérifiée avec succès à travers le WAN.
 
-
+---
 
 #### HSRP / RPVST+ Path Validation
 
@@ -436,7 +422,7 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 ## Branch Office Verification & Testing
 
-
+---
 
 ### VLAN Verification
 
@@ -495,7 +481,6 @@ SW-CD est Root Bridge pour les VLANs 10 et 30 afin d'être aligné avec HSRP.
 
 
 SW-CD2 est Root Bridge pour les VLANs 40 et 60 afin d'être aligné avec HSRP.
-
 
 
 ---
