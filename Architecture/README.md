@@ -1,8 +1,12 @@
-\# Lab 9
+# Lab 9
 
 
 
-\## Overview
+\---
+
+
+
+## Overview
 
 
 
@@ -14,11 +18,9 @@ L'infrastructure simule une entreprise composée de deux sites :
 
 
 
-\- Un Headquarters (HQ) utilisant une architecture 3-Tier.
-
-\- Une Branch Office utilisant une architecture Collapsed Core.
-
-\- Le plan d'adressage de l'entreprise est basé sur le réseau privé 172.16.0.0/16, découpé en plusieurs sous-réseaux répartis entre le siège et la succursale.
+* Un Headquarters (HQ) utilisant une architecture 3-Tier.
+* Une Branch Office utilisant une architecture Collapsed Core.
+* Le plan d'adressage de l'entreprise est basé sur le réseau privé 172.16.0.0/16, découpé en plusieurs sous-réseaux répartis entre le siège et la succursale.
 
 
 
@@ -30,23 +32,15 @@ Technologies mises en œuvre :
 
 
 
-\- Architecture 3-Tier
-
-\- Architecture Collapsed Core
-
-\- VLAN Segmentation
-
-\- Inter-VLAN Routing
-
-\- HSRP
-
-\- RPVST+
-
-\- OSPF
-
-\- DHCP Relay
-
-\- Layer 2 Hardening
+* Architecture 3-Tier
+* Architecture Collapsed Core
+* VLAN Segmentation
+* Inter-VLAN Routing
+* HSRP
+* RPVST+
+* OSPF
+* DHCP Relay
+* Layer 2 Hardening
 
 
 
@@ -54,23 +48,17 @@ Technologies mises en œuvre :
 
 
 
-\## Objectives
+## Objectives
 
 
 
-\- Concevoir un réseau d'entreprise réaliste en utilisant plusieurs architectures afin de comparer les bénéfices de chacune d'entre elles.
-
-\- Mettre en pratique des technologies telles que HSRP et RPVST+ et les aligner afin d'obtenir des chemins cohérents et optimaux, tout en permettant une circulation fluide du trafic.
-
-\- Mettre en place un serveur DHCP central utilisé par l'ensemble du réseau via DHCP Relay.
-
-\- Offrir de la redondance aux passerelles par défaut des deux sites en configurant HSRP.
-
-\- Mettre en place le routage dynamique avec OSPF.
-
-\- Mettre en application les bonnes pratiques de sécurité à l'aide du Layer 2 Hardening.
-
-\- Manipuler les coûts OSPF afin d'observer le comportement d'ECMP et d'influencer les chemins empruntés par certains VLANs.
+* Concevoir un réseau d'entreprise réaliste en utilisant plusieurs architectures afin de comparer les bénéfices de chacune d'entre elles.
+* Mettre en pratique des technologies telles que HSRP et RPVST+ et les aligner afin d'obtenir des chemins cohérents et optimaux, tout en permettant une circulation fluide du trafic.
+* Mettre en place un serveur DHCP central utilisé par l'ensemble du réseau via DHCP Relay.
+* Offrir de la redondance aux passerelles par défaut des deux sites en configurant HSRP.
+* Mettre en place le routage dynamique avec OSPF.
+* Mettre en application les bonnes pratiques de sécurité à l'aide du Layer 2 Hardening.
+* Manipuler les coûts OSPF afin d'observer le comportement d'ECMP et d'influencer les chemins empruntés par certains VLANs.
 
 
 
@@ -78,7 +66,7 @@ Technologies mises en œuvre :
 
 
 
-\## Topology Overview
+## Topology Overview
 
 
 
@@ -118,7 +106,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\## Network Design \& Addressing
+## Network Design \& Addressing
 
 
 
@@ -126,7 +114,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\### HQ — 3-Tier Architecture
+### HQ — 3-Tier Architecture
 
 
 
@@ -134,7 +122,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\#### VLAN Design
+#### VLAN Design
 
 
 
@@ -156,7 +144,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\*\*Note :\*\* Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (172.16.15.10).
+Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (172.16.15.10).
 
 
 
@@ -164,7 +152,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\#### HSRP Design
+#### HSRP Design
 
 
 
@@ -200,7 +188,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\#### Routing Design
+#### Routing Design
 
 
 
@@ -234,7 +222,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\#### Devices Running-Config
+#### Devices Running-Config
 
 
 
@@ -274,11 +262,11 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\### Branch — 2-Tier Collapsed Core Architecture
+### Branch — 2-Tier Collapsed Core Architecture
 
 
 
-\#### VLAN Design
+#### VLAN Design
 
 
 
@@ -296,7 +284,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\#### HSRP Design
+#### HSRP Design
 
 
 
@@ -314,7 +302,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\#### Routing Design
+#### Routing Design
 
 
 
@@ -336,7 +324,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\#### Devices Running-Config
+#### Devices Running-Config
 
 
 
@@ -368,29 +356,22 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\- Tous les ports inutilisés ont été placés dans le VLAN 999 et administrativement shutdown.
-
-\- Activation de PortFast par défaut sur les switches d'accès.
-
-\- Activation de BPDU Guard par défaut sur les switches d'accès.
-
-\- Le VLAN natif des trunks est également configuré sur le VLAN 999 afin d'éviter l'utilisation du VLAN 1.
-
-\- Le VLAN 999 n'est pas utilisé pour le trafic utilisateur.
-
-\- Restriction des VLANs autorisés sur les trunks.
-
-\- Désactivation de DTP.
-
-\- Activation de passive-interface sur les SVI des switches de distribution.
+* Tous les ports inutilisés ont été placés dans le VLAN 999 et administrativement shutdown.
+* Activation de PortFast par défaut sur les switches d'accès.
+* Activation de BPDU Guard par défaut sur les switches d'accès.
+* Le VLAN natif des trunks est également configuré sur le VLAN 999 afin d'éviter l'utilisation du VLAN 1.
+* Le VLAN 999 n'est pas utilisé pour le trafic utilisateur.
+* Restriction des VLANs autorisés sur les trunks.
+* Désactivation de DTP.
+* Activation de passive-interface sur les SVI des switches de distribution.
 
 
 
-\## Headquarters Verification \& Testing
+## Headquarters Verification \& Testing
 
 
 
-\### VLAN Verification
+### VLAN Verification
 
 
 
@@ -406,7 +387,7 @@ Les VLANs ont été correctement créés sur les switchs d'accès
 
 
 
-\### Trunk Verification
+### Trunk Verification
 
 
 
@@ -422,11 +403,11 @@ Les liens trunk sont opérationnels et transportent uniquement les VLANs autoris
 
 
 
-\### RPVST+ Verification
+### RPVST+ Verification
 
 
 
-\#### SW-D1
+#### SW-D1
 
 
 
@@ -438,7 +419,7 @@ SW-D1 est Root Bridge pour les VLANs 10, 30 et 50 afin d'être aligné avec HSRP
 
 
 
-\#### SW-D2
+#### SW-D2
 
 
 
@@ -452,11 +433,11 @@ SW-D2 est Root Bridge pour les VLANs 20, 40 et 60 afin d'être aligné avec HSRP
 
 
 
-\### HSRP Verification
+### HSRP Verification
 
 
 
-\#### SW-D1
+#### SW-D1
 
 
 
@@ -468,7 +449,7 @@ SW-D1 est actif pour les VLANs 10, 30 et 50 tandis que SW-D2 reste en état Stan
 
 
 
-\#### SW-D2
+#### SW-D2
 
 
 
@@ -484,7 +465,7 @@ SW-D2 est actif pour les VLANs 20, 40 et 60 tandis que SW-D1 reste en état Stan
 
 
 
-\### OSPF Convergence
+### OSPF Convergence
 
 
 
@@ -500,11 +481,11 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
 
-\### End-to-End Connectivity
+### End-to-End Connectivity
 
 
 
-\#### Internal Connectivity
+#### Internal Connectivity
 
 
 
@@ -520,7 +501,7 @@ La communication entre plusieurs VLANs a été validée afin de confirmer le bon
 
 
 
-\#### External Connectivity
+#### External Connectivity
 
 
 
@@ -532,7 +513,7 @@ La connectivité entre le Headquarter et la Branch a été vérifiée avec succ�
 
 
 
-\#### HSRP / RPVST+ Path Validation
+#### HSRP / RPVST+ Path Validation
 
 
 
@@ -552,11 +533,11 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 
 
-\## Branch Office Verification \& Testing
+## Branch Office Verification \& Testing
 
 
 
-\### VLAN Verification
+### VLAN Verification
 
 
 
@@ -572,7 +553,7 @@ Les VLANs ont été correctement créés sur les switchs d'accès
 
 
 
-\### Trunk Verification
+### Trunk Verification
 
 
 
@@ -588,11 +569,11 @@ Les liens trunk sont opérationnels et transportent uniquement les VLANs autoris
 
 
 
-\### RPVST+ Verification
+### RPVST+ Verification
 
 
 
-\#### SW-CD
+#### SW-CD
 
 
 
@@ -604,7 +585,7 @@ SW-CD est Root Bridge pour les VLANs 10 et 30 afin d'être aligné avec HSRP.
 
 
 
-\#### SW-CD2
+#### SW-CD2
 
 
 
@@ -620,11 +601,11 @@ SW-CD2 est Root Bridge pour les VLANs 40 et 60 afin d'être aligné avec HSRP.
 
 
 
-\### HSRP Verification
+### HSRP Verification
 
 
 
-\#### SW-CD
+#### SW-CD
 
 
 
@@ -636,7 +617,7 @@ SW-CD est actif pour les VLANs 10 et 30 tandis que SW-CD2 reste en état Standby
 
 
 
-\#### SW-CD2
+#### SW-CD2
 
 
 
@@ -652,7 +633,7 @@ SW-CD2 est actif pour les VLANs 40 et 60 tandis que SW-CD reste en état Standby
 
 
 
-\### OSPF Convergence
+### OSPF Convergence
 
 
 
@@ -668,11 +649,11 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
 
-\### End-to-End Connectivity
+### End-to-End Connectivity
 
 
 
-\#### Internal Connectivity
+#### Internal Connectivity
 
 
 
@@ -688,7 +669,7 @@ La communication entre Vlan 10 et Vlan 20 a été validée afin de confirmer le 
 
 
 
-\#### External Connectivity
+#### External Connectivity
 
 
 
@@ -704,7 +685,7 @@ La connectivité entre la Branch et le Headquarter a été vérifiée avec succ�
 
 
 
-\#### HSRP / RPVST+ Path Validation
+#### HSRP / RPVST+ Path Validation
 
 
 
@@ -740,13 +721,13 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 
 
-\## DORA Analysis
+## DORA Analysis
 
 
 
 
 
-\### Limitations de Packet Tracer concernant le DORA
+### Limitations de Packet Tracer concernant le DORA
 
 
 
@@ -754,17 +735,12 @@ Packet Tracer n'affiche pas toutes les options DHCP en détail. Ces options cont
 
 
 
-\- Le lease time
-
-\- Le serveur DNS
-
-\- Le type de message DHCP : Discover, Offer, Request, ACK
-
-\- Le Server Identifier
-
-\- La Requested IP Address
-
-\- Etc.
+* Le lease time
+* Le serveur DNS
+* Le type de message DHCP : Discover, Offer, Request, ACK
+* Le Server Identifier
+* La Requested IP Address
+* Etc.
 
 
 
@@ -784,7 +760,7 @@ Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
 
 
-\### Discover
+### Discover
 
 
 
@@ -846,7 +822,7 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-\### Offer
+### Offer
 
 
 
@@ -894,7 +870,7 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-\### Request
+### Request
 
 
 
@@ -938,7 +914,7 @@ Dans un vrai paquet DHCP, l'adresse demandée par le client serait visible dans 
 
 
 
-\### Ack
+### Ack
 
 
 
@@ -1004,55 +980,55 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-\### Packet Capture — Server Perspective
+### Packet Capture — Server Perspective
 
-\### Packet Tracer Limitations
-
-
-
-\## Troubleshooting
+### Packet Tracer Limitations
 
 
 
-\### Issue #1 — OSPF Adjacency Missing (SW-D2 ↔ SW-C2)
+## Troubleshooting
 
 
 
-\#### Symptoms
-
-\#### Root Cause
-
-\#### Solution
+### Issue #1 — OSPF Adjacency Missing (SW-D2 ↔ SW-C2)
 
 
 
-\### Issue #2 — ECMP Path Selection Not Optimal
+#### Symptoms
+
+#### Root Cause
+
+#### Solution
 
 
 
-\#### Symptoms
-
-\#### Root Cause
-
-\#### Solution
+### Issue #2 — ECMP Path Selection Not Optimal
 
 
 
-\### Issue #3 — Native VLAN Mismatch
+#### Symptoms
+
+#### Root Cause
+
+#### Solution
 
 
 
-\#### Symptoms
-
-\#### Root Cause
-
-\#### Solution
+### Issue #3 — Native VLAN Mismatch
 
 
 
-\## Skills Gained
+#### Symptoms
+
+#### Root Cause
+
+#### Solution
 
 
 
-\## Key Concepts Learned
+## Skills Gained
+
+
+
+## Key Concepts Learned
 
