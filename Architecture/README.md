@@ -134,6 +134,8 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 | 40 | IT | 172.16.14.0/24 | 172.16.14.254 | 172.16.14.253 |
 | 50 | Server | 172.16.15.0/25 | 172.16.15.126 | 172.16.15.125 |
 | 60 | DR | 172.16.16.0/26 | 172.16.16.62 | 172.16.16.61 |
+
+
 Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (172.16.15.10).
 
 
