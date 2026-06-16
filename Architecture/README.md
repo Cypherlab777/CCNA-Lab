@@ -349,25 +349,19 @@ SW-D1 est actif pour les VLANs 10, 30 et 50 tandis que SW-D2 reste en état Stan
 SW-D2 est actif pour les VLANs 20, 40 et 60 tandis que SW-D1 reste en état Standby.
 
 
-
 ---
-
 
 
 ### OSPF Convergence
 
 
-
 ![OSPF verification](screenshots/Verification/Headquarters/OSPF/SW-D1-Show-IP-Ospf-Neighbor.png)
-
 
 
 Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
-
 ---
-
 
 ### End-to-End Connectivity
 
@@ -415,10 +409,7 @@ La connectivité entre le Headquarter et la Branch a été vérifiée avec succ�
 Les résultats du traceroute confirment que le trafic emprunte les chemins prévus grâce à l'alignement entre HSRP et RPVST+.
 
 
-
 ---
-
-
 
 ## Branch Office Verification & Testing
 
@@ -427,46 +418,34 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 ### VLAN Verification
 
 
-
 ![Vlan verification](screenshots/Verification/Branch-Office/Vlan/SW-A01-Show-Vlan-Brief.png)
-
 
 
 Les VLANs ont été correctement créés sur les switchs d'accès
 
 
-
 ---
-
 
 
 ### Trunk Verification
 
 
-
 ![Trunk verification](screenshots/Verification/Branch-Office/Trunk/SW-CD2-Show-Interface-Trunk.png)
-
 
 
 Les liens trunk sont opérationnels et transportent uniquement les VLANs autorisés
 
 
-
 ---
-
 
 
 ### RPVST+ Verification
 
 
-
 #### SW-CD
 
 
-
 ![RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan10-Vlan.30.png)
-
-
 
 SW-CD est Root Bridge pour les VLANs 10 et 30 afin d'être aligné avec HSRP.
 
@@ -533,7 +512,14 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 ---
 
+### DHCP Verification
 
+![DHCP verification](screenshots/Verification/Branch-Office/DHCP/SW-CD-Show-IP-Dhcp-Pool.png)
+
+
+Le routeur SW-CD distribue correctement les adresses IP aux clients des VLANs de la Branch Office.
+
+---
 
 ### End-to-End Connectivity
 
@@ -847,6 +833,8 @@ Solution
 
 ### Issue #2 — ECMP Path Sélection Not Optimal
 
+---
+
 Lors d'un test de connectivité entre PC1 et SW-C1, je me suis rendu compte que le paquet empruntait une route étrange, un peu comme dans le problème numéro 1.
 
 Chemin attendu :
@@ -871,6 +859,8 @@ Cette modification a eu pour effet de supprimer le second chemin de coût égal 
 
 Problème résolu !
 
+---
+
 Symptoms
 
 * Chemin inattendu constaté lors du test de connectivité.
@@ -892,6 +882,31 @@ Solution
 
 ## Skills Gained
 
+* Conception d'une architecture 3-Tier et Collapsed Core.
+* Création d'un plan d'adressage VLSM pour plusieurs sites.
+* Configuration et validation de HSRP.
+* Configuration et optimisation de RPVST+.
+* Mise en œuvre du routage dynamique avec OSPF.
+* Manipulation des coûts OSPF afin d'influencer les chemins de routage.
+* Configuration d'un serveur DHCP central avec DHCP Relay.
+* Configuration d'un DHCP local sur routeur.
+* Mise en place d'un EtherChannel LACP.
+* Application de mesures de Layer 2 Hardening.
+* Validation du fonctionnement du réseau à l'aide de commandes de vérification Cisco.
+* Analyse et résolution de problèmes réseau.
 
+---
 
 ## Key Concepts Learned
+
+* L'importance d'aligner HSRP et RPVST+ afin d'obtenir des chemins de trafic cohérents.
+* Le fonctionnement d'ECMP et son impact sur la sélection des chemins.
+* L'influence des coûts OSPF sur les décisions de routage.
+* La différence entre DHCP Relay et DHCP local sur routeur.
+* Le rôle du Root Bridge dans le comportement de RPVST+.
+* Le fonctionnement des adjacences OSPF sur les interfaces Layer 3 et les EtherChannels.
+* L'importance de vérifier les interfaces physiques et logiques lors d'un dépannage.
+* Les limites de Packet Tracer pour l'analyse détaillée des paquets DHCP.
+* L'intérêt d'une approche méthodique lors du troubleshooting réseau.
+
+---
