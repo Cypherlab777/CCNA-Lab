@@ -605,13 +605,7 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 ---
 
 
-
-
-
 ## DORA Analysis
-
-
-
 
 
 ### Limitations de Packet Tracer concernant le DORA
@@ -621,14 +615,12 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 Packet Tracer n'affiche pas toutes les options DHCP en détail. Ces options contiennent normalement des informations comme :
 
 
-
 * Le lease time
 * Le serveur DNS
 * Le type de message DHCP : Discover, Offer, Request, ACK
 * Le Server Identifier
 * La Requested IP Address
 * Etc.
-
 
 
 L'adresse du DHCP Relay devrait également apparaître dans le champ Relay Agent Address / giaddr, mais Packet Tracer ne l'affiche pas correctement dans ce lab.
@@ -641,24 +633,14 @@ L'observation des paquets DHCP serait plus complète avec Wireshark sous GNS3. M
 
 Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
-
-
 ---
 
-
-
 ### Discover
-
-
 
 ![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(1).png)
 
 
-
 ![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Discover(2).png)
-
-
-
 
 
 Nous pouvons observer sur ces captures le paquet Discover du processus DORA.
@@ -666,11 +648,7 @@ Nous pouvons observer sur ces captures le paquet Discover du processus DORA.
 Ce paquet sert a découvrir si il y a un serveur DHCP.
 
 
-
-
-
 Dans la partie ethernet et ip nous avons :
-
 
 
 SRC IP : 0.0.0.0 = Le pc n'a pas encore d'adresse ip
@@ -680,19 +658,15 @@ DEST ADDR : FFFF.FFFF.FFFF = Paquet envoyé à l'adresse broadcast Layer 2
 DEST IP : 255.255.255.255 = paquet envoyé à l'adresse de broadcast Layer 3
 
 
-
 Le paquet est envoyé en broadcast pour découvrir si un serveur DHCP existe
-
 
 
 Dans la partie UDP nous avons :
 
 
-
 SOURCE PORT : 68 = Ce qui correspond au port client
 
 DEST PORT : 67 = Ce qui correspond au port serveur
-
 
 
 Dans la partie DHCP :
@@ -704,21 +678,16 @@ OP:0x01 = BOOTREQUEST
 CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
-
 ---
-
 
 
 ### Offer
 
 
-
 ![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(1).png)
 
 
-
 ![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(2).png)
-
 
 
 Nous pouvons observer sur ces captures le paquet Offer du processus DORA.
@@ -726,9 +695,7 @@ Nous pouvons observer sur ces captures le paquet Offer du processus DORA.
 Ce paquet sert à envoyer une proposition d'adresse IP au client depuis le serveur DHCP.
 
 
-
 Dans la partie ethernet et iP nous avons :
-
 
 
 SRC IP : 172.16.15.10 = L'adresse IP du Serveur DHCP
@@ -738,9 +705,7 @@ DEST ADDR = 000.0C07.AC32 = Adresse MAC du DHCP Relay
 DEST IP : 172.16.16.61 = Adresse IP du DHCP Relay
 
 
-
 Dans la partie DHCP :
-
 
 
 OP:0x02 = BOOTREPLY
@@ -752,9 +717,7 @@ SERVER ADDRESS : 172.16.15.10 = Adresse IP du Serveur DHCP
 CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
-
 ---
-
 
 
 ### Request
@@ -774,9 +737,7 @@ Nous pouvons observer sur ces captures le paquet Request du processus DORA
 Le paquet est envoyé en broadcast afin d'informer tous les serveurs DHCP ayant répondu que le client accepte cette offre et rejette les éventuelles autres propositions.
 
 
-
 Dans la partie ethernet et IP nous avons :
-
 
 
 SRC IP : 0.0.0.0 = Le pc n'a pas encore d'adresse IP
@@ -786,9 +747,7 @@ DEST ADDR : FFFF.FFFF.FFFF = Paquet envoyé à l'adresse broadcast Layer 2
 DEST IP : 255.255.255.255 = paquet envoyé à l'adresse de broadcast Layer 3
 
 
-
 Dans la partie DHCP :
-
 
 
 OP:0x01 = BOOTREQUEST
@@ -796,10 +755,9 @@ OP:0x01 = BOOTREQUEST
 CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du PC
 
 
-
 Dans un vrai paquet DHCP, l'adresse demandée par le client serait visible dans les options DHCP, notamment avec l'option Requested IP Address. Packet Tracer ne l'affiche pas clairement ici.
 
-
+---
 
 ### Ack
 
@@ -810,9 +768,6 @@ Dans un vrai paquet DHCP, l'adresse demandée par le client serait visible dans 
 
 
 ![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(2).png)
-
-
-
 
 
 Nous pouvons observer sur ces captures le paquet Ack du processus DORA
@@ -836,7 +791,6 @@ DEST IP : 172.16.16.61 = Adresse IP du DHCP Relay
 Dans la partie DHCP :
 
 
-
 OP:0x02 = BOOTREPLY
 
 YOUR CLIENT ADDRESS 172.16.16.10 = Adresse offerte par le serveur DHCP au client
@@ -845,40 +799,12 @@ SERVER ADDRESS : 172.16.15.10 = Adresse IP du Serveur DHCP
 
 CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Packet Capture — Server Perspective
-
-### Packet Tracer Limitations
-
-
+---
 
 ## Troubleshooting
 
 
-
 ### Issue #1 — OSPF Adjacency Missing (SW-D2 ↔ SW-C2)
-
 
 
 #### Symptoms
