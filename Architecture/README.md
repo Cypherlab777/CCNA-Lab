@@ -2,7 +2,7 @@
 
 
 
-\---
+---
 
 
 
@@ -44,7 +44,7 @@ Technologies mises en œuvre :
 
 
 
-\---
+---
 
 
 
@@ -62,7 +62,7 @@ Technologies mises en œuvre :
 
 
 
-\---
+---
 
 
 
@@ -98,19 +98,19 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-!\[Topology](Screenshot/Topology/Topology.png)
+![Topology](Screenshot/Topology/Topology.png)
 
 
 
-\---
+---
 
 
 
-## Network Design \& Addressing
+## Network Design & Addressing
 
 
 
-\---
+---
 
 
 
@@ -118,7 +118,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-\---
+---
 
 
 
@@ -127,28 +127,18 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 | Vlan | Name | Network | Gateway SW-D1 | Gateway SW-D2 |
-
 |---|---|---|---|---|
-
 | 10 | Users | 172.16.0.0/21 | 172.16.7.254 | 172.16.7.253 |
-
-| 20 | R\&D | 172.16.8.0/22 | 172.16.11.254 | 172.16.11.253 |
-
+| 20 | R&D | 172.16.8.0/22 | 172.16.11.254 | 172.16.11.253 |
 | 30 | RH | 172.16.12.0/23 | 172.16.13.254 | 172.16.13.253 |
-
 | 40 | IT | 172.16.14.0/24 | 172.16.14.254 | 172.16.14.253 |
-
 | 50 | Server | 172.16.15.0/25 | 172.16.15.126 | 172.16.15.125 |
-
 | 60 | DR | 172.16.16.0/26 | 172.16.16.62 | 172.16.16.61 |
-
-
-
 Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (172.16.15.10).
 
 
 
-\---
+---
 
 
 
@@ -157,23 +147,13 @@ Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (1
 
 
 | Vlan | Active | Standby | Virtual Gateway |
-
 |---|---|---|---|
-
 | 10 | SW-D1 | SW-D2 | 172.16.0.1 |
-
 | 20 | SW-D2 | SW-D1 | 172.16.8.1 |
-
 | 30 | SW-D1 | SW-D2 | 172.16.12.1 |
-
 | 40 | SW-D2 | SW-D1 | 172.16.14.1 |
-
 | 50 | SW-D1 | SW-D2 | 172.16.15.1 |
-
 | 60 | SW-D2 | SW-D1 | 172.16.16.1 |
-
-
-
 VLAN 10, 30 et 50 utilisent SW-D1 comme passerelle active HSRP et comme Root Bridge RPVST+.
 
 VLAN 20, 40 et 60 utilisent SW-D2 comme passerelle active HSRP et comme Root Bridge RPVST+.
@@ -184,7 +164,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-\---
+---
 
 
 
@@ -193,70 +173,37 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 | Network | Device | Interface | IP Address |
-
 |---|---|---|---|
-
 | 10.0.0.0/30 | SW-D1 | Po1 | 10.0.0.1 |
-
 | 10.0.0.0/30 | SW-C1 | Po1 | 10.0.0.2 |
-
 | 10.0.0.4/30 | SW-D1 | Fa0/7 | 10.0.0.5 |
-
 | 10.0.0.4/30 | SW-C2 | Gi1/0/3 | 10.0.0.6 |
-
 | 10.0.0.8/30 | SW-D2 | Po1 | 10.0.0.10 |
-
 | 10.0.0.8/30 | SW-C2 | Po1 | 10.0.0.9 |
-
 | 10.0.0.12/30 | SW-D2 | Fa0/7 | 10.0.0.13 |
-
 | 10.0.0.12/30 | SW-C1 | Gi1/0/3 | 10.0.0.14 |
-
 | 10.0.0.16/30 | SW-C1 | Gi1/0/6 | 10.0.0.17 |
-
 | 10.0.0.16/30 | R1-Edge | G0/0 | 10.0.0.18 |
-
 | 10.0.0.20/30 | SW-C2 | Po1 | 10.0.0.21 |
-
 | 10.0.0.20/30 | R1-Edge | G0/1 | 10.0.0.22 |
-
-
-
 #### Devices Running-Config
 
 
 
 | Device | Config |
-
 |---|---|
-
-| SW-A1 | \[SW-A1.txt](configs/SW-A1.txt) |
-
-| SW-A2 | \[SW-A2.txt](configs/SW-A2.txt) |
-
-| SW-A3 | \[SW-A3.txt](configs/SW-A3.txt) |
-
-| SW-A4 | \[SW-A4.txt](configs/SW-A4.txt) |
-
-| SW-A5 | \[SW-A5.txt](configs/SW-A5.txt) |
-
-| SW-A6 | \[SW-A6.txt](configs/SW-A6.txt) |
-
-| SW-D1 | \[SW-D1.txt](configs/SW-D1.txt) |
-
-| SW-D2 | \[SW-D2.txt](configs/SW-D2.txt) |
-
-| SW-C1 | \[SW-C1.txt](configs/SW-C1.txt) |
-
-| SW-C2 | \[SW-C2.txt](configs/SW-C2.txt) |
-
-| R1-Edge | \[R1-Edge.txt](configs/R1-Edge.txt) |
-
-
-
-
-
-\---
+| SW-A1 | [SW-A1.txt](configs/SW-A1.txt) |
+| SW-A2 | [SW-A2.txt](configs/SW-A2.txt) |
+| SW-A3 | [SW-A3.txt](configs/SW-A3.txt) |
+| SW-A4 | [SW-A4.txt](configs/SW-A4.txt) |
+| SW-A5 | [SW-A5.txt](configs/SW-A5.txt) |
+| SW-A6 | [SW-A6.txt](configs/SW-A6.txt) |
+| SW-D1 | [SW-D1.txt](configs/SW-D1.txt) |
+| SW-D2 | [SW-D2.txt](configs/SW-D2.txt) |
+| SW-C1 | [SW-C1.txt](configs/SW-C1.txt) |
+| SW-C2 | [SW-C2.txt](configs/SW-C2.txt) |
+| R1-Edge | [R1-Edge.txt](configs/R1-Edge.txt) |
+---
 
 
 
@@ -271,88 +218,51 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 | Vlan | Name | Network | Gateway SW-CD | Gateway SW-CD2 |
-
 |---|---|---|---|---|
-
 | 10 | Users | 172.16.128.0/22 | 172.16.131.254 | 172.16.131.253 |
-
 | 30 | RH | 172.16.132.0/24 | 172.16.132.254 | 172.16.132.253 |
-
 | 40 | IT | 172.16.133.0/25 | 172.16.133.126 | 172.16.133.125 |
-
 | 60 | DR | 172.16.133.128/26 | 172.16.133.190 | 172.16.133.189 |
-
-
-
 #### HSRP Design
 
 
 
 | Vlan | Active | Standby | Virtual Gateway |
-
 |---|---|---|---|
-
 | 10 | SW-CD | SW-CD2 | 172.16.128.1 |
-
 | 30 | SW-CD | SW-CD2 | 172.16.132.1 |
-
 | 40 | SW-CD2 | SW-CD | 172.16.133.1 |
-
 | 60 | SW-CD2 | SW-CD | 172.16.133.129 |
-
-
-
 #### Routing Design
 
 
 
 | Network | Device | Interface | IP Address |
-
 |---|---|---|---|
-
-| 10.0.1.0/30 | SW-CD | G/1/0/5 | 10.0.1.1 |
-
+| 10.0.1.0/30 | SW-CD | G1/0/5 | 10.0.1.1 |
 | 10.0.1.0/30 | R2-Edge | G0/0 | 10.0.1.2 |
-
 | 10.0.1.4/30 | SW-CD2 | G1/0/5 | 10.0.1.5 |
-
 | 10.0.1.4/30 | R2-Edge | G0/1 | 10.0.1.6 |
-
 | 10.0.1.8/30 | SW-CD | G1/0/6 | 10.0.1.9 |
-
 | 10.0.1.8/30 | SW-CD2 | G1/0/6 | 10.0.1.10 |
-
-
-
 #### Devices Running-Config
 
 
 
 | Device | Config |
-
 |---|---|
-
-| SW-A01 | \[SW-A01.txt](configs/SW-A01.txt) |
-
-| SW-A02 | \[SW-A02.txt](configs/SW-A02.txt) |
-
-| SW-A03 | \[SW-A03.txt](configs/SW-A03.txt) |
-
-| SW-A04 | \[SW-A04.txt](configs/SW-A04.txt) |
-
-| SW-CD | \[SW-CD.txt](configs/SW-CD.txt) |
-
-| SW-CD2 | \[SW-CD2.txt](configs/SW-CD2.txt) |
-
-| R2-Edge | \[R2-Edge.txt](configs/R2-Edge.txt) |
+| SW-A01 | [SW-A01.txt](configs/SW-A01.txt) |
+| SW-A02 | [SW-A02.txt](configs/SW-A02.txt) |
+| SW-A03 | [SW-A03.txt](configs/SW-A03.txt) |
+| SW-A04 | [SW-A04.txt](configs/SW-A04.txt) |
+| SW-CD | [SW-CD.txt](configs/SW-CD.txt) |
+| SW-CD2 | [SW-CD2.txt](configs/SW-CD2.txt) |
+| R2-Edge | [R2-Edge.txt](configs/R2-Edge.txt) |
+---
 
 
 
-\---
-
-
-
-\## Security \& Hardening
+## Security & Hardening
 
 
 
@@ -367,7 +277,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-## Headquarters Verification \& Testing
+## Headquarters Verification & Testing
 
 
 
@@ -375,7 +285,7 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 
 
-!\[Vlan verification](screenshots/Verification/Headquarters/Vlan/SW-A1-Show-Vlan-Brief-SW-A1.png)
+![Vlan verification](screenshots/Verification/Headquarters/Vlan/SW-A1-Show-Vlan-Brief-SW-A1.png)
 
 
 
@@ -383,7 +293,7 @@ Les VLANs ont été correctement créés sur les switchs d'accès
 
 
 
-\---
+---
 
 
 
@@ -391,7 +301,7 @@ Les VLANs ont été correctement créés sur les switchs d'accès
 
 
 
-!\[Trunk verification](screenshots/Verification/Headquarters/Trunk/SW-A2-Show-Interface-Trunk.png)
+![Trunk verification](screenshots/Verification/Headquarters/Trunk/SW-A2-Show-Interface-Trunk.png)
 
 
 
@@ -399,7 +309,7 @@ Les liens trunk sont opérationnels et transportent uniquement les VLANs autoris
 
 
 
-\---
+---
 
 
 
@@ -411,7 +321,7 @@ Les liens trunk sont opérationnels et transportent uniquement les VLANs autoris
 
 
 
-!\[RPVST+ verification](screenshots/Verification/Headquarters/RPVST+/SW-D1-Show-Spanning-Tree-Vlan10-Vlan.30.png)
+![RPVST+ verification](screenshots/Verification/Headquarters/RPVST+/SW-D1-Show-Spanning-Tree-Vlan10-Vlan.30.png)
 
 
 
@@ -423,13 +333,13 @@ SW-D1 est Root Bridge pour les VLANs 10, 30 et 50 afin d'être aligné avec HSRP
 
 
 
-!\[RPVST+ verification](screenshots/Verification/Headquarters/RPVST+/SW-D2-Show-Spanning-Tree-Vlan20-Vlan.40.png)
+![RPVST+ verification](screenshots/Verification/Headquarters/RPVST+/SW-D2-Show-Spanning-Tree-Vlan20-Vlan.40.png)
 
 
 
 SW-D2 est Root Bridge pour les VLANs 20, 40 et 60 afin d'être aligné avec HSRP.
 
-\---
+---
 
 
 
@@ -441,7 +351,7 @@ SW-D2 est Root Bridge pour les VLANs 20, 40 et 60 afin d'être aligné avec HSRP
 
 
 
-!\[HSRP verification](screenshots/Verification/Headquarters/HSRP/SW-D1-Show-Standby-brief.png)
+![HSRP verification](screenshots/Verification/Headquarters/HSRP/SW-D1-Show-Standby-brief.png)
 
 
 
@@ -453,7 +363,7 @@ SW-D1 est actif pour les VLANs 10, 30 et 50 tandis que SW-D2 reste en état Stan
 
 
 
-!\[HSRP verification](screenshots/Verification/Headquarters/HSRP/SW-D2-Show-Standby-brief.png)
+![HSRP verification](screenshots/Verification/Headquarters/HSRP/SW-D2-Show-Standby-brief.png)
 
 
 
@@ -461,7 +371,7 @@ SW-D2 est actif pour les VLANs 20, 40 et 60 tandis que SW-D1 reste en état Stan
 
 
 
-\---
+---
 
 
 
@@ -469,7 +379,7 @@ SW-D2 est actif pour les VLANs 20, 40 et 60 tandis que SW-D1 reste en état Stan
 
 
 
-!\[OSPF verification](screenshots/Verification/Headquarters/OSPF/SW-D1-Show-IP-Ospf-Neighbor.png)
+![OSPF verification](screenshots/Verification/Headquarters/OSPF/SW-D1-Show-IP-Ospf-Neighbor.png)
 
 
 
@@ -477,7 +387,7 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
 
-\---
+---
 
 
 
@@ -489,11 +399,11 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
 
-!\[inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan10-Ping-Vlan60.png)
+![inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan10-Ping-Vlan60.png)
 
 
 
-!\[inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan20-Ping-Vlan40.png)
+![inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan20-Ping-Vlan40.png)
 
 
 
@@ -505,7 +415,7 @@ La communication entre plusieurs VLANs a été validée afin de confirmer le bon
 
 
 
-!\[Outside Connectivity verification](screenshots/Verification/Headquarters/Outside-Connectivity/3-tier-Vlan20-Ping-2-Tier-Vlan30.png)
+![Outside Connectivity verification](screenshots/Verification/Headquarters/Outside-Connectivity/3-tier-Vlan20-Ping-2-Tier-Vlan30.png)
 
 
 
@@ -517,11 +427,11 @@ La connectivité entre le Headquarter et la Branch a été vérifiée avec succ�
 
 
 
-!\[Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1)
+![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1)
 
 
 
-!\[Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1)
+![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1)
 
 
 
@@ -529,11 +439,11 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 
 
-\---
+---
 
 
 
-## Branch Office Verification \& Testing
+## Branch Office Verification & Testing
 
 
 
@@ -541,7 +451,7 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 
 
-!\[Vlan verification](screenshots/Verification/Branch-Office/Vlan/SW-A01-Show-Vlan-Brief.png)
+![Vlan verification](screenshots/Verification/Branch-Office/Vlan/SW-A01-Show-Vlan-Brief.png)
 
 
 
@@ -549,7 +459,7 @@ Les VLANs ont été correctement créés sur les switchs d'accès
 
 
 
-\---
+---
 
 
 
@@ -557,7 +467,7 @@ Les VLANs ont été correctement créés sur les switchs d'accès
 
 
 
-!\[Trunk verification](screenshots/Verification/Branch-Office/Trunk/SW-CD2-Show-Interface-Trunk.png)
+![Trunk verification](screenshots/Verification/Branch-Office/Trunk/SW-CD2-Show-Interface-Trunk.png)
 
 
 
@@ -565,7 +475,7 @@ Les liens trunk sont opérationnels et transportent uniquement les VLANs autoris
 
 
 
-\---
+---
 
 
 
@@ -577,7 +487,7 @@ Les liens trunk sont opérationnels et transportent uniquement les VLANs autoris
 
 
 
-!\[RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan10-Vlan.30.png)
+![RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan10-Vlan.30.png)
 
 
 
@@ -589,7 +499,7 @@ SW-CD est Root Bridge pour les VLANs 10 et 30 afin d'être aligné avec HSRP.
 
 
 
-!\[RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan40-Vlan.60.png)
+![RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan40-Vlan.60.png)
 
 
 
@@ -597,7 +507,7 @@ SW-CD2 est Root Bridge pour les VLANs 40 et 60 afin d'être aligné avec HSRP.
 
 
 
-\---
+---
 
 
 
@@ -609,7 +519,7 @@ SW-CD2 est Root Bridge pour les VLANs 40 et 60 afin d'être aligné avec HSRP.
 
 
 
-!\[HSRP verification](screenshots/Verification/Branch-Office/HSRP/SW-CD-Show-Standby-brief.png)
+![HSRP verification](screenshots/Verification/Branch-Office/HSRP/SW-CD-Show-Standby-brief.png)
 
 
 
@@ -621,7 +531,7 @@ SW-CD est actif pour les VLANs 10 et 30 tandis que SW-CD2 reste en état Standby
 
 
 
-!\[HSRP verification](screenshots/Verification/Branch-Office/HSRP/SW-CD2-Show-Standby-brief.png)
+![HSRP verification](screenshots/Verification/Branch-Office/HSRP/SW-CD2-Show-Standby-brief.png)
 
 
 
@@ -629,7 +539,7 @@ SW-CD2 est actif pour les VLANs 40 et 60 tandis que SW-CD reste en état Standby
 
 
 
-\---
+---
 
 
 
@@ -637,7 +547,7 @@ SW-CD2 est actif pour les VLANs 40 et 60 tandis que SW-CD reste en état Standby
 
 
 
-!\[OSPF verification](screenshots/Verification/Branch-Office/OSPF/SW-CD-Show-IP-Ospf-Neighbor.png)
+![OSPF verification](screenshots/Verification/Branch-Office/OSPF/SW-CD-Show-IP-Ospf-Neighbor.png)
 
 
 
@@ -645,7 +555,7 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
 
-\---
+---
 
 
 
@@ -657,15 +567,15 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 
 
-!\[Internal Connectivity verification](screenshots/Verification/Branch-Office/Internal-Connectivity/Vlan10-Ping-Vlan40.png)
+![Internal Connectivity verification](screenshots/Verification/Branch-Office/Internal-Connectivity/Vlan10-Ping-Vlan40.png)
 
 
 
-La communication entre Vlan 10 et Vlan 20 a été validée afin de confirmer le bon fonctionnement du routage inter-VLAN à l'intérieur de le Branch.
+La communication entre les VLANs 10 et 40 a été validée afin de confirmer le bon fonctionnement du routage inter-VLAN à l'intérieur de la Branch.
 
 
 
-\---
+---
 
 
 
@@ -673,7 +583,7 @@ La communication entre Vlan 10 et Vlan 20 a été validée afin de confirmer le 
 
 
 
-!\[External Connectivity verification](screenshots/Verification/Branch-Office/External-Connectivity/2-tier-Vlan10-Ping-3-Tier-Vlan20.png)
+![External Connectivity verification](screenshots/Verification/Branch-Office/External-Connectivity/2-tier-Vlan10-Ping-3-Tier-Vlan20.png)
 
 
 
@@ -681,7 +591,7 @@ La connectivité entre la Branch et le Headquarter a été vérifiée avec succ�
 
 
 
-\---
+---
 
 
 
@@ -689,11 +599,11 @@ La connectivité entre la Branch et le Headquarter a été vérifiée avec succ�
 
 
 
-!\[Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1.png)
+![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1.png)
 
 
 
-!\[Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1.png)
+![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC2-Tracert-R1-Edge-Path-SWD1.png)
 
 
 
@@ -701,7 +611,7 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 
 
-\---
+---
 
 
 
@@ -748,7 +658,7 @@ L'adresse du DHCP Relay devrait également apparaître dans le champ Relay Agent
 
 
 
-L'observation des paquets DHCP serait plus complète avec Wireshark sous GNS3.Malheureusement je n'ai pas la possibilité d'utiliser ce dernier.
+L'observation des paquets DHCP serait plus complète avec Wireshark sous GNS3. Malheureusement je n'ai pas la possibilité d'utiliser ce dernier.
 
 
 
@@ -756,7 +666,7 @@ Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
 
 
-\---
+---
 
 
 
@@ -764,11 +674,11 @@ Dans ce lab, l'analyse est donc limitée aux informations visibles.
 
 
 
-!\[Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(1).png)
+![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(1).png)
 
 
 
-!\[Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(2).png)
+![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(2).png)
 
 
 
@@ -818,7 +728,7 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-\---
+---
 
 
 
@@ -826,11 +736,11 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-!\[Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(1).png)
+![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(1).png)
 
 
 
-!\[Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(2).png)
+![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(2).png)
 
 
 
@@ -866,7 +776,7 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-\---
+---
 
 
 
@@ -874,11 +784,11 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 
-!\[Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur(1).png)
+![Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur(1).png)
 
 
 
-!\[Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur(2).png)
+![Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur(2).png)
 
 
 
@@ -918,11 +828,11 @@ Dans un vrai paquet DHCP, l'adresse demandée par le client serait visible dans 
 
 
 
-!\[Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(1).png)
+![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(1).png)
 
 
 
-!\[Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(2).png)
+![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(2).png)
 
 
 
@@ -952,7 +862,7 @@ Dans la partie DHCP :
 
 OP:0x02 = BOOTREPLY
 
-YOUR CLIENT ADDRESS 172.16.16.10 = Adresse Offert par le Serveur DHCP au client
+YOUR CLIENT ADDRESS 172.16.16.10 = Adresse offerte par le serveur DHCP au client
 
 SERVER ADDRESS : 172.16.15.10 = Adresse IP du Serveur DHCP
 
@@ -1031,4 +941,3 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 
 ## Key Concepts Learned
-
