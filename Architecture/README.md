@@ -156,6 +156,7 @@ Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique (1
 | 40 | SW-D2 | SW-D1 | 172.16.14.1 |
 | 50 | SW-D1 | SW-D2 | 172.16.15.1 |
 | 60 | SW-D2 | SW-D1 | 172.16.16.1 |
+
 VLAN 10, 30 et 50 utilisent SW-D1 comme passerelle active HSRP et comme Root Bridge RPVST+.
 
 VLAN 20, 40 et 60 utilisent SW-D2 comme passerelle active HSRP et comme Root Bridge RPVST+.
