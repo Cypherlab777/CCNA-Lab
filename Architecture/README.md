@@ -156,9 +156,9 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 
 
 
-| Vlan | Active | Standby | Virtual Gateway |
+| VLAN | Active Router | Standby Router | Virtual Gateway |
 
-|---|---|---|---|
+|------|--------------|---------------|----------------|
 
 | 10 | SW-D1 | SW-D2 | 172.16.0.1 |
 
