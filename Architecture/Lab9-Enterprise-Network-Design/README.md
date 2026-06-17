@@ -1,27 +1,21 @@
-# Lab 9 Enterprise-Design
+# Lab 9 Enterprise Network Design
 
 ## Overview
 
+This project combines several Cisco technologies covered during my studies and brings them together within the same environment.
 
-Ce projet combine plusieurs technologies Cisco vues durant mon apprentissage afin de les faire fonctionner ensemble dans un même environnement.
+The infrastructure simulates a company composed of two sites:
 
+* A Headquarters (HQ) using a 3-Tier architecture.
+* A Branch Office using a Collapsed Core architecture.
+* The company's addressing plan is based on the private network 172.16.0.0/16, divided into multiple subnets distributed between the headquarters and the branch office.
 
-L'infrastructure simule une entreprise composée de deux sites :
+This lab serves as a checkpoint allowing me to consolidate my knowledge and apply it in a more realistic environment.
 
+Technologies implemented:
 
-* Un Headquarters (HQ) utilisant une architecture 3-Tier.
-* Une Branch Office utilisant une architecture Collapsed Core.
-* Le plan d'adressage de l'entreprise est basé sur le réseau privé 172.16.0.0/16, découpé en plusieurs sous-réseaux répartis entre le siège et la succursale.
-
-
-Ce lab est une sorte de checkpoint me permettant de consolider mes connaissances et de les mettre en pratique dans un environnement plus réaliste.
-
-
-Technologies mises en œuvre :
-
-
-* Architecture 3-Tier
-* Architecture Collapsed Core
+* 3-Tier Architecture
+* Collapsed Core Architecture
 * VLAN Segmentation
 * Inter-VLAN Routing
 * HSRP
@@ -30,57 +24,35 @@ Technologies mises en œuvre :
 * DHCP Relay
 * Layer 2 Hardening
 
-
 ---
-
 
 ## Objectives
 
-
-
-* Concevoir un réseau d'entreprise réaliste en utilisant plusieurs architectures afin de comparer les bénéfices de chacune d'entre elles.
-* Mettre en pratique des technologies telles que HSRP et RPVST+ et les aligner afin d'obtenir des chemins cohérents et optimaux, tout en permettant une circulation fluide du trafic.
-* Mettre en place un serveur DHCP central utilisé par l'ensemble du réseau via DHCP Relay.
-* Offrir de la redondance aux passerelles par défaut des deux sites en configurant HSRP.
-* Mettre en place le routage dynamique avec OSPF.
-* Mettre en application les bonnes pratiques de sécurité à l'aide du Layer 2 Hardening.
-* Manipuler les coûts OSPF afin d'observer le comportement d'ECMP et d'influencer les chemins empruntés par certains VLANs.
-
-
+* Design a realistic enterprise network using multiple architectures in order to compare the benefits of each approach.
+* Implement technologies such as HSRP and RPVST+ and align them to achieve consistent and optimized traffic paths while maintaining smooth traffic flow.
+* Deploy a centralized DHCP server used by the entire network through DHCP Relay.
+* Provide default gateway redundancy for both sites by configuring HSRP.
+* Implement dynamic routing using OSPF.
+* Apply security best practices through Layer 2 Hardening.
+* Manipulate OSPF costs in order to observe ECMP behavior and influence the paths used by specific VLANs.
 
 ---
 
-
-
 ## Topology Overview
 
+The enterprise network consists of a Headquarters and a Branch Office connected through a WAN link (Leased Line).
 
+Since the Headquarters hosts a large number of users, I decided to use a 3-Tier architecture.
 
-Le réseau d'entreprise est composé d'un Headquarters et d'une Branch Office connectés via un lien WAN (Lease Line).
+The Branch Office uses a 2-Tier Collapsed Core architecture. Due to its smaller size, I felt it was more appropriate to merge the Core and Distribution layers in order to simplify the infrastructure and reduce costs.
 
+Default gateway redundancy is provided by HSRP, while RPVST+ controls the links to prevent Layer 2 loops.
 
+I decided to deploy a DHCP server at the main site in order to provide IP addresses to the different Headquarters VLANs through DHCP Relay configured on the gateways.
 
-Le réseau du Headquarters employant beaucoup de monde, j'ai décidé d'utiliser une architecture 3-Tier.
+For the Branch Office, I chose to use DHCP directly configured on the router. This allowed me to practice a second DHCP deployment method that is commonly used on smaller sites.
 
-
-
-La Branch Office quant à elle utilise une architecture 2-Tier Collapsed Core. Au vu de sa taille, il m'a semblé plus judicieux de fusionner les couches Core et Distribution afin de simplifier l'infrastructure et de réduire les coûts.
-
-
-
-La redondance des passerelles par défaut est assurée par HSRP, tandis que RPVST+ contrôle les liens afin d'éviter les boucles Layer 2.
-
-
-
-J'ai décidé de déployer un serveur DHCP sur le site principal afin de fournir des adresses IP aux différents VLANs du Headquarters via DHCP Relay configuré sur les passerelles.
-
-
-
-Pour la Branch Office, j'ai opté pour un DHCP directement configuré sur le routeur. Cela m'a permis de mettre en pratique une seconde méthode DHCP souvent utilisée sur des sites plus petits.
-
-
-
-L'adressage a également été pensé de manière à offrir une marge de croissance de 100 % sur les deux sites afin d'anticiper les besoins futurs.
+The addressing plan was also designed to provide a 100% growth margin on both sites in order to anticipate future requirements.
 
 
 
@@ -118,7 +90,7 @@ L'adressage a également été pensé de manière à offrir une marge de croissa
 | 60 | DR | 172.16.16.0/26 | 172.16.16.62 | 172.16.16.61 |
 
 
-Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique : 172.16.15.10.
+The DHCP server is located in VLAN 50 and uses the following static IP address: 172.16.15.10.
 
 ---
 
@@ -134,16 +106,14 @@ Le serveur DHCP est situé dans le VLAN 50 et utilise une adresse IP statique : 
 | 50 | SW-D1 | SW-D2 | 172.16.15.1 |
 | 60 | SW-D2 | SW-D1 | 172.16.16.1 |
 
-VLAN 10, 30 et 50 utilisent SW-D1 comme passerelle active HSRP et comme Root Bridge RPVST+.
 
-VLAN 20, 40 et 60 utilisent SW-D2 comme passerelle active HSRP et comme Root Bridge RPVST+.
+VLANs 10, 30, and 50 use SW-D1 as their active HSRP gateway and RPVST+ Root Bridge.
 
+VLANs 20, 40, and 60 use SW-D2 as their active HSRP gateway and RPVST+ Root Bridge.
 
-Cette répartition permet d'équilibrer la charge entre les deux switches de distribution tout en maintenant un alignement cohérent entre HSRP et RPVST+.
-
+This distribution helps balance the load between the two distribution switches while maintaining consistent alignment between HSRP and RPVST+.
 
 ---
-
 
 #### Routing Design
 
@@ -247,16 +217,14 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 
 ## Security & Hardening
 
-
-
-* Tous les ports inutilisés ont été placés dans le VLAN 999 et administrativement shutdown.
-* Activation de PortFast par défaut sur les switches d'accès.
-* Activation de BPDU Guard par défaut sur les switches d'accès.
-* Le VLAN natif des trunks est également configuré sur le VLAN 999 afin d'éviter l'utilisation du VLAN 1.
-* Le VLAN 999 n'est pas utilisé pour le trafic utilisateur.
-* Restriction des VLANs autorisés sur les trunks.
-* Désactivation de DTP.
-* Activation de passive-interface sur les SVI des switches de distribution.
+* All unused ports have been placed in VLAN 999 and administratively shut down.
+* PortFast has been enabled by default on access switches.
+* BPDU Guard has been enabled by default on access switches.
+* The native VLAN on trunk links is also configured as VLAN 999 to avoid using VLAN 1.
+* VLAN 999 is not used for user traffic.
+* Allowed VLANs have been restricted on trunk links.
+* DTP has been disabled.
+* Passive interfaces have been configured on the SVIs of the distribution switches.
 
 ---
 
@@ -270,97 +238,53 @@ Cette répartition permet d'équilibrer la charge entre les deux switches de dis
 ![Vlan verification](screenshots/Verification/Headquarters/Vlan/SW-A1-Show-Vlan-Brief-SW-A1.png)
 
 
-
-Les VLANs ont été correctement créés sur les switchs d'accès
-
-
----
-
+The VLANs have been successfully created on the access switches.
 
 ### Trunk Verification
 
-
-
 ![Trunk verification](screenshots/Verification/Headquarters/Trunk/SW-A2-Show-Interface-Trunk.png)
 
-
-
-Les liens trunk sont opérationnels et transportent uniquement les VLANs autorisés
-
-
+The trunk links are operational and carry only the allowed VLANs.
 
 ---
-
-
 
 ### RPVST+ Verification
 
-
-
 #### SW-D1
-
-
 
 ![RPVST+ verification](screenshots/Verification/Headquarters/RPVST+/SW-D1-Show-Spanning-Tree-Vlan10-Vlan.30.png)
 
-
-
-SW-D1 est Root Bridge pour les VLANs 10, 30 et 50 afin d'être aligné avec HSRP.
-
-
+SW-D1 is the Root Bridge for VLANs 10, 30, and 50 in order to align with HSRP.
 
 #### SW-D2
-
-
 
 ![RPVST+ verification](screenshots/Verification/Headquarters/RPVST+/SW-D2-Show-Spanning-Tree-Vlan20-Vlan.40.png)
 
-
-
-SW-D2 est Root Bridge pour les VLANs 20, 40 et 60 afin d'être aligné avec HSRP.
+SW-D2 is the Root Bridge for VLANs 20, 40, and 60 in order to align with HSRP.
 
 ---
-
-
 
 ### HSRP Verification
 
-
-
 #### SW-D1
-
-
 
 ![HSRP verification](screenshots/Verification/Headquarters/HSRP/SW-D1-Show-Standby-brief.png)
 
-
-
-SW-D1 est actif pour les VLANs 10, 30 et 50 tandis que SW-D2 reste en état Standby.
-
-
+SW-D1 is active for VLANs 10, 30, and 50 while SW-D2 remains in the Standby state.
 
 #### SW-D2
 
-
-
 ![HSRP verification](screenshots/Verification/Headquarters/HSRP/SW-D2-Show-Standby-brief.png)
 
-
-
-SW-D2 est actif pour les VLANs 20, 40 et 60 tandis que SW-D1 reste en état Standby.
-
+SW-D2 is active for VLANs 20, 40, and 60 while SW-D1 remains in the Standby state.
 
 ---
 
-
 ### OSPF Convergence
-
 
 ![OSPF verification](screenshots/Verification/Headquarters/OSPF/SW-D1-Show-IP-Ospf-Neighbor.png)
 
-
-Les adjacences OSPF ont été établies avec tous les voisins attendus.
-
+OSPF adjacencies have been successfully established with all expected neighbors.
 
 ---
 
@@ -370,45 +294,27 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 #### Internal Connectivity
 
-
 ![inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan10-Ping-Vlan60.png)
-
-
 
 ![inside Connectivity verification](screenshots/Verification/Headquarters/Inside-Connectivity/Vlan20-Ping-Vlan40.png)
 
-
-
-La communication entre plusieurs VLANs a été validée afin de confirmer le bon fonctionnement du routage inter-VLAN à l'intérieur du HQ
-
-
+Communication between multiple VLANs has been successfully validated, confirming proper inter-VLAN routing within the Headquarters.
 
 #### External Connectivity
 
-
-
 ![Outside Connectivity verification](screenshots/Verification/Headquarters/Outside-Connectivity/3-tier-Vlan20-Ping-2-Tier-Vlan30.png)
 
-
-
-La connectivité entre le Headquarter et la Branch a été vérifiée avec succès à travers le WAN.
+Connectivity between the Headquarters and the Branch Office has been successfully verified across the WAN.
 
 ---
 
 #### HSRP / RPVST+ Path Validation
 
-
-
 ![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC1-Tracert-R1-Edge-Path-SWD1.png)
-
-
 
 ![Tracert Path verification](screenshots/Verification/Headquarters/Tracert-Path/PC2-Tracert-R1-Edge-Path-SW-D2.png)
 
-
-
-Les résultats du traceroute confirment que le trafic emprunte les chemins prévus grâce à l'alignement entre HSRP et RPVST+.
-
+The traceroute results confirm that traffic follows the expected paths thanks to the alignment between HSRP and RPVST+.
 
 ---
 
@@ -418,98 +324,57 @@ Les résultats du traceroute confirment que le trafic emprunte les chemins prév
 
 ### VLAN Verification
 
-
 ![Vlan verification](screenshots/Verification/Branch-Office/Vlan/SW-A01-Show-Vlan-Brief.png)
 
-
-Les VLANs ont été correctement créés sur les switchs d'accès
-
+The VLANs have been successfully created on the access switches.
 
 ---
-
 
 ### Trunk Verification
 
-
 ![Trunk verification](screenshots/Verification/Branch-Office/Trunk/SW-CD2-Show-Interface-Trunk.png)
 
-
-Les liens trunk sont opérationnels et transportent uniquement les VLANs autorisés
-
+The trunk links are operational and carry only the allowed VLANs.
 
 ---
-
 
 ### RPVST+ Verification
 
-
 #### SW-CD
-
 
 ![RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan10-Vlan.30.png)
 
-SW-CD est Root Bridge pour les VLANs 10 et 30 afin d'être aligné avec HSRP.
-
-
+SW-CD is the Root Bridge for VLANs 10 and 30 in order to align with HSRP.
 
 #### SW-CD2
-
-
 
 ![RPVST+ verification](screenshots/Verification/Branch-Office/RPVST+/SW-CD-Show-Spanning-Tree-Vlan40-Vlan.60.png)
 
-
-
-SW-CD2 est Root Bridge pour les VLANs 40 et 60 afin d'être aligné avec HSRP.
-
+SW-CD2 is the Root Bridge for VLANs 40 and 60 in order to align with HSRP.
 
 ---
-
-
 
 ### HSRP Verification
 
-
-
 #### SW-CD
-
-
 
 ![HSRP verification](screenshots/Verification/Branch-Office/HSRP/SW-CD-Show-Standby-brief.png)
 
-
-
-SW-CD est actif pour les VLANs 10 et 30 tandis que SW-CD2 reste en état Standby.
-
-
+SW-CD is active for VLANs 10 and 30 while SW-CD2 remains in the Standby state.
 
 #### SW-CD2
 
-
-
 ![HSRP verification](screenshots/Verification/Branch-Office/HSRP/SW-CD2-Show-Standby-brief.png)
 
-
-
-SW-CD2 est actif pour les VLANs 40 et 60 tandis que SW-CD reste en état Standby.
-
-
+SW-CD2 is active for VLANs 40 and 60 while SW-CD remains in the Standby state.
 
 ---
 
-
-
 ### OSPF Convergence
-
-
 
 ![OSPF verification](screenshots/Verification/Branch-Office/OSPF/SW-CD-Show-IP-Ospf-Neighbor.png)
 
-
-
-Les adjacences OSPF ont été établies avec tous les voisins attendus.
-
-
+OSPF adjacencies have been successfully established with all expected neighbors.
 
 ---
 
@@ -517,259 +382,178 @@ Les adjacences OSPF ont été établies avec tous les voisins attendus.
 
 ![DHCP verification](screenshots/Verification/Branch-Office/DHCP/SW-CD-Show-IP-Dhcp-Pool.png)
 
-
-Le routeur SW-CD distribue correctement les adresses IP aux clients des VLANs de la Branch Office.
+The SW-CD router is correctly assigning IP addresses to clients in the Branch Office VLANs.
 
 ---
 
 ### End-to-End Connectivity
 
-
-
 #### Internal Connectivity
-
-
 
 ![Internal Connectivity verification](screenshots/Verification/Branch-Office/Internal-Connectivity/Vlan10-Ping-Vlan40.png)
 
-
-
-La communication entre les VLANs 10 et 40 a été validée afin de confirmer le bon fonctionnement du routage inter-VLAN à l'intérieur de la Branch.
-
-
+Communication between VLANs 10 and 40 has been successfully validated, confirming proper inter-VLAN routing within the Branch Office.
 
 ---
-
-
 
 #### External Connectivity
 
-
-
 ![External Connectivity verification](screenshots/Verification/Branch-Office/External-Connectivity/2-tier-Vlan10-Ping-3-Tier-Vlan20.png)
 
-
-
-La connectivité entre la Branch et le Headquarter a été vérifiée avec succès à travers le WAN.
-
-
+Connectivity between the Branch Office and the Headquarters has been successfully verified across the WAN.
 
 ---
-
-
 
 #### HSRP / RPVST+ Path Validation
 
-
-
 ![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC11-Tracert-R2-Edge-Path-SW-CD.png)
-
-
 
 ![Tracert Path verification](screenshots/Verification/Branch-Office/Tracert-Path/PC12-Tracert-R2-Edge-Path-SW-CD.png)
 
-
-
-Les résultats du traceroute confirment que le trafic emprunte les chemins prévus grâce à l'alignement entre HSRP et RPVST+.
-
-
+The traceroute results confirm that traffic follows the expected paths thanks to the alignment between HSRP and RPVST+.
 
 ---
 
-
 ## DORA Analysis
 
+### Packet Tracer Limitations Regarding DORA
 
-### Limitations de Packet Tracer concernant le DORA
+Packet Tracer does not display all DHCP options in detail. These options normally contain information such as:
 
-
-
-Packet Tracer n'affiche pas toutes les options DHCP en détail. Ces options contiennent normalement des informations comme :
-
-
-* Le lease time
-* Le serveur DNS
-* Le type de message DHCP : Discover, Offer, Request, ACK
-* Le Server Identifier
-* La Requested IP Address
+* Lease time
+* DNS server
+* DHCP message type: Discover, Offer, Request, ACK
+* Server Identifier
+* Requested IP Address
 * Etc.
 
+The DHCP Relay address should also appear in the Relay Agent Address / giaddr field, but Packet Tracer does not display it correctly in this lab.
 
-L'adresse du DHCP Relay devrait également apparaître dans le champ Relay Agent Address / giaddr, mais Packet Tracer ne l'affiche pas correctement dans ce lab.
+Observing DHCP packets would be more complete using Wireshark with GNS3. Unfortunately, I do not have the possibility to use it.
 
-
-
-L'observation des paquets DHCP serait plus complète avec Wireshark sous GNS3. Malheureusement je n'ai pas la possibilité d'utiliser ce dernier.
-
-
-
-Dans ce lab, l'analyse est donc limitée aux informations visibles.
+In this lab, the analysis is therefore limited to the information that is visible.
 
 ---
 
 ### Discover
 
-![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover(1).png)
+![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Doscover\(1\).png)
 
+![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Discover\(2\).png)
 
-![Discover verification](screenshots/DHCP-Analysis/DHCP-Discover/DHCP-Discover(2).png)
+We can observe the Discover packet of the DORA process in these captures.
 
+This packet is used to discover whether a DHCP server is available.
 
-Nous pouvons observer sur ces captures le paquet Discover du processus DORA.
+In the Ethernet and IP sections we have:
 
-Ce paquet sert a découvrir si il y a un serveur DHCP.
+SRC IP : 0.0.0.0 = The PC does not yet have an IP address
 
+DEST ADDR : FFFF.FFFF.FFFF = Packet sent to the Layer 2 broadcast address
 
-Dans la partie ethernet et ip nous avons :
+DEST IP : 255.255.255.255 = Packet sent to the Layer 3 broadcast address
 
+The packet is sent as a broadcast to discover whether a DHCP server exists.
 
-SRC IP : 0.0.0.0 = Le pc n'a pas encore d'adresse ip
+In the UDP section we have:
 
-DEST ADDR : FFFF.FFFF.FFFF = Paquet envoyé à l'adresse broadcast Layer 2
+SOURCE PORT : 68 = Corresponds to the client port
 
-DEST IP : 255.255.255.255 = paquet envoyé à l'adresse de broadcast Layer 3
+DEST PORT : 67 = Corresponds to the server port
 
-
-Le paquet est envoyé en broadcast pour découvrir si un serveur DHCP existe
-
-
-Dans la partie UDP nous avons :
-
-
-SOURCE PORT : 68 = Ce qui correspond au port client
-
-DEST PORT : 67 = Ce qui correspond au port serveur
-
-
-Dans la partie DHCP :
-
-
+In the DHCP section:
 
 OP:0x01 = BOOTREQUEST
 
-CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
-
+CLIENT HARDWARE : 0000.0CB7.37DC = PC MAC address
 
 ---
-
 
 ### Offer
 
+![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60\(1\).png)
 
-![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(1).png)
+![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60\(2\).png)
 
+We can observe the Offer packet of the DORA process in these captures.
 
-![Offer verification](screenshots/DHCP-Analysis/DHCP-Offer/DHCP-Offer-from-server-to-Relay-GW-Vlan60(2).png)
+This packet is used to send an IP address proposal from the DHCP server to the client.
 
+In the Ethernet and IP sections we have:
 
-Nous pouvons observer sur ces captures le paquet Offer du processus DORA.
+SRC IP : 172.16.15.10 = DHCP Server IP address
 
-Ce paquet sert à envoyer une proposition d'adresse IP au client depuis le serveur DHCP.
+DEST ADDR = 0000.0C07.AC32 = DHCP Relay MAC address
 
+DEST IP : 172.16.16.61 = DHCP Relay IP address
 
-Dans la partie ethernet et iP nous avons :
-
-
-SRC IP : 172.16.15.10 = L'adresse IP du Serveur DHCP
-
-DEST ADDR = 0000.0C07.AC32 = Adresse MAC du DHCP Relay
-
-DEST IP : 172.16.16.61 = Adresse IP du DHCP Relay
-
-
-Dans la partie DHCP :
-
+In the DHCP section:
 
 OP:0x02 = BOOTREPLY
 
-YOUR CLIENT ADDRESS 172.16.16.10 = Adresse offerte par le serveur DHCP au client
+YOUR CLIENT ADDRESS 172.16.16.10 = IP address offered by the DHCP server to the client
 
-SERVER ADDRESS : 172.16.15.10 = Adresse IP du Serveur DHCP
+SERVER ADDRESS : 172.16.15.10 = DHCP Server IP address
 
-CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
-
+CLIENT HARDWARE : 0000.0CB7.37DC = PC MAC address
 
 ---
 
-
 ### Request
 
+![Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur\(1\).png)
 
+![Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur\(2\).png)
 
-![Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur(1).png)
+We can observe the Request packet of the DORA process in these captures.
 
+The packet is sent as a broadcast to inform all DHCP servers that responded that the client accepts this offer and rejects any other proposals.
 
+In the Ethernet and IP sections we have:
 
-![Request verification](screenshots/DHCP-Analysis/DHCP-Request/DHCP-Request-From-pc-to-serveur(2).png)
+SRC IP : 0.0.0.0 = The PC does not yet have an IP address
 
+DEST ADDR : FFFF.FFFF.FFFF = Packet sent to the Layer 2 broadcast address
 
+DEST IP : 255.255.255.255 = Packet sent to the Layer 3 broadcast address
 
-Nous pouvons observer sur ces captures le paquet Request du processus DORA
-
-Le paquet est envoyé en broadcast afin d'informer tous les serveurs DHCP ayant répondu que le client accepte cette offre et rejette les éventuelles autres propositions.
-
-
-Dans la partie ethernet et IP nous avons :
-
-
-SRC IP : 0.0.0.0 = Le pc n'a pas encore d'adresse IP
-
-DEST ADDR : FFFF.FFFF.FFFF = Paquet envoyé à l'adresse broadcast Layer 2
-
-DEST IP : 255.255.255.255 = paquet envoyé à l'adresse de broadcast Layer 3
-
-
-Dans la partie DHCP :
-
+In the DHCP section:
 
 OP:0x01 = BOOTREQUEST
 
-CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du PC
+CLIENT HARDWARE : 0000.0CB7.37DC = PC MAC address
 
-
-Dans un vrai paquet DHCP, l'adresse demandée par le client serait visible dans les options DHCP, notamment avec l'option Requested IP Address. Packet Tracer ne l'affiche pas clairement ici.
+In a real DHCP packet, the address requested by the client would be visible in the DHCP options, notably through the Requested IP Address option. Packet Tracer does not display it clearly here.
 
 ---
 
 ### Ack
 
+![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC\(1\).png)
 
+![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC\(2\).png)
 
-![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(1).png)
+We can observe the Ack packet of the DORA process in these captures.
 
+This packet is used to officially confirm the assignment of the IP address requested by the client.
 
+In the Ethernet and IP sections we have:
 
-![Ack verification](screenshots/DHCP-Analysis/DHCP-Ack/DHCP-ACK-from-server-to-PC(2).png)
+SRC IP : 172.16.15.10 = DHCP Server IP address
 
+DEST ADDR = 0000.0C07.AC32 = DHCP Relay MAC address
 
-Nous pouvons observer sur ces captures le paquet Ack du processus DORA
+DEST IP : 172.16.16.61 = DHCP Relay IP address
 
-Ce paquet sert à confirmer officiellement l'attribution de l'adresse IP demandée par le client.
-
-
-
-Dans la partie ethernet et IP nous avons :
-
-
-
-SRC IP : 172.16.15.10 = L'adresse IP du Serveur DHCP
-
-DEST ADDR = 0000.0C07.AC32 = Adresse MAC du  DHCP Relay
-
-DEST IP : 172.16.16.61 = Adresse IP du DHCP Relay
-
-
-
-Dans la partie DHCP :
-
+In the DHCP section:
 
 OP:0x02 = BOOTREPLY
 
-YOUR CLIENT ADDRESS 172.16.16.10 = Adresse offerte par le serveur DHCP au client
+YOUR CLIENT ADDRESS 172.16.16.10 = IP address offered by the DHCP server to the client
 
-SERVER ADDRESS : 172.16.15.10 = Adresse IP du Serveur DHCP
+SERVER ADDRESS : 172.16.15.10 = DHCP Server IP address
 
-CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
+CLIENT HARDWARE : 0000.0CB7.37DC = PC MAC address
 
 ---
 
@@ -779,56 +563,56 @@ CLIENT HARDWARE : 0000.0CB7.37DC = Adresse MAC du pc
 
 ### Issue #1 — OSPF Adjacency Missing (SW-D2 ↔ SW-C2)
 
-Lors d'un test de connectivité entre PC9 et SW-C2, je me suis rendu compte que le paquet empruntait une route étrange.
+During a connectivity test between PC9 and SW-C2, I noticed that the packet was taking an unusual path.
 
-Chemin attendu :
+Expected path:
 
 * PC9 - SW-A5 - SW-D2 - SW-C2
 
-Chemin constaté :
+Observed path:
 
 * PC9 - SW-A5 - SW-D2 - SW-A4 - SW-D1 - SW-C2
 
-Je me suis demandé pourquoi le paquet faisait ce long détour, ce qui me semblait être un comportement assez étrange.
+I wondered why the packet was taking such a long detour, which seemed like a rather strange behavior.
 
-J'ai donc vérifié les adjacences OSPF et je me suis rendu compte que sur le Port-Channel 1, aucune adjacence n'était établie et qu'aucun paquet Hello n'était reçu malgré OSPF activé.
+I checked the OSPF adjacencies and noticed that no adjacency was established on Port-Channel 1 and that no Hello packets were being received even though OSPF was enabled.
 
-J'ai ensuite vérifié la configuration sur SW-C2 et j'ai remarqué qu'aucune adresse IP n'était configurée sur le Port-Channel 1.
+I then checked the configuration on SW-C2 and noticed that no IP address was configured on Port-Channel 1.
 
-J'ai donc décidé de configurer l'adresse manquante.
+I decided to configure the missing address.
 
-Une fois l'adresse configurée, à ma grande surprise, un message indiquant un chevauchement d'adresses (« overlap with Gi1/0/2 ») est apparu.
+Once the address was configured, to my surprise, a message indicating an address overlap ("overlap with Gi1/0/2") appeared.
 
-Gi1/0/2 étant un port membre du Port-Channel 1, j'ai alors vérifié sa configuration et constaté que l'adresse IP y était configurée.
+Since Gi1/0/2 was a member port of Port-Channel 1, I checked its configuration and discovered that the IP address was configured there.
 
-J'ai donc supprimé cette adresse avec la commande no ip address sur Gi1/0/2 puis reconfiguré cette même adresse sur Po1.
+I removed the address using the `no ip address` command on Gi1/0/2 and then configured the same address on Po1.
 
-Une fois cela fait, le message indiquant l'établissement d'une nouvelle adjacence OSPF s'est affiché à l'écran.
+Once this was done, a message indicating that a new OSPF adjacency had been established appeared on the screen.
 
-Le trafic a immédiatement recommencé à emprunter le chemin attendu.
+Traffic immediately started using the expected path again.
 
-Problème résolu !
+Problem solved!
 
 ---
 
-Symptoms 
+Symptoms
 
-* Chemin étrange constaté.
-* Aucune adjacence OSPF présente sur Po1.
+* Unusual path observed.
+* No OSPF adjacency present on Po1.
 
 ---
 
 Root Cause
 
-* L'adresse IP était configurée sur une interface physique membre de l'EtherChannel au lieu du Port-Channel.
+* The IP address was configured on a physical interface that was a member of the EtherChannel instead of on the Port-Channel interface.
 
 ---
 
 Solution
 
-* Suppression de l'adresse IP sur Gi1/0/2.
-* Configuration de l'adresse IP sur le Port-Channel 1.
-* Vérification de l'établissement de l'adjacence OSPF.
+* Removed the IP address from Gi1/0/2.
+* Configured the IP address on Port-Channel 1.
+* Verified the establishment of the OSPF adjacency.
 
 ---
 
@@ -836,78 +620,77 @@ Solution
 
 ---
 
-Lors d'un test de connectivité entre PC1 et SW-C1, je me suis rendu compte que le paquet empruntait une route étrange, un peu comme dans le problème numéro 1.
+During a connectivity test between PC1 and SW-C1, I noticed that the packet was taking an unusual path, similar to Issue #1.
 
-Chemin attendu :
+Expected path:
 
 SW-A1 - SW-D1 - SW-C1 - SW-D1 - SW-A1 - PC1
 
-Chemin constaté :
+Observed path:
 
 SW-A1 - SW-D1 - SW-C1 - SW-D2 - SW-A4 - SW-D1 - SW-A1 - PC1
 
-Je me suis de nouveau demandé pourquoi le paquet, à partir de SW-D2, ne passait pas directement par SW-A1.
+Once again, I wondered why the packet, after reaching SW-D2, was not going directly through SW-A1.
 
-J'ai vérifié le spanning-tree du VLAN 10 sur SW-D2 et je me suis rendu compte que le port Fa0/1 était dans l'état BLK. J'avais donc déjà un début d'explication.
+I checked the spanning-tree status for VLAN 10 on SW-D2 and noticed that port Fa0/1 was in the BLK state. This already gave me part of the explanation.
 
-Mais cela ne réglait pas mon problème d'origine : pourquoi le paquet n'empruntait-il pas le chemin qui me semblait le plus logique ?
+However, this did not answer my original question: why was the packet not using what seemed to be the most logical path?
 
-J'ai alors vérifié la table de routage et j'ai remarqué qu'il y avait deux chemins disponibles vers le VLAN 10. Je me suis donc rendu compte qu'ECMP faisait simplement son travail, c'est-à-dire utiliser plusieurs chemins ayant le même coût.
+I then checked the routing table and noticed that there were two available paths to VLAN 10. I realized that ECMP was simply doing its job, which is to use multiple paths with the same cost.
 
-À mon sens, le chemin pouvait être optimisé. J'ai donc décidé d'augmenter le coût OSPF du lien entre SW-C1 et SW-D2 à 5.
+In my opinion, the path could be optimized. I therefore decided to increase the OSPF cost of the link between SW-C1 and SW-D2 to 5.
 
-Cette modification a eu pour effet de supprimer le second chemin de coût égal vers cette destination et de forcer le trafic à emprunter le chemin souhaité.
+This change removed the second equal-cost path to the destination and forced the traffic to use the desired path.
 
-Problème résolu !
+Problem solved!
 
 ---
 
 Symptoms
 
-* Chemin inattendu constaté lors du test de connectivité.
+* Unexpected path observed during the connectivity test.
 
 ---
 
 Root Cause
 
-* Deux chemins de coût égal étaient présents dans la table de routage, ce qui entraînait l'utilisation 
-d'ECMP.
+* Two equal-cost paths were present in the routing table, resulting in ECMP being used.
 
 ---
 
 Solution
 
-* Augmentation du coût OSPF sur le lien SW-C1 ↔ SW-D2 afin de privilégier le chemin souhaité.
+* Increased the OSPF cost on the SW-C1 ↔ SW-D2 link in order to prefer the desired path.
 
 ---
 
 ## Skills Gained
 
-* Conception d'une architecture 3-Tier et Collapsed Core.
-* Création d'un plan d'adressage VLSM pour plusieurs sites.
-* Configuration et validation de HSRP.
-* Configuration et optimisation de RPVST+.
-* Mise en œuvre du routage dynamique avec OSPF.
-* Manipulation des coûts OSPF afin d'influencer les chemins de routage.
-* Configuration d'un serveur DHCP central avec DHCP Relay.
-* Configuration d'un DHCP local sur routeur.
-* Mise en place d'un EtherChannel LACP.
-* Application de mesures de Layer 2 Hardening.
-* Validation du fonctionnement du réseau à l'aide de commandes de vérification Cisco.
-* Analyse et résolution de problèmes réseau.
+* Designed a 3-Tier and Collapsed Core architecture.
+* Created a VLSM addressing plan for multiple sites.
+* Configured and validated HSRP.
+* Configured and optimized RPVST+.
+* Implemented dynamic routing with OSPF.
+* Manipulated OSPF costs to influence routing paths.
+* Configured a centralized DHCP server with DHCP Relay.
+* Configured local DHCP on a router.
+* Implemented an EtherChannel using LACP.
+* Applied Layer 2 Hardening measures.
+* Validated network operation using Cisco verification commands.
+* Analyzed and resolved network issues.
 
 ---
 
 ## Key Concepts Learned
 
-* L'importance d'aligner HSRP et RPVST+ afin d'obtenir des chemins de trafic cohérents.
-* Le fonctionnement d'ECMP et son impact sur la sélection des chemins.
-* L'influence des coûts OSPF sur les décisions de routage.
-* La différence entre DHCP Relay et DHCP local sur routeur.
-* Le rôle du Root Bridge dans le comportement de RPVST+.
-* Le fonctionnement des adjacences OSPF sur les interfaces Layer 3 et les EtherChannels.
-* L'importance de vérifier les interfaces physiques et logiques lors d'un dépannage.
-* Les limites de Packet Tracer pour l'analyse détaillée des paquets DHCP.
-* L'intérêt d'une approche méthodique lors du troubleshooting réseau.
+* The importance of aligning HSRP and RPVST+ to achieve consistent traffic paths.
+* How ECMP works and its impact on path selection.
+* The influence of OSPF costs on routing decisions.
+* The difference between DHCP Relay and local DHCP on a router.
+* The role of the Root Bridge in RPVST+ behavior.
+* How OSPF adjacencies operate on Layer 3 interfaces and EtherChannels.
+* The importance of verifying both physical and logical interfaces during troubleshooting.
+* The limitations of Packet Tracer for detailed DHCP packet analysis.
+* The value of a methodical approach when troubleshooting network issues.
 
 ---
