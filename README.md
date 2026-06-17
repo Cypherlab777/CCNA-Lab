@@ -23,20 +23,18 @@ Each lab includes:
 
 ## Featured Lab
 
-### Lab 9 - Enterprise-Design
-
-Highlights:
+### Lab 9 - Enterprise Network Design
 
 Highlights:
 
 * 3-Tier Architecture
 * 2-Tier Collapsed Core Architecture
+* Enterprise Network Design
 * VLAN Design & Segmentation
 * Subnetting & VLSM
 * Inter-VLAN Routing
 * OSPF
-* OSPF cost manipulation
-* ECMP control
+* OSPF Cost Manipulation & ECMP Control
 * HSRP / RPVST+ Alignment
 * EtherChannel (LACP)
 * DHCP Relay & Distributed DHCP
@@ -44,7 +42,7 @@ Highlights:
 * DHCP DORA Analysis
 * Network Troubleshooting
 
-📁 **[Open Lab](Architecture/Lab9-Enterprise-Design/README.md)**
+📁 **[Open Lab](Architecture/Lab9-Enterprise-Network-Design/README.md)**
 
 ---
 
