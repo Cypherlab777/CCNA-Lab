@@ -76,7 +76,7 @@ Highlights:
 | Lab 6 | RPVST+                         | [Open Lab](Switching/Lab6-RPVST+/README.md)                                 |
 | Lab 7 | OSPF                           | [Open Lab](Routing/Lab7-OSPF/README.md)                                   |
 | Lab 8 | IPv6 - HSRPv2                           | [Open Lab](Routing/Lab-8-IPv6-HSRPv2/README.md)                                   |
-| Lab 9 | Enterprise Architecture Network  | [Open Lab](Architecture/Lab9-Enterprise-Design/README.md)                                   |
+| Lab 9 | Enterprise Architecture Network  | [Open Lab](Architecture/Lab9-Enterprise-Network-Design/README.md)                                   |
 
 ---
 
