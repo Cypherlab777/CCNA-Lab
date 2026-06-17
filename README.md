@@ -55,11 +55,19 @@ Highlights:
 | Lab 8 | IPv6 - HSRPv2                           | [Open Lab](Routing/Lab-8-IPv6-HSRPv2/README.md)                                   |
 | Lab 9 | Enterprise Architecture Network  | [Open Lab](Architecture/Lab9/README.md)                                   |
 
-
-
 ---
 
 ## Skills Demonstrated
+
+### Network Design
+
+* 3-Tier Architecture
+* 2-Tier Collapsed Core Architecture
+* Enterprise Network Design
+* IP Address Planning
+* Capacity Planning
+* VLSM Design
+
 
 ### Routing
 
@@ -70,6 +78,7 @@ Highlights:
 * IPv4 Router-on-a-Stick
 * IPv6 Router-on-a-Stick
 * OSPFv2
+* HSRP
 * HSRPv2
 
 ### Switching
@@ -79,6 +88,10 @@ Highlights:
 * DTP
 * STP / RPVST+
 * Layer 3 Switching
+• EtherChannel (LACP)
+• Layer 2 Hardening
+• PortFast
+• BPDU Guard
 
 ### Addressing
 
@@ -92,15 +105,28 @@ Highlights:
 
 * DHCP
 * DHCP Relay
-* IP Helper Address
+* Distributed DHCP
+
+### High Availability
+
+* HSRP
+* HSRPv2
+* Gateway Redundancy
+* Load Balancing Design
+* HSRP / RPVST+ Alignment
 
 ### Analysis & Troubleshooting
 
 * Packet Tracer Sniffer
 * Packet Analysis
 * Connectivity Troubleshooting
+* EtherChannel Troubleshooting
+* OSPF Troubleshooting
 * Protocol Verification
 * Network Documentation
+
+
+
 
 ---
 
