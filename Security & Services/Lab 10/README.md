@@ -113,13 +113,15 @@ VLAN 20 Admin has full access to all VLANs and also to all devices for managemen
 | VLAN 20 | Full Access | None |
 | VLAN 30 | DNS - DHCP - TFTP - HTTP | VLAN 20 - VLAN 40 - Syslog - SSH Devices |
 | VLAN 40 | DNS - DHCP - TFTP - HTTP | VLAN 20 - VLAN 30 - Syslog - SSH Devices |
-| VLAN 50 | Services provider | No unrestricted user access |
+| VLAN 50 | Provides servicesS | No unrestricted user access |
 
 ### Management Access Policy 
 
 Access to the devices is exclusively reserved to VLAN 20 Admin through SSH.
 
 Authentication is done through the RADIUS server, except for R2 and SW20. In case the RADIUS server is down, local login remains available.
+
+R2 and SW20 use local login only in this lab.
 
 The following credentials are used only for this Packet Tracer lab.  
 They are intentionally simple and must not be reused in a real environment.
