@@ -1,0 +1,98 @@
+R1#show running-config 
+Building configuration...
+
+Current configuration : 2352 bytes
+!
+version 15.1
+service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+enable secret 5 $1$mERr$AFX/pZT1Lh7NP3Dp3P/qq/
+!
+aaa new-model
+!
+aaa authentication login default group radius local 
+!
+!
+aaa authorization exec default group radius local
+!
+no ip cef
+no ipv6 cef
+!
+username adminlocal privilege 15 secret 5 $1$mERr$Jd.F1u8qRyWXFszq5SldR1
+!
+license udi pid CISCO2911/K9 sn FTX1524Z5IT-
+!
+ip ssh version 2
+ip domain-name R1.local
+!
+!
+spanning-tree mode pvst
+!
+interface GigabitEthernet0/0
+ ip address 192.168.10.254 255.255.255.0
+ ip helper-address 192.168.50.102
+ ip access-group VLan-10 in
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.20.254 255.255.255.0
+ ip helper-address 192.168.50.102
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ ip address 192.168.100.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.0.0 0.0.255.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+ip access-list extended VLan-10
+ permit udp any eq bootpc any eq bootps
+ permit udp 192.168.10.0 0.0.0.255 host 192.168.50.101 eq domain
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.50.104 eq www
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.50.104 eq 443
+ permit udp host 192.168.10.1 host 192.168.50.103 eq tftp
+ permit tcp host 192.168.10.1 192.168.20.0 0.0.0.255 established
+ permit udp host 192.168.10.1 host 192.168.50.100 eq 514
+ permit udp host 192.168.10.1 host 192.168.50.105 eq 1645
+ deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+ deny ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255
+ deny ip 192.168.10.0 0.0.0.255 192.168.40.0 0.0.0.255
+ deny ip 192.168.10.0 0.0.0.255 host 192.168.50.100
+ permit ip 192.168.10.0 0.0.0.255 any
+ip access-list standard SSH-Management
+ permit 192.168.20.0 0.0.0.255
+ deny any
+!
+radius server 192.168.50.105
+ address ipv4 192.168.50.105 auth-port 1645
+ key radiuskeyR1
+!
+logging trap debugging
+logging 192.168.50.100
+line con 0
+!
+line aux 0
+!
+line vty 0 15
+ access-class SSH-Management in
+ login authentication default
+ transport input ssh
+!
+end

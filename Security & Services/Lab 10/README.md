@@ -89,6 +89,20 @@ VLAN 20 Admin has full access to all VLANs and also to all devices for managemen
 
 ---
 
+### Devices Running-Config
+
+| Device | Config |
+|---|---|
+| SW10 | [SW10.txt](configs/SW10.txt) |
+| SW20 | [SW20.txt](configs/SW20.txt) |
+| SW30 | [SW30.txt](configs/SW30.txt) |
+| SW40 | [SW40.txt](configs/SW40.txt) |
+| SW50 | [SW50.txt](configs/SW50.txt) |
+| R1 | [R1.txt](configs/R1.txt) |
+| R2 | [R2.txt](configs/R2.txt) |
+| R3 | [R3.txt](configs/R3.txt) |
+| R4 | [R4.txt](configs/R4.txt) |
+
 ## Security Policy
 
 ### Inter-VLAN Access Policy
