@@ -119,7 +119,7 @@ VLAN 20 Admin has full access to all VLANs and also to all devices for managemen
 
 Access to the devices is exclusively reserved to VLAN 20 Admin through SSH.
 
-Authentication is done through the RADIUS server, except for R2. In case the RADIUS server is down, local login remains available.
+Authentication is done through the RADIUS server, except for R2 and SW20. In case the RADIUS server is down, local login remains available.
 
 The following credentials are used only for this Packet Tracer lab.  
 They are intentionally simple and must not be reused in a real environment.
