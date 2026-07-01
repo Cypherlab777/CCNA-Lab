@@ -168,19 +168,19 @@ Dynamic Arp inspection se basant sur la DHCP snooping binding table, j'ai d'abor
 
 | Feature | Test | Expected Result | Actual Result | Evidence |
 |---|---|---|---|---|
-| RADIUS | Admin vlan connects to SW10 via SSH | Connetions | Success | [RADIUS Server](screenshots/Verification/SSH-RADIUS/RADIUS-Server.png) [SSH Test](screenshots/Verification/SSH-RADIUS/PC3-SSH-SW10.png)  |
-| SYSLOG | Log received on server | Events log | Success | [Syslog Server](screenshots/Verification/Syslog/Syslog.png) |
-| TFTP | Configurations backed up | Files saved | Success | [Tftp Server](screenshots/Verification/Tftp/Tftp.png) |
-| HTTP | Web server reachable using DNS | HTTP server working | Success | [WEB Access](screenshots/Verification/HTTP/PC5-HTTP.png) |
-| DHCP | Clients received IPs | DHCP assignment works | Success | [DHCP Server](screenshots/Verification/DHCP/DHCP.png) [DHCP assignement](screenshots/Verification/DHCP/PC8-DHCP-Assignement.png) |
-| DNS | Internal records resolve correctly | Internal records working | Success | [DNS Server](screenshots/Verification/DNS/DNS.png) [Ping records successful](screenshots/Verification/DNS/PC3-Ping-Dns.png) |
-| VLAN 10 ACL | check if the ACLs are working | Unauthorized traffic blocked | Success | [Before VLan-10 ACL](screenshots/Verification/Acls/Vlan10/Before-ACLs/PC2-ping-PC3-PC5-Syslog-Tftp.png) [After VLan-10 ACL](screenshots/Verification/Acls/Vlan10/After-ACLs/PC2-ping-PC3-PC5-Syslog-Tftp.png)  |
-| VLAN 30 ACL | check if the ACLs are working | Unauthorized traffic blocked | Success | [Before VLan-30 ACL](screenshots/Verification/Acls/Vlan30/Before-ACLs/PC5-Ping-PC3-PC7-Syslog.png) [After VLan-30 ACL](screenshots/Verification/Acls/Vlan30/After-ACLs/PC5-Ping-PC3-PC7-Syslog.png)  |
-| VLAN 40 ACL | check if the ACLs are working | Unauthorized traffic blocked | Success | [Before VLan-40 ACL](screenshots/Verification/Acls/Vlan40/Before-ACLs/PC7-Ping-PC3-PC5-Syslog.png) [After VLan-40 ACL](screenshots/Verification/Acls/Vlan40/After-ACLs/PC7-Ping-PC3-PC5-Syslog.png) |
-| VTY ACL | Only Admin vlan 20 can manage devices | Admin vlan authorized | Success | [VTY ACL](screenshots/Verification/SSH-RADIUS/SW50-ACL-VTY.png) |
-| Port Security | Unauthorized MAC triggers violation | Port in Err-Disabled |Success | [Err-Disabled](screenshots/Verification/Port-Security/SW-10-fa02-err-disabled.png) |
-| DHCP Snooping | Binding Table | Legitimate DHCP clients learned | Success | [Binding Table](screenshots/Verification/DHCP-Snooping-DAI/SW20-Show-Ip-Dhcp-Snooping-Binding.png) |
-| DAI | Legitimate ARP inspected and forwarded | ARP traffic forwarded | Success | [Arp Inspection interfaces](screenshots/Verification/DHCP-Snooping-DAI/SW40-Show-Ip-Arp-inspection-Interfaces.png) |
+| RADIUS | Admin vlan connects to SW10 via SSH | Connetions | Success | [RADIUS Server](screenshots/verification/SSH-RADIUS/RADIUS-Server.png) [SSH Test](screenshots/verification/SSH-RADIUS/PC3-SSH-SW10.png)  |
+| SYSLOG | Log received on server | Events log | Success | [Syslog Server](screenshots/verification/Syslog/Syslog.png) |
+| TFTP | Configurations backed up | Files saved | Success | [Tftp Server](screenshots/verification/Tftp/Tftp.png) |
+| HTTP | Web server reachable using DNS | HTTP server working | Success | [WEB Access](screenshots/verification/HTTP/PC5-HTTP.png) |
+| DHCP | Clients received IPs | DHCP assignment works | Success | [DHCP Server](screenshots/verification/DHCP/DHCP.png) [DHCP assignement](screenshots/verification/DHCP/PC8-DHCP-Assignement.png) |
+| DNS | Internal records resolve correctly | Internal records working | Success | [DNS Server](screenshots/verification/DNS/DNS.png) [Ping records successful](screenshots/verification/DNS/PC3-Ping-Dns.png) |
+| VLAN 10 ACL | check if the ACLs are working | Unauthorized traffic blocked | Success | [Before VLan-10 ACL](screenshots/verification/Acls/Vlan10/Before-ACLs/PC2-ping-PC3-PC5-Syslog-Tftp.png) [After VLan-10 ACL](screenshots/verification/Acls/Vlan10/After-ACLs/PC2-ping-PC3-PC5-Syslog-Tftp.png)  |
+| VLAN 30 ACL | check if the ACLs are working | Unauthorized traffic blocked | Success | [Before VLan-30 ACL](screenshots/verification/Acls/Vlan30/Before-ACLs/PC5-Ping-PC3-PC7-Syslog.png) [After VLan-30 ACL](screenshots/verification/Acls/Vlan30/After-ACLs/PC5-Ping-PC3-PC7-Syslog.png)  |
+| VLAN 40 ACL | check if the ACLs are working | Unauthorized traffic blocked | Success | [Before VLan-40 ACL](screenshots/verification/Acls/Vlan40/Before-ACLs/PC7-Ping-PC3-PC5-Syslog.png) [After VLan-40 ACL](screenshots/verification/Acls/Vlan40/After-ACLs/PC7-Ping-PC3-PC5-Syslog.png) |
+| VTY ACL | Only Admin vlan 20 can manage devices | Admin vlan authorized | Success | [VTY ACL](screenshots/verification/SSH-RADIUS/SW50-ACL-VTY.png) |
+| Port Security | Unauthorized MAC triggers violation | Port in Err-Disabled |Success | [Err-Disabled](screenshots/verification/Port-Security/SW-10-fa02-err-disabled.png) |
+| DHCP Snooping | Binding Table | Legitimate DHCP clients learned | Success | [Binding Table](screenshots/verification/DHCP-Snooping-DAI/SW20-Show-Ip-Dhcp-Snooping-Binding.png) |
+| DAI | Legitimate ARP inspected and forwarded | ARP traffic forwarded | Success | [Arp Inspection interfaces](screenshots/verification/DHCP-Snooping-DAI/SW40-Show-Ip-Arp-inspection-Interfaces.png) |
 
 ---
 
