@@ -77,6 +77,7 @@ Highlights:
 | Lab 7 | OSPF                           | [Open Lab](Routing/Lab7-OSPF/README.md)                                   |
 | Lab 8 | IPv6 - HSRPv2                           | [Open Lab](Routing/Lab-8-IPv6-HSRPv2/README.md)                                   |
 | Lab 9 | Enterprise Architecture Network  | [Open Lab](Architecture/Lab9-Enterprise-Network-Design/README.md)                                   |
+| Lab 10 | Network Security Hardening & Services  | [Open Lab](Security & Services/Lab 10/README.md)                                   |
 
 ---
 
@@ -90,7 +91,6 @@ Highlights:
 * IP Address Planning
 * Capacity Planning
 * VLSM Design
-
 
 ### Routing
 
@@ -126,9 +126,26 @@ Highlights:
 
 ### Services
 
+* DNS
 * DHCP
 * DHCP Relay
 * Distributed DHCP
+* Syslog
+* RADIUS
+* TFTP
+* HTTP
+
+### Security
+
+* Dynamic ARP Inspection
+* VTY Access Control
+* DHCP Snooping
+* Port Security
+* Extended ACLs
+* TFTP Backup
+* Syslog
+* RADIUS
+* SSH 
 
 ### High Availability
 
@@ -161,8 +178,6 @@ Highlights:
 
 Planned topics:
 
-* WLAN
-* ACLs
 * NAT
 * Network Automation Fundamentals
 
