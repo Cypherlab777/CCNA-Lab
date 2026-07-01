@@ -1,7 +1,7 @@
 R2#show running-config 
 Building configuration...
 
-Current configuration : 1274 bytes
+Current configuration : 1354 bytes
 !
 version 15.1
 service timestamps log datetime msec
@@ -59,17 +59,17 @@ ip classless
 !
 ip flow-export version 9
 !
+ip access-list standard SSH-Management
+ permit 192.168.20.0 0.0.0.255
+ deny any
+!
 logging trap debugging
 logging 192.168.50.100
 line con 0
 !
 line aux 0
 !
-line vty 0 4
- access-class SSH-Management in
- login local
- transport input ssh
-line vty 5 15
+line vty 0 15
  access-class SSH-Management in
  login local
  transport input ssh

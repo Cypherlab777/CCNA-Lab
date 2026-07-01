@@ -1,7 +1,7 @@
 R3#show running-config 
 Building configuration...
 
-Current configuration : 2971 bytes
+Current configuration : 3075 bytes
 !
 version 15.1
 service timestamps log datetime msec
@@ -71,6 +71,7 @@ ip access-list extended VLan-30
  deny ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255
  deny ip 192.168.30.0 0.0.0.255 192.168.40.0 0.0.0.255
  deny ip 192.168.30.0 0.0.0.255 host 192.168.50.100
+ deny ip 192.168.30.0 0.0.0.255 host 192.168.50.105
  permit ip 192.168.30.0 0.0.0.255 any
 ip access-list extended VLan-40
  permit udp any eq bootpc any eq bootps
@@ -84,11 +85,11 @@ ip access-list extended VLan-40
  deny ip 192.168.40.0 0.0.0.255 192.168.20.0 0.0.0.255
  deny ip 192.168.40.0 0.0.0.255 192.168.30.0 0.0.0.255
  deny ip 192.168.40.0 0.0.0.255 host 192.168.50.100
+ deny ip 192.168.40.0 0.0.0.255 host 192.168.50.105
  permit ip 192.168.40.0 0.0.0.255 any
 ip access-list standard SSH-Management
  permit 192.168.20.0 0.0.0.255
  deny any
-!
 !
 radius server 192.168.50.105
  address ipv4 192.168.50.105 auth-port 1645
@@ -97,8 +98,6 @@ radius server 192.168.50.105
 logging trap debugging
 logging 192.168.50.100
 line con 0
-!
-line aux 0
 !
 line vty 0 15
  access-class SSH-Management in

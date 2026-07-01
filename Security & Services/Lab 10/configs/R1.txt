@@ -1,7 +1,7 @@
 R1#show running-config 
 Building configuration...
 
-Current configuration : 2352 bytes
+Current configuration : 2409 bytes
 !
 version 15.1
 service timestamps log datetime msec
@@ -16,7 +16,6 @@ aaa new-model
 !
 aaa authentication login default group radius local 
 !
-!
 aaa authorization exec default group radius local
 !
 no ip cef
@@ -28,7 +27,6 @@ license udi pid CISCO2911/K9 sn FTX1524Z5IT-
 !
 ip ssh version 2
 ip domain-name R1.local
-!
 !
 spanning-tree mode pvst
 !
@@ -67,7 +65,7 @@ ip access-list extended VLan-10
  permit udp 192.168.10.0 0.0.0.255 host 192.168.50.101 eq domain
  permit tcp 192.168.10.0 0.0.0.255 host 192.168.50.104 eq www
  permit tcp 192.168.10.0 0.0.0.255 host 192.168.50.104 eq 443
- permit udp host 192.168.10.1 host 192.168.50.103 eq tftp
+ permit udp 192.168.10.0 0.0.0.255 host 192.168.50.103 eq tftp
  permit tcp host 192.168.10.1 192.168.20.0 0.0.0.255 established
  permit udp host 192.168.10.1 host 192.168.50.100 eq 514
  permit udp host 192.168.10.1 host 192.168.50.105 eq 1645
@@ -75,6 +73,7 @@ ip access-list extended VLan-10
  deny ip 192.168.10.0 0.0.0.255 192.168.30.0 0.0.0.255
  deny ip 192.168.10.0 0.0.0.255 192.168.40.0 0.0.0.255
  deny ip 192.168.10.0 0.0.0.255 host 192.168.50.100
+ deny ip 192.168.10.0 0.0.0.255 host 192.168.50.105
  permit ip 192.168.10.0 0.0.0.255 any
 ip access-list standard SSH-Management
  permit 192.168.20.0 0.0.0.255
@@ -87,8 +86,6 @@ radius server 192.168.50.105
 logging trap debugging
 logging 192.168.50.100
 line con 0
-!
-line aux 0
 !
 line vty 0 15
  access-class SSH-Management in
