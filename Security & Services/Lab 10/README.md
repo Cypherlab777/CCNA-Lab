@@ -55,7 +55,7 @@ Le vlan server quand a lui est constitue exclusivement des services suivant :
 - TFTP Server
 - RADIUS Server
 
-Le vlan 20 Admin a un access totale a tous les vlans ainsi qu'a tous les equipements pour des besoins de maintenance et de check up
+Le vlan 20 Admin a un access totale a tous les vlans ainsi qu'a tous les equipements pour le management
 
 ![Topology](screenshots/Topology/Topology.png)
 
