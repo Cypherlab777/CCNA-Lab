@@ -105,14 +105,14 @@ L'access au equipement est exclusivement reserver au vlan 20 Admin via SSH
 
 L'authentification se fait via le serveur RADIUS a l'exeption du R2, en cas de down du Server radius, le login local reste disponible 
 
-Pour se connecter aux equipement via RADIUS et SSH vous pouvez utiliser les identifiants suivant :
-Username : admin
-Secret : cisco
-enable secret : admin123
+The following credentials are used only for this Packet Tracer lab.
+They are intentionally simple and must not be reused in a real environment.
 
-Pour une connection via login local, utilisez les identifiants suivant :
-Username : localadmin
-Secret : localpass
+| Access Type | Username | Password / Secret |
+|---|---|---|
+| RADIUS SSH user | admin | cisco |
+| Local fallback user | localadmin | localpass |
+| Enable secret | N/A | admin123 |
 
 ### ACLs Design note
 
@@ -126,7 +126,7 @@ Pour les besoins du lab j'ai configurer les ACLs comme suit :
 
 ---
 
-## Security 
+## Security Features & Verification 
 
 ### Extended ACLs
 
@@ -171,7 +171,7 @@ La fonctionnalite port-security est activer sur les ports access utilisateurs af
 
 DHCP snooping a ete appliquer sur tous les switchs afin de prevenir un rogue DHCP
 
-Seule les ports de confiances sont passe en trusted commme les uplink vers les routeurs
+Seuls les ports de confiance, comme les uplinks vers les routeurs, ont été configurés en trusted.
 
 La limitation des paquets par secondes a 10 a ete appliquer sur TOUS les ports des Switchs afin d'eviter qu'un port utilisateur n'envoyent un trop grand nombre de requete DHCP
 
@@ -179,15 +179,15 @@ La limitation des paquets par secondes a 10 a ete appliquer sur TOUS les ports d
 
 ### Dynamic Arp Inspection
 
-DAI a egalement ete activer sur TOUS les ports des switchs afin d'eviter les attaques arp spoofing et poisoning 
+DAI a été activé sur les VLANs utilisateurs. Les uplinks vers les routeurs ont été configurés en trusted, tandis que les ports utilisateurs sont restés en untrusted.
 
 ![Arp Inspection interfaces](screenshots/verification/DHCP-Snooping-DAI/SW40-Show-Ip-Arp-inspection-Interfaces.png)
 
 ### Remark
 
-Dynamic Arp inspection se basant sur la DHCP snooping binding table, j'ai d'abord active DHCP snooping sur les switchs et j'ai attendu que les tables se remplicent pour eviter que DAI ne refuse du trafic legitime en bloquant des macs non desire
+Dynamic ARP Inspection se basant sur la DHCP Snooping binding table, j'ai d'abord activé DHCP Snooping sur les switches et attendu que les tables se remplissent afin d'éviter que DAI ne bloque du trafic légitime.
 
-Les options DHCP snooping sont on ete desactivees car dans packet tracer quand l'option 82 est active avec DHCP-Relay, cela peut casser le DHCP
+L’option 82 de DHCP Snooping a été désactivée, car dans Packet Tracer, lorsqu’elle est active avec DHCP Relay, elle peut casser le DHCP.
 
 ---
 
@@ -285,7 +285,39 @@ Cette solution a ensuite été appliquée à tous les autres switches concernés
 
 ---
 
+## Skills Gained
 
+
+- Built and applied extended ACLs for inter-VLAN filtering.
+- Understood ACL order and the impact of the final permit statement.
+- Configured SSH-based device management.
+- Integrated RADIUS authentication with local fallback.
+- Restricted VTY access to an Admin VLAN.
+- Configured Syslog for centralized event logging.
+- Used TFTP to back up network device configurations.
+- Implemented Port Security with sticky MAC learning.
+- Tested Port Security violations and err-disabled behavior.
+- Configured DHCP Snooping and trusted/untrusted ports.
+- Configured Dynamic ARP Inspection based on DHCP Snooping bindings.
+- Validated security controls using Cisco verification commands.
+- Hardening L2
+
+## Key Concepts Learned
+
+- Extended ACLs should be placed close to the source.
+- ACL entries are processed from top to bottom.
+- The final `permit ip ... any` does not override previous deny entries.
+- Cisco IOS ACLs are stateless.
+- DHCP traffic needs special ACL handling because clients initially use `0.0.0.0`.
+- Management traffic may require exceptions when management IPs are in user VLANs.
+- RADIUS uses a shared secret between the device and server, separate from the user password.
+- Local fallback is important to avoid being locked out.
+- DHCP Snooping is required before DAI can validate ARP traffic dynamically.
+- Only uplinks should normally be trusted for DHCP Snooping and DAI.
+- Port Security in shutdown mode places the interface into err-disabled state.
+- Syslog helps confirm and document security events.
+
+---
 
 
 
