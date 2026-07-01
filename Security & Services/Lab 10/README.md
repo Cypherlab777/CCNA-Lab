@@ -105,6 +105,15 @@ L'access au equipement est exclusivement reserver au vlan 20 Admin via SSH
 
 L'authentification se fait via le serveur RADIUS a l'exeption du R2, en cas de down du Server radius, le login local reste disponible 
 
+Pour se connecter aux equipement via RADIUS et SSH vous pouvez utiliser les identifiants suivant :
+Username : admin
+Secret : cisco
+enable secret : admin123
+
+Pour une connection via login local, utilisez les identifiants suivant :
+Username : localadmin
+Secret : localpass
+
 ### ACLs Design note
 
 Pour les besoins du lab j'ai configurer les ACLs comme suit : 
@@ -112,6 +121,8 @@ Pour les besoins du lab j'ai configurer les ACLs comme suit :
 1. Ce qui est permit l'est explicitement 
 2. Ce qui est restreint l'est explicitement egalement 
 3. le permit final autorise le reste des communications
+4. Les serveurs ne doivent pas initier librement des connections vers les vlans ou internet, ils ne peuvent fournir que les services autorises  
+5. le filtrage principal est applique cote VLAN clients, car les ACL classiques ne sont pas stateful.
 
 ---
 
@@ -129,22 +140,32 @@ Les ACLs sont principalement pour des restrictions inter-vlan mais aussi pour le
 SSH est utilise pour le management a distance
 Un serveur RADIUS authentifie egalement les connections aux equipements, en cas de down le login local reste disponible 
 
+![RADIUS Server](screenshots/verification/SSH-RADIUS/RADIUS-Server.png)
+
 ### VTY Acces Control
 
 Une ACLs a ete appliquer sur chaque VTY de chaque equipement pour n'autoriser que le Vlan 20 a s'y connecter.
+
+![VTY ACL](screenshots/verification/SSH-RADIUS/SW50-ACL-VTY.png)
 
 ### Syslog
 
 Un Serveur Syslog a ete mis en place afin de recuperer et de centraliser tous les evenements important.
 A noter que sur packet tracer il n'y a que l'option de log debugging qui etait disponible
 
+![Syslog Server](screenshots/verification/Syslog/Syslog.png)
+
 ### TFTP Backup
 
 Un Serveur TFTP a ete mis en place afin d'y sauvegarder les configurations des equipements, cela facilite la gestion mais aussi offre plus de securite en cas de probleme 
 
+![Tftp Server](screenshots/verification/Tftp/Tftp.png)
+
 ### Port security
 
 La fonctionnalite port-security est activer sur les ports access utilisateurs afin d'eviter tout rogue device non autorise
+
+![SW10 Port-security](screenshots/verification/Port-Security/SW10-Port-Security-fa02-fa03.png)
 
 ### DHCP Snooping
 
@@ -154,13 +175,19 @@ Seule les ports de confiances sont passe en trusted commme les uplink vers les r
 
 La limitation des paquets par secondes a 10 a ete appliquer sur TOUS les ports des Switchs afin d'eviter qu'un port utilisateur n'envoyent un trop grand nombre de requete DHCP
 
+![Binding Table](screenshots/verification/DHCP-Snooping-DAI/SW20-Show-Ip-Dhcp-Snooping-Binding.png)
+
 ### Dynamic Arp Inspection
 
 DAI a egalement ete activer sur TOUS les ports des switchs afin d'eviter les attaques arp spoofing et poisoning 
 
+![Arp Inspection interfaces](screenshots/verification/DHCP-Snooping-DAI/SW40-Show-Ip-Arp-inspection-Interfaces.png)
+
 ### Remark
 
 Dynamic Arp inspection se basant sur la DHCP snooping binding table, j'ai d'abord active DHCP snooping sur les switchs et j'ai attendu que les tables se remplicent pour eviter que DAI ne refuse du trafic legitime en bloquant des macs non desire
+
+Les options DHCP snooping sont on ete desactivees car dans packet tracer quand l'option 82 est active avec DHCP-Relay, cela peut casser le DHCP
 
 ---
 
@@ -185,6 +212,78 @@ Dynamic Arp inspection se basant sur la DHCP snooping binding table, j'ai d'abor
 ---
 
 ## Troubleshooting
+
+### Probleme 1 : Management de SW10 impossible depuis le Vlan 20 Admin
+
+Lors d'un test, il m'était impossible de me connecter au SW10 via SSH depuis le VLAN Admin.
+
+Après maintes vérifications, tout semblait correct, jusqu'à ce que j'inspecte l'ACL VLan-10.
+
+En regardant de plus près, je me suis aperçu qu'en fait, l'ACL, qui est stateless, faisait bien son travail et bloquait la connexion retour : SW10 → VLAN 20
+
+Cause : l'ACL bloquait le chemin retour vers le VLAN Admin.
+
+Solution : implémenter une ACE established autorisant les connexions retour TCP.
+
+Cette solution a également été implémentée dans les ACLs VLan-30 et VLan-40.
+
+---
+
+### Probleme 2 : Le Server Syslog ne recoit plus aucun logs depuis les SW10 SW30 et SW40
+
+Lors de la vérification du système de logs, je me suis aperçu que les logs ne se centralisaient plus sur le serveur Syslog.
+
+Après investigation, il s'est révélé que les ACLs faisaient une nouvelle fois bien leur travail en bloquant les connexions de ces VLANs vers le serveur Syslog.
+
+Il me fallait donc mettre en place une exception pour quand même autoriser ces switches à envoyer leurs logs au serveur.
+
+Cause : les ACLs bloquaient l'accès au serveur Syslog.
+
+Solution : mettre en place une ACE qui autorise les connexions UDP sur le port 514 vers le serveur Syslog.
+
+---
+
+### Probleme 3 : Aucune connectivite depuis pc2
+
+Lors d'un test de connectivité, je me suis aperçu que PC2 n'arrivait plus à joindre aucun réseau distant.
+
+J'ai effectué un tracert pour comprendre où cela bloquait et, à ma grande surprise, le trafic s'arrêtait à la passerelle par défaut.
+
+Après vérification avec ipconfig, il m'est apparu que le PC n'avait pas de passerelle par défaut configurée, alors que la configuration avait été faite via DHCP.
+
+J'ai donc vérifié si le serveur DHCP avait bien une passerelle par défaut configurée dans le pool, ce qui était le cas.
+
+J'ai ensuite exécuté sur PC2 les commandes suivantes :
+
+ipconfig /release
+ipconfig /renew
+
+Après cela, PC2 a bien reçu la passerelle par défaut.
+
+Cause : aucune passerelle par défaut configurée sur PC2 via DHCP, probablement à cause d'un bug Packet Tracer ou d'un renouvellement DHCP incomplet.
+
+Solution : renouveler le bail DHCP avec :
+
+ipconfig /release
+ipconfig /renew.
+
+---
+
+### Probleme 4 : DHCP failed après la configuration de DHCP snooping
+
+Lors d'une vérification après l'implémentation de DHCP Snooping, je me suis rendu compte que le DHCP ne fonctionnait plus.
+
+Après investigation, je n'ai pas pu trouver le problème seul. C'est à ce moment-là que j'ai demandé à l'IA de m'aider. Elle a rapidement identifié le problème.
+
+J'avais oublié de mettre le port vers R1 en trust, ce qui a eu pour effet de bloquer le trafic DHCP légitime.
+
+Cause : le port vers R1 n'était pas configuré en trust.
+
+Solution : mettre le port vers R1 en trust afin de laisser passer le trafic DHCP légitime.
+
+Cette solution a ensuite été appliquée à tous les autres switches concernés.
+
+---
 
 
 
