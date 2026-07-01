@@ -122,7 +122,7 @@ Pour les besoins du lab j'ai configurer les ACLs comme suit :
 Les ACLs etendue sont appliquer au plus pres de la source, ce type d'ACL etant beaucoup plus precise, cela ne risque pas d'autoriser ou de refuser du traffic non desire 
 Les ACLs sont principalement pour des restrictions inter-vlan mais aussi pour les sercices
 
-![ACL Validation](screenshots/Verification/02-ACL-Validation/After-ACL/VLAN10-after-acl.png)
+![R3 Show Access-lists](screenshots/verification/Acls/R3-Show-Access-Lists.png)
 
 ### SSH / RADIUS
 
