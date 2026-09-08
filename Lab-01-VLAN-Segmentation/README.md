@@ -1,4 +1,4 @@
-# Lab 1 - VLAN segmentation
+# Lab 01 : VLAN-Segmentation
 
 ## Objective 
 

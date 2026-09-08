@@ -1,4 +1,4 @@
-#Lab 2 - Add Router-On-A-Stick
+# Lab 02 : Router-On-A-Stick
 
 ## Objective
 
