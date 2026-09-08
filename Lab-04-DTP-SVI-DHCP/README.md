@@ -1,11 +1,14 @@
-# Lab4 : Dynamic Trunk protocol + DHCP Switch L3
+# Lab 04 : DTP-SVI-DHCP
 
 ## Objective 
 
 Build a small network using multiple VLANs, DTP trunk negotiation, inter-VLAN routing and DHCP services on a multilayer switch.
+
 ---
 
-## Topology 
+### Full Topology
+
+![Full Topology](screenshots/Topology.png)
 
 - 4 switch 2960
 - 4 PCs
