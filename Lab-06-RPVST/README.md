@@ -79,7 +79,7 @@ show spanning-tree vlan 20
 
 Fa0/1 and Gi0/2 on SW1 were appearing as Altn BLK for VLAN 10 even though SW1 was elected as root bridge.
 
-![Blocked ports on SW1](Screenshots/Troubleshooting/SW1-Root-Brige-Bad-States-Port.png)
+![Blocked ports on SW1](screenshots/Troubleshooting/SW1-Root-Brige-Bad-States-Port.png)
 
 #### Cause
 
@@ -90,7 +90,7 @@ The STP tie-breaker (lowest MAC address) gave the advantage to SW2, which was fi
 Note: Packet Tracer displayed both SW1 and SW2 as root bridge simultaneously 
 — this is the symptom of the tie-breaker conflict, not normal STP behavior.
 
-![Wrong priority on SW2](Screenshots/Troubleshooting/SW2-Bad-priority.png)
+![Wrong priority on SW2](screenshots/Troubleshooting/SW2-Bad-priority.png)
 
 #### Solution
 
@@ -98,7 +98,7 @@ Note: Packet Tracer displayed both SW1 and SW2 as root bridge simultaneously
 SW2(config)# spanning-tree vlan 10 priority 24576
 ```
 
-![Corrected STP priority on SW2](Screenshots/Troubleshooting/SW2-Good-Priority.png)
+![Corrected STP priority on SW2](screenshots/Troubleshooting/SW2-Good-Priority.png)
 
 #### Result
 
