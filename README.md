@@ -24,22 +24,6 @@ Each lab includes:
 * Observations and conclusions
 ---
 
-## About This Repository
-
-
-The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
-
-Each lab includes:
-
-* Network topologies
-* Device configurations
-* Verification commands
-* Troubleshooting scenarios
-* Technical documentation
-* Observations and conclusions
-
----
-
 ## Featured Lab
 
 ### Lab 9 - Enterprise Network Design
