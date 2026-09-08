@@ -5,9 +5,14 @@
 Add a router for inter-vlan communication 
 ---
 
-## Topology
+### Full Topology
+
+![Full Topology](screenshots/Topology.png)
 
 - 1 Router 2911
+- 1 Switch 2960
+- 4 PCs
+
 ---
 
 ## Network information
