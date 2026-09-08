@@ -5,7 +5,7 @@ Hands-on Cisco CCNA lab portfolio documenting my journey through routing, switch
 This portfolio reflects my progression through the CCNA curriculum:
 
 - Labs 1-6 cover core switching and routing fundamentals
-- Lab 7 Introduce redundancy and dynamic routing
+- Lab 7-8 Introduce redundancy and dynamic routing
 - Labs 9-10 combine These into enterprise-scale designs with troubleshooting scenarios.
 
 ---
