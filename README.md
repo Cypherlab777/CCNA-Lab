@@ -42,7 +42,7 @@ Highlights:
 * DHCP DORA Analysis
 * Network Troubleshooting
 
-📁 **[Open Lab](Lab-01-VLAN-Segmentation/README.md)**
+📁 **[Open Lab](Lab-09-Enterprise-Network-Design/README.md)**
 
 ---
 
@@ -60,7 +60,7 @@ Highlights:
 * Packet Analysis
 * OSPF Troubleshooting
 
-📁 **[Open Lab](Routing/Lab7-OSPF/README.md)**
+📁 **[Open Lab](Lab-07-OSPF-Routing/README.md)**
 
 ---
 
@@ -72,12 +72,12 @@ Highlights:
 | Lab 2 | Router-on-a-Stick              | [Open Lab](Lab-02-Router-On-A-Stick/README.md)                  |
 | Lab 3 | DHCP Relay & IP Helper Address | [Open Lab](Lab-03-DHCP-IP-Helper/README.md) |
 | Lab 4 | DTP & Layer 3 Switching        | [Open Lab](Lab-04-DTP-SVI-DHCP/README.md)                         |
-| Lab 5 | CDP & Voice VLAN               | [Open Lab](Switching-Routing-DHCP-DTP/Lab5-CDP-VOICE-VLAN/README.md)                         |
-| Lab 6 | RPVST+                         | [Open Lab](Switching/Lab6-RPVST+/README.md)                                 |
-| Lab 7 | OSPF                           | [Open Lab](Routing/Lab7-OSPF/README.md)                                   |
-| Lab 8 | IPv6 - HSRPv2                           | [Open Lab](Routing/Lab-8-IPv6-HSRPv2/README.md)                                   |
-| Lab 9 | Enterprise Architecture Network  | [Open Lab](Architecture/Lab9-Enterprise-Network-Design/README.md)                                   |
-| Lab 10 | Network Security Hardening & Services  | [Open Lab](Security-Services/Lab10/README.md)                                   |
+| Lab 5 | CDP & Voice VLAN               | [Open Lab](Lab-05-CDP-Voice-VLAN/README.md)                         |
+| Lab 6 | RPVST+                         | [Open Lab](Lab-06-RPVST/README.md)                                 |
+| Lab 7 | OSPF                           | [Open Lab](Lab-07-OSPF-Routing/README.md)                                   |
+| Lab 8 | IPv6 - HSRPv2                           | [Open Lab](Lab-08-IPv6-HSRPv2/README.md)                                   |
+| Lab 9 | Enterprise Architecture Network  | [Open Lab](Lab-09-Enterprise-Network-Design/README.md)                                   |
+| Lab 10 | Network Security Hardening & Services  | [Open Lab](Lab-10-Security-Services/README.md)                                   |
 
 ---
 
