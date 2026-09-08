@@ -121,6 +121,7 @@ Highlights:
 * IPv6 EUI-64/SLAAC
 * IPv6 GUA
 * IPv6 ULA
+* IPv6 Subnetting
 * IPv4 Subnetting
 * IPv4 VLSM
 
