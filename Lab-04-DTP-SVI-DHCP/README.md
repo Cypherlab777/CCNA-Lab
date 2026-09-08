@@ -15,7 +15,7 @@ Build a small network using multiple VLANs, DTP trunk negotiation, inter-VLAN ro
 - 1 Switch L3 3560
 ---
 
-## Network configuration 
+## Network configuration
 
 - SW.SALES : 
 fa0/2 = switchport mode access
