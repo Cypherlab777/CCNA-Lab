@@ -6,7 +6,7 @@ Creation of a network of 6 switches in order to observe the behavior of RPVST+
 
 ## Topology
 
-![RPVST+ Topology](Topology/Topology.png)
+![RPVST+ Topology](Screenshots/Topology/Topology.png)
 
 ### Equipment
 
