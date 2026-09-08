@@ -1,11 +1,13 @@
-# Lab5 : CDP - VOICE VLAN
+# Lab 05 : CDP-Voice-VLAN
 
 ## Objective
 
-creation of a small network to see how CDP & LLDP work  
-creation of two VLANs and one voice VLAN to analyze CDP behavior with a sniffer
+- Creation of a small network to see how CDP & LLDP work  
+- Creation of two VLANs and one voice VLAN to analyze CDP behavior with a sniffer
 
-## Topology
+### Full Topology
+
+![Full Topology](screenshots/Topology.png)
 
 - 2 Switch 2960
 - 2 IP phones
