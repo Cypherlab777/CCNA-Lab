@@ -42,7 +42,7 @@ Highlights:
 * DHCP DORA Analysis
 * Network Troubleshooting
 
-📁 **[Open Lab](Labs\Lab-09-Enterprise-Network-Design/README.md)**
+📁 **[Open Lab](Labs\Labs\Lab-01-VLAN-Segmentation/README.md)**
 
 ---
 
