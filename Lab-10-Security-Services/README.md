@@ -1,4 +1,4 @@
-# Lab 10 : Network Security Hardening & Services
+# Lab 10 : Security-Services
 
 ## Overview
 

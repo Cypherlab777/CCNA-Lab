@@ -1,4 +1,4 @@
-# Lab 8 IPv6 - HSRPv2
+# Lab 08 : IPv6-HSRPv2
 
 ---
 

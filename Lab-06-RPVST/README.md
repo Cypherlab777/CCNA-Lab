@@ -1,4 +1,4 @@
-# Lab RPVST+ : Scenario 1 (Default)
+# Lab 06 : RPVST+
 
 ## Objective
 

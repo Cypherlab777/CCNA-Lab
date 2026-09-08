@@ -1,4 +1,4 @@
-# Lab 9 Enterprise Network Design
+# Lab 09 : Enterprise-Network-Design
 
 ## Overview
 

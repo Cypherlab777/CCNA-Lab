@@ -1,4 +1,4 @@
-# Lab OSPF
+# Lab 07 : OSPF-Routing
 
 ## Part 1 - Initial OSPF Deployment
 
