@@ -1,0 +1,64 @@
+R1#show running-config 
+Building configuration...
+
+Current configuration : 1151 bytes
+!
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+spanning-tree mode pvst
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/0.10
+ encapsulation dot1Q 10
+ no ip address
+ ipv6 address FD00:10:0:10::1/64
+ standby version 2
+ standby 10 ipv6 autoconfig 
+ standby 10 priority 101
+ standby 10 preempt
+!
+interface GigabitEthernet0/0/0.20
+ encapsulation dot1Q 20
+ no ip address
+ ipv6 address FD00:10:0:20::1/64
+ ipv6 enable
+ standby version 2
+ standby 20 priority 101
+ standby 20 preempt
+ standby 20 ipv6 autoconfig 
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:1::1/64
+ ipv6 enable
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route ::/0 GigabitEthernet0/0/1 2001:1::2
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+end
