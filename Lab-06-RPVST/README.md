@@ -79,7 +79,7 @@ show spanning-tree vlan 20
 
 Fa0/1 and Gi0/2 on SW1 were appearing as Altn BLK for VLAN 10 even though SW1 was elected as root bridge.
 
-![Blocked ports on SW1](screenshots/Troubleshooting/SW1-Root-Brige-Bad-States-Port.png)
+![Blocked ports on SW1](Screenshots/Troubleshooting/SW1-Root-Brige-Bad-States-Port.png)
 #### Cause
 
 SW2 had the same priority as SW1 (4096) on VLAN 10.
