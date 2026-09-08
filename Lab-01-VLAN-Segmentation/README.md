@@ -11,7 +11,9 @@ Secure unused switch port for security
 - VLAN 99 = SAFE
 ---
 
-## Topology 
+## Full Topology
+
+![Full Topology](screenshots/Topology.png)
 
 - 4 pcs
 - 1 switch
