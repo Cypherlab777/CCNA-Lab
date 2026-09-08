@@ -1,19 +1,15 @@
-#Lab 3 - Add 2 new vlan + serveur DHCP
+# Lab 03 : DHCP-IP-Helper
 
 ## Objective 
 
-Add 3 new vlans
- point to point link between router0 and router1
-Assign ip and Gateway to each pc via DHCP
+- Add 3 new vlans point to point link between router0 and router1
+- Assign ip and Gateway to each pc via DHCP
 
-- VLAN 30 = SALES
-- VALN 40 = IT
-- VLAN 50 = SERVEUR
-- VLAN 99 = SAFE
-- Point to point link
 ---
 
-## Topology 
+### Full Topology
+
+![Full Topology](screenshots/Topology.png)
 
 - 1 Switch 2960
 - 1 router 2911
@@ -22,7 +18,13 @@ Assign ip and Gateway to each pc via DHCP
 ---
 
 ## Network configuration 
-```
+
+- VLAN 30 = SALES
+- VALN 40 = IT
+- VLAN 50 = SERVEUR
+- VLAN 99 = SAFE
+- Point to point link
+
 Router0 : 
 interface g0/1 = 10.0.0.1/30
 
