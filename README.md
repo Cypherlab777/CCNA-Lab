@@ -2,11 +2,30 @@
 
 Hands-on Cisco CCNA lab portfolio documenting my journey through routing, switching, troubleshooting and protocol analysis.
 
+This portfolio reflects my progression through the CCNA curriculum:
+
+- Labs 1-5 cover core switching and routing fundamentals, Labs 6-8
+- Introduce redundancy and dynamic routing, and Labs 9-10 combine
+- These into enterprise-scale designs with troubleshooting scenarios.
+
 ---
 
 ## About This Repository
 
-This repository contains the networking labs I completed while preparing for the Cisco CCNA certification.
+The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
+
+Each lab includes:
+
+* Network topologies
+* Device configurations
+* Verification commands
+* Troubleshooting scenarios
+* Technical documentation
+* Observations and conclusions
+---
+
+## About This Repository
+
 
 The goal is to strengthen my practical networking skills through hands-on configuration, troubleshooting, packet analysis and network design.
 
