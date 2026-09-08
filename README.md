@@ -169,8 +169,9 @@ Highlights:
 
 ## Certifications
 
+* ✅ Cisco CCNA
 * ✅ CompTIA Network+ (861/900)
-* 🚧 Cisco CCNA (In Progress)
+* 🎓 CompTIA Security+ (in progress)
 
 ---
 
