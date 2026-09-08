@@ -68,10 +68,10 @@ Highlights:
 
 | Lab   | Topic                          | Link                                                              |
 | ----- | ------------------------------ | ----------------------------------------------------------------- |
-| Lab 1 | VLAN Segmentation              | [Open Lab](Switching-Routing-DHCP-DTP/Lab1-VlAN-Segmentation/README.md)                      |
-| Lab 2 | Router-on-a-Stick              | [Open Lab](Switching-Routing-DHCP-DTP/Lab2-Add-Router-On-a-Stick/README.md)                  |
-| Lab 3 | DHCP Relay & IP Helper Address | [Open Lab](Switching-Routing-DHCP-DTP/Lab3-Add-switch-vlan-ip-helper-DHCP-serveur/README.md) |
-| Lab 4 | DTP & Layer 3 Switching        | [Open Lab](Switching-Routing-DHCP-DTP/Lab4-DTP-DHCP-SW.L3/README.md)                         |
+| Lab 1 | VLAN Segmentation              | [Open Lab](Lab-01-VLAN-Segmentation/README.md)                      |
+| Lab 2 | Router-on-a-Stick              | [Open Lab](Lab-02-Router-On-A-Stick/README.md)                  |
+| Lab 3 | DHCP Relay & IP Helper Address | [Open Lab](Lab-03-DHCP-IP-Helper/README.md) |
+| Lab 4 | DTP & Layer 3 Switching        | [Open Lab](Lab-04-DTP-SVI-DHCP/README.md)                         |
 | Lab 5 | CDP & Voice VLAN               | [Open Lab](Switching-Routing-DHCP-DTP/Lab5-CDP-VOICE-VLAN/README.md)                         |
 | Lab 6 | RPVST+                         | [Open Lab](Switching/Lab6-RPVST+/README.md)                                 |
 | Lab 7 | OSPF                           | [Open Lab](Routing/Lab7-OSPF/README.md)                                   |
