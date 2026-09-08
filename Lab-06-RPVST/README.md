@@ -89,7 +89,7 @@ The STP tie-breaker (lowest MAC address) gave the advantage to SW2, which was fi
 Note: Packet Tracer displayed both SW1 and SW2 as root bridge simultaneously 
 — this is the symptom of the tie-breaker conflict, not normal STP behavior.
 
-![Wrong priority on SW2](screenshots/Troubleshooting/SW2-Bad-priority.png)
+![Wrong priority on SW2](Screenshots/Troubleshooting/SW2-Bad-priority.png)
 
 #### Solution
 
@@ -97,7 +97,7 @@ Note: Packet Tracer displayed both SW1 and SW2 as root bridge simultaneously
 SW2(config)# spanning-tree vlan 10 priority 24576
 ```
 
-![Corrected STP priority on SW2](screenshots/Troubleshooting/SW2-Good-Priority.png)
+![Corrected STP priority on SW2](Screenshots/Troubleshooting/SW2-Good-Priority.png)
 
 #### Result
 
